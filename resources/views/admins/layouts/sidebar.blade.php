@@ -13,20 +13,20 @@
         <span class="nav-link" href="{{ route('admin.dashboard') }}">Dashboards</span>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="{{ route('admin.dashboard') }}">Overview</a>
+        <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Overview</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#producers" data-toggle="collapse" href="#producers" aria-expanded="false" aria-controls="producers">
             Producers <i class="float-right fa fa-caret-down"></i>
         </a>
     </li>
-    <div class="collapse" id="producers">
+    <div class="collapse {{ request()->is('producers') ? 'show' : '' }} {{ request()->is('producers/create') ? 'show' : '' }}" id="producers">
         <ul class="nav flex-column nav-sub-menu">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('producers.create') }}">Create New Producer</a>
+                <a class="nav-link {{ request()->is('producers/create') ? 'active' : '' }}" href="{{ route('producers.create') }}">Create New Producer</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('producers.index') }}">View Producers</a>
+                <a class="nav-link {{ request()->is('producers') ? 'active' : '' }}" href="{{ route('producers.index') }}">View Producers</a>
             </li>
         </ul>
     </div>
@@ -35,13 +35,13 @@
             Products <i class="float-right fa fa-caret-down"></i>
         </a>
     </li>
-    <div class="collapse" id="products">
+    <div class="collapse {{ request()->is('products') ? 'show' : '' }} {{ request()->is('products/create') ? 'show' : '' }}" id="products">
         <ul class="nav flex-column nav-sub-menu">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('products.create') }}">Create New Product</a>
+                <a class="nav-link {{ request()->is('products/create') ? 'active' : '' }}" href="{{ route('products.create') }}">Create New Product</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('products.index') }}">View Products</a>
+                <a class="nav-link {{ request()->is('products') ? 'active' : '' }}" href="{{ route('products.index') }}">View Products</a>
             </li>
         </ul>
     </div>
@@ -50,13 +50,13 @@
             Categories <i class="float-right fa fa-caret-down"></i>
         </a>
     </li>
-    <div class="collapse" id="categories">
+    <div class="collapse {{ request()->is('categories') ? 'show' : '' }} {{ request()->is('categories/create') ? 'show' : '' }}" id="categories">
         <ul class="nav flex-column nav-sub-menu">
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('categories.create') }}">Create New Category</a>
+                <a class="nav-link {{ request()->is('categories/create') ? 'active' : '' }}" href="{{ route('categories.create') }}">Create New Category</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('categories.index') }}">View Categories</a>
+                <a class="nav-link {{ request()->is('categories') ? 'active' : '' }}" href="{{ route('categories.index') }}">View Categories</a>
             </li>
         </ul>
     </div>
