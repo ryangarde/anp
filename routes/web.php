@@ -33,6 +33,7 @@ Route::group(['domain' => 'admin.anp.app', 'namespace' => 'Admins'], function ()
 
         Route::resource('categories', 'CategoriesController');
         Route::resource('producers', 'ProducersController');
+        Route::resource('products', 'ProductsController');
     });
 });
 

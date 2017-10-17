@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
                 ->onDelete('cascade');
             $table->string('image');
             $table->string('name');
-            $table->text('decription');
+            $table->text('description');
             $table->decimal('price', 10, 2);
             $table->timestamps();
             $table->softDeletes();
