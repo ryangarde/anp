@@ -1,0 +1,51 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #f5f8fa;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #636b6f;
+}
+
+.custom-navbar {
+    background-color: white;
+    border-bottom: 1px solid #d3e0e9;
+    margin-bottom: 22px;
+}
+
+.background {
+    background-color: white;
+    border: 1px solid #d3e0e9;
+    border-radius: 5px;
+}
+
+.navbar-brand {
+    color: #5e5d5d !important;
+}
+
+.card {
+    border: 1px solid #d3e0e9;
+}
+
+.nav-link {
+    color: #636b6f;
+}
+
+.nav-item > a.active {
+    /*background-color: #007bff;*/
+    background-color: #d3e0e9;
+    color: #333;
+}
+
+.nav-sub-menu {
+    width: 100%;
+}
+
+.nav-sub-menu li a.nav-link {
+    padding-left: 25px;
+    font-size: 85%;
+    /*background-color: #fbfbfb;*/
+}
+
+.dropdown-item {
+    font-size: 90%;
+}

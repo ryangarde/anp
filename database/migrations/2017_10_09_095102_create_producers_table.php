@@ -15,7 +15,10 @@ class CreateProducersTable extends Migration
     {
         Schema::create('producers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('website');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
