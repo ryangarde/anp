@@ -28,7 +28,7 @@
 
             <div class="form-group">
                 <label for="website">Website <small class="text-warning"><strong>*Optional</strong></small></label>
-                <input type="text" class="form-control" name="website" id="website" autocomplete="off" required>
+                <input type="text" class="form-control" name="website" id="website" autocomplete="off">
                 @if ($errors->has('website'))
                 <span class="help-block">
                     <strong>{{ $errors->first('website') }}</strong>

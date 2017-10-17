@@ -27,11 +27,11 @@
                 <p class="card-text">{{ $product->description }}</p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">{{ $product->price }}</li>
+                <li class="list-group-item">₱ {{ $product->price }}</li>
             </ul>
             <div class="card-body clearfix">
                 <a href="{{ route('products.show', $product->id) }}" class="float-left card-link text-info font-weight-bold">View</a>
-                <span class="float-right">{{ $product->producer_id }}</span>
+                <span class="float-right">{{ $product->producer->name }}</span>
             </div>
         </div>
         @endforeach

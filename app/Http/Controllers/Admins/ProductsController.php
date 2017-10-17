@@ -55,7 +55,7 @@ class ProductsController extends Controller
     public function index()
     {
         // Retrieve all news filter if needed.
-        $products = $this->product->paginateWithFilters(request());
+        $products = $this->product->paginateWithFiltersAndProducer(request());
 
         // Get search url for filtering.
         $searchUrl = $this->product->getSearchUrl(request());
@@ -118,7 +118,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = $this->product->findOrFail($id);
+        $product = $this->product->findOrFailWithProducerAndCategory($id);
 
         return view('admins.products.show', compact('product'));
     }
@@ -137,8 +137,14 @@ class ProductsController extends Controller
         // If authorize find resource.
         $product = $this->product->findOrFail($id);
 
+        // Get all categories
+        $categories = $this->category->all();
+
+        // Get all producers
+        $producers = $this->producer->all();
+
         // If authorize pass the news object to the view.
-        return view('admins.products.edit', compact('product'));
+        return view('admins.products.edit', compact('product', 'categories', 'producers'));
     }
 
     /**
@@ -152,6 +158,16 @@ class ProductsController extends Controller
     {
         // Check if news is owned by the current user.
         //$this->news->authorize('update');
+        
+        // Validate all fields.
+        $this->validate($request, [
+            'producer_id' => 'required|integer',
+            'category_id' => 'required|integer',
+            'image'       => 'image',
+            'name'        => 'required|min:2|max:255',
+            'description' => 'required|min:2|max:500',
+            'price'       => 'required|numeric'
+        ]);
 
         // If authorize find the news resource using id.
         $product = $this->product->findOrFail($id);

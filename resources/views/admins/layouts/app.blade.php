@@ -17,6 +17,7 @@
     <link href="{{ asset('css/bootstrap-reboot.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-grid.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -24,7 +25,7 @@
         @include('admins.layouts.navbar')
 
         @auth('admin')
-        <div class="container">
+        <div class="container mb-5">
             <div class="row">
                 <div class="col-md-3">
                     @include('admins.layouts.sidebar')
@@ -37,7 +38,6 @@
         @else
 
         @yield('content')
-        
         @endauth
     </div>
 
