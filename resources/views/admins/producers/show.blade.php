@@ -27,21 +27,21 @@
             <div class="form-group">
                 <label for="website">Website</label>
                 <div class="input-group">
-                    <div class="input-group-addon"><a class="text-success" href="{{ $producer->website }}" target="_blank">View</a></div>
+                    <div class="input-group-addon"><a class="text-success" href="{{ $producer->website }}" target="_blank">Visit</a></div>
                     <input type="text" class="form-control" value="{{ $producer->website }}">
                 </div>
             </div>
         </fieldset>
-        <div class="form-group">
-            <form action="{{ route('producers.destroy', $producer->id) }}" method="POST" accept-charset="utf-8">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
+        
+        <form action="{{ route('producers.destroy', $producer->id) }}" method="POST" accept-charset="utf-8">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
 
-                <a href="{{ route('producers.index') }}" class="btn btn-secondary btn-sm">Back</a>
-                <a href="{{ route('producers.edit', $producer->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-            </form>
-        </div>
+            <a href="{{ route('producers.index') }}" class="btn btn-secondary btn-sm">Back</a>
+            <a href="{{ route('producers.edit', $producer->id) }}" class="btn btn-primary btn-sm">Edit</a>
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+        
     </div>
 </div>
 @endsection

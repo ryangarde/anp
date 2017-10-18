@@ -32,4 +32,14 @@ class Producer extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * The producer has many admins
+     *
+     * @return array object
+     */
+    public function admins()
+    {
+        $this->hasMany(Admin::class);
+    }
 }

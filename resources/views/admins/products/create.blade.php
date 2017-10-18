@@ -84,10 +84,8 @@
                 @endif
             </div>
 
-            <div class="form-group">
-                <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
-                <button type="submit" class="btn btn-primary btn-sm">Create New Producer</button>
-            </div>
+            <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
+            <button type="submit" class="btn btn-primary btn-sm">Create New Producer</button>
         </form>
     </div>
 </div>

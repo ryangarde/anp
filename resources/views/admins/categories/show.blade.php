@@ -29,16 +29,15 @@
                 <textarea class="form-control" id="description">{{ $category->description }}</textarea>
             </div>
         </fieldset>
-        <div class="form-group">
-            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" accept-charset="utf-8">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
 
-                <a href="{{ route('categories.index') }}" class="btn btn-secondary btn-sm">Back</a>
-                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-            </form>
-        </div>
+        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" accept-charset="utf-8">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+
+            <a href="{{ route('categories.index') }}" class="btn btn-secondary btn-sm">Back</a>
+            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary btn-sm">Edit</a>
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
     </div>
 </div>
 @endsection

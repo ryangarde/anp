@@ -17,7 +17,7 @@
                         {{ Auth::guard('admin')->user()->name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="{{ route('admin.profile') }}">Profile</a>
                         <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             Logout
                         </a>

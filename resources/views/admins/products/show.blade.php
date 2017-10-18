@@ -53,16 +53,14 @@
                     </div>
                 </fieldset>
 
-                <div class="form-group">
-                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" accept-charset="utf-8">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
+                <form action="{{ route('products.destroy', $product->id) }}" method="POST" accept-charset="utf-8">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
 
-                        <a href="{{ route('products.index') }}" class="btn btn-secondary btn-sm">Back</a>
-                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                    </form>
-                </div>
+                    <a href="{{ route('products.index') }}" class="btn btn-secondary btn-sm">Back</a>
+                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
             </div>
         </div>
     </div>

@@ -8,6 +8,14 @@
     </div>
 </div>
 
+@if (request()->is('products'))
+<ul class="nav flex-column background py-1 mt-3 sidebar-nav">
+    <li class="nav-item">
+        <span class="nav-link">Filtering</span>
+    </li>
+</ul>
+@endif
+
 <ul class="nav flex-column background py-1 mt-3 sidebar-nav">
     <li class="nav-item">
         <span class="nav-link" href="{{ route('admin.dashboard') }}">Dashboards</span>
@@ -76,13 +84,5 @@
         </ul>
     </div>
 </ul>
-
-@if (request()->is('products'))
-<ul class="nav flex-column background py-1 mt-3 sidebar-nav">
-    <li class="nav-item">
-        <span class="nav-link">Filtering</span>
-    </li>
-</ul>
-@endif
 
 <div class="mt-2 copyright">&copy; 2017 Association of Negros Producers</div>

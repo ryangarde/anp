@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\AdminResetPasswordNotification;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -41,4 +42,35 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * The admin has many audit trials.
+     *
+     * @return array object
+     */
+    public function auditTrials()
+    {
+        return $this->hasMany(AuditTrail::class);
+    }
+
+    /**
+     * The admin has many roles.
+     *
+     * @return array object
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new AdminResetPasswordNotification($token));
+    }
 }

@@ -36,10 +36,8 @@
                 @endif
             </div>
 
-            <div class="form-group">
-                <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
-                <button type="submit" class="btn btn-primary btn-sm">Create New Category</button>
-            </div>
+            <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
+            <button type="submit" class="btn btn-primary btn-sm">Create New Category</button>
         </form>
     </div>
 </div>

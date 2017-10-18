@@ -27,7 +27,7 @@
             </div>
 
             <div class="form-group">
-                <label for="website">Website <small class="text-warning"><strong>*Optional</strong></small></label>
+                <label for="website">Website <small class="text-info"><strong>*Optional</strong></small></label>
                 <input type="text" class="form-control" name="website" id="website" autocomplete="off">
                 @if ($errors->has('website'))
                 <span class="help-block">
@@ -36,10 +36,8 @@
                 @endif
             </div>
 
-            <div class="form-group">
-                <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
-                <button type="submit" class="btn btn-primary btn-sm">Create New Producer</button>
-            </div>
+            <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
+            <button type="submit" class="btn btn-primary btn-sm">Create New Producer</button>
         </form>
     </div>
 </div>

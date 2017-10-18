@@ -18,7 +18,7 @@
             {{ method_field('PATCH') }}
 
             <div class="form-group">
-                <label for="image">Image <small class="text-warning"><strong>*Optional, leave blank if you don't want to update the image</strong></small></label>
+                <label for="image">Image <small class="text-info"><strong>*Optional, leave blank if you don't want to update the image</strong></small></label>
                 <input type="file" class="form-control-file" name="image" id="image" autocomplete="off">
                 @if ($errors->has('image'))
                 <span class="help-block">
@@ -93,10 +93,8 @@
                 @endif
             </div>
 
-            <div class="form-group">
-                <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
-                <button type="submit" class="btn btn-primary btn-sm">Update Product</button>
-            </div>
+            <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
+            <button type="submit" class="btn btn-primary btn-sm">Update Product</button>
         </form>
     </div>
 </div>

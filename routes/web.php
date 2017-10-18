@@ -31,6 +31,9 @@ Route::group(['domain' => 'admin.anp.app', 'namespace' => 'Admins'], function ()
         Route::get('/', 'DashboardsController@index')->name('admin.home');
         Route::get('/dashboard', 'DashboardsController@index')->name('admin.dashboard');
 
+        Route::get('profile', 'AdminsController@profile')->name('admin.profile');
+        Route::patch('profile', 'AdminsController@updateProfile')->name('admin.update-profile');
+
         Route::resource('categories', 'CategoriesController');
         Route::resource('producers', 'ProducersController');
         Route::resource('products', 'ProductsController');
