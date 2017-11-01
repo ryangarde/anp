@@ -73,16 +73,60 @@
             Transactions
         </a>
     </li>
-    <div class="collapse" id="transactions">
+</ul>
+
+<ul class="nav flex-column background py-1 mt-3 sidebar-nav">
+    <li class="nav-item">
+        <span class="nav-link" href="{{ route('admin.dashboard') }}">Access Control List</span>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#admins" data-toggle="collapse" href="#admins" aria-expanded="false" aria-controls="admins">
+            Admins <i class="float-right fa fa-caret-down"></i>
+        </a>
+    </li>
+    <div class="collapse {{ request()->is('admins') ? 'show' : '' }} {{ request()->is('admins/create') ? 'show' : '' }}" id="admins">
         <ul class="nav flex-column nav-sub-menu">
             <li class="nav-item">
-                <a class="nav-link" href="#">Create New Transaction</a>
+                <a class="nav-link" href="{{ route('admins.create') }}">Create New Admin</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">View Transactions</a>
+                <a class="nav-link" href="{{ route('admins.index') }}">View Admins</a>
             </li>
         </ul>
     </div>
+    <li class="nav-item">
+        <a class="nav-link" href="#roles" data-toggle="collapse" href="#roles" aria-expanded="false" aria-controls="roles">
+            Roles <i class="float-right fa fa-caret-down"></i>
+        </a>
+    </li>
+    <div class="collapse" id="roles">
+        <ul class="nav flex-column nav-sub-menu">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('roles.create') }}">Create New Role</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('roles.index') }}">View Roles</a>
+            </li>
+        </ul>
+    </div>
+    <li class="nav-item">
+        <a class="nav-link" href="#permissions" data-toggle="collapse" href="#permissions" aria-expanded="false" aria-controls="permissions">
+            Permissions <i class="float-right fa fa-caret-down"></i>
+        </a>
+    </li>
+    <div class="collapse" id="permissions">
+        <ul class="nav flex-column nav-sub-menu">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('permissions.create') }}">Create New Permission</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('permissions.index') }}">View Permissions</a>
+            </li>
+        </ul>
+    </div>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Settings</a>
+    </li>
 </ul>
 
 <div class="mt-2 copyright">&copy; 2017 Association of Negros Producers</div>

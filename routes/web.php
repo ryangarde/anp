@@ -17,10 +17,6 @@ Route::group(['domain' => 'admin.anp.app', 'namespace' => 'Admins'], function ()
     Route::post('login', 'Auth\LoginController@login')->name('admin.login');
     Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
 
-    // Registration Routes...
-    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('admin.show-registration-form');
-    Route::post('register', 'Auth\RegisterController@register')->name('admin.register');
-
     // Password Reset Routes...
     Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.show-link-request-form');
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.send-reset-link-email');
@@ -31,11 +27,34 @@ Route::group(['domain' => 'admin.anp.app', 'namespace' => 'Admins'], function ()
         Route::get('/', 'DashboardsController@index')->name('admin.home');
         Route::get('/dashboard', 'DashboardsController@index')->name('admin.dashboard');
 
-        Route::get('profile', 'AdminsController@profile')->name('admin.profile');
-        Route::patch('profile', 'AdminsController@updateProfile')->name('admin.update-profile');
+        // Create Admin Routes...
+        Route::get('admins/create', 'Auth\RegisterController@showRegistrationForm')->name('admins.create');
+        Route::post('admins', 'Auth\RegisterController@register')->name('admins.store');
 
+        // Admin Routes
+        Route::get('admins/profile', 'AdminsController@profile')->name('admins.profile');
+        Route::patch('admins', 'AdminsController@update')->name('admins.update');
+        Route::resource('admins', 'AdminsController', [
+            'only' => [
+                'index', 'destory'
+            ]
+        ]);
+
+        // ACL Routes
+        Route::get('/admins/assign-role/{user}', 'AdminsController@showAssignRoleForm')->name('admin.show-assign-roles-form');
+        Route::post('/admins/toggle-role', 'AdminsController@toggleRole')->name('admin.toggle-role');
+        Route::resource('roles', 'RolesController');
+        Route::get('/roles/assign-permissions/{role}', 'RolesController@showAssignPermissionForm')->name('roles.show-assign-permissions-form');
+        Route::post('/roles/toggle-permission', 'RolesController@togglePermission')->name('roles.toggle-permission');
+        Route::resource('permissions', 'PermissionsController');
+
+        // Categories Routes
         Route::resource('categories', 'CategoriesController');
+
+        // Producers Routes
         Route::resource('producers', 'ProducersController');
+
+        // Products Routes
         Route::resource('products', 'ProductsController');
     });
 });

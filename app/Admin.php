@@ -3,13 +3,14 @@
 namespace App;
 
 use App\Notifications\AdminResetPasswordNotification;
+use App\Traits\Filtering;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable, SoftDeletes, Filtering;
 
     /**
      * Admin table

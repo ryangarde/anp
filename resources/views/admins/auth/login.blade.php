@@ -1,5 +1,7 @@
 @extends('admins.layouts.app')
 
+@section('title', 'Admin Login')
+
 @section('content')
 <div class="container">
     <div class="row">

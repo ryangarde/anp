@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\Traits\Filtering;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Role extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Filtering;
     
     /**
      * Roles table.

@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-header">
             Product List
-            <a href="{{ route('products.create') }}" class="float-right text-success">Create Product</a>
+            <a href="{{ route('products.create') }}" class="float-right text-success">Create New Product</a>
         </div>
     </div>
 

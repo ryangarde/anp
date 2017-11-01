@@ -24,6 +24,15 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         /**
+         * Bind admin repository with admin interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\AdminInterface',
+            'App\Repositories\AdminRepository'
+        );
+
+        /**
          * Bind category repository with category interface.
          *
          */
@@ -33,12 +42,12 @@ class AppServiceProvider extends ServiceProvider
         );
 
         /**
-         * Bind main repository with main interface.
+         * Bind permission repository with permission interface.
          *
          */
         $this->app->bind(
-            'App\Contracts\RepositoryInterface',
-            'App\Repositories\Repository'
+            'App\Contracts\PermissionInterface',
+            'App\Repositories\PermissionRepository'
         );
 
         /**
@@ -57,6 +66,24 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Contracts\ProductInterface',
             'App\Repositories\ProductRepository'
+        );
+
+        /**
+         * Bind main repository with main interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\RepositoryInterface',
+            'App\Repositories\Repository'
+        );
+
+        /**
+         * Bind role repository with role interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\RoleInterface',
+            'App\Repositories\RoleRepository'
         );
     }
 }

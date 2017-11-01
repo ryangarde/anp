@@ -1,18 +1,18 @@
 @extends('admins.layouts.app')
 
-@section('title', 'Producer List')
+@section('title', 'Admin List')
 
 @section('content')
 <div>
     <nav class="breadcrumb">
-        <a class="breadcrumb-item" href="#">Producers</a>
-        <span class="breadcrumb-item">Producer List</span>
+        <a class="breadcrumb-item" href="#">Admins</a>
+        <span class="breadcrumb-item">Admin List</span>
     </nav>
 
     <div class="card">
         <div class="card-header">
-            Producer List
-            <a href="{{ route('producers.create') }}" class="float-right text-success">Create New Producer</a>
+            Admin List
+            <a href="{{ route('admins.create') }}" class="float-right text-success">Add New Admin</a>
         </div>
         <div class="card-body">
             @if (session('message'))
@@ -27,17 +27,17 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Website</th>
+                                <th>Email</th>
                                 <th>Options</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($producers as $producer)
+                            @foreach ($admins as $admin)
                             <tr>
-                                <td>{{ $producer->name }}</td>
-                                <td>{{ $producer->website }}</td>
-                                <td><a href="{{ route('producers.show', $producer->id) }}" class="btn btn-info btn-sm">View</a></td>
+                                <td>{{ $admin->name }}</td>
+                                <td>{{ $admin->email }}</td>
+                                {{-- <td><a href="{{ route('admin.show', $category->id) }}" class="btn btn-info btn-sm">View</a></td> --}}
                             </tr>
                             @endforeach
                         </tbody>
@@ -45,7 +45,7 @@
 
                     <br>
 
-                    {{ $producers->links() }}
+                    {{ $admins->links() }}
                 </div>
 
                 <div class="col-md-3" style="border-left: 1px solid #eee;">
@@ -59,8 +59,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="sr-only" for="searchColumnWebsite">Website</label>
-                            <input type="search" class="form-control form-control-sm" id="searchColumWebsite" name="searchColumWebsite" placeholder="Search Website" value="{{ request()->searchColumnWebsite }}" autocomplete="off">
+                            <label class="sr-only" for="searchColumnEmail">Email</label>
+                            <input type="search" class="form-control form-control-sm" id="searchColumnEmail" name="searchColumnEmail" placeholder="Search Email" value="{{ request()->searchColumnEmail }}" autocomplete="off">
                         </div>
 
                         <div class="form-group">

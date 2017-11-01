@@ -11,9 +11,14 @@
 <div class="card">
     <div class="card-header">
         View Profile
+        @if (session('message'))
+        <div class="float-right text-success">
+            {{ session('message') }}
+        </div>
+        @endif
     </div>
     <div class="card-body">
-        <form method="POST" action="{{ route('admin.update-profile') }}" accept-charset="utf-8" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admins.update') }}" accept-charset="utf-8" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
 

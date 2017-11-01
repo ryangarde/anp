@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
     <div class="container">
         <a class="navbar-brand" href="#">
-            {{ config('app.name', 'Laravel') }}
+            {{ config('app.name') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@
                         {{ Auth::guard('admin')->user()->name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('admin.profile') }}">Profile</a>
+                        <a class="dropdown-item" href="{{ route('admins.profile') }}">Profile</a>
                         <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             Logout
                         </a>
