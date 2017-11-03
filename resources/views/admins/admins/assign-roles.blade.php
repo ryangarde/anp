@@ -30,27 +30,27 @@
                     <tbody>
                         @forelse ($roles as $role)
                         <tr>
-                            <form id="assign-role-form" action="{{ route('admins.toggle-role') }}" method="POST" accept-charset="utf-8">
+                            <form id="assign-role-form{{ $role->id }}" action="{{ route('admins.toggle-role') }}" method="POST" accept-charset="utf-8">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="admin_id" value="{{ $admin->id }}">
-                                <input type="hidden" name="role_id" value="{{ $role['id'] }}">
-                                <td>{{ $role['name'] }}</td>
-                                <td>{{ $role['display_name'] }}</td>
-                                <td>{{ $role['description'] }}</td>
+                                <input type="hidden" name="role_id" value="{{ $role->id }}">
+                                <td>{{ $role->name }}</td>
+                                <td>{{ $role->display_name }}</td>
+                                <td>{{ $role->description }}</td>
                                 <td>
-                                    @if ( ! $role['assigned'])
+                                    @if (! $role->assigned)
                                     <span class="text-danger">Unassign</span>
                                     @else
                                     <span class="text-success">Assign</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if ( ! $role['assigned'])
-                                    <a class="text-success" href="#" onclick="event.preventDefault();document.getElementById('assign-role-form').submit();">
+                                    @if (! $role->assigned)
+                                    <a class="text-success" href="#" onclick="event.preventDefault();document.getElementById('assign-role-form{{ $role->id }}').submit();">
                                         Assign
                                     </a>
                                     @else
-                                    <a class="text-danger" href="#" onclick="event.preventDefault();document.getElementById('assign-role-form').submit();">
+                                    <a class="text-danger" href="#" onclick="event.preventDefault();document.getElementById('assign-role-form{{ $role->id }}').submit();">
                                         Unassign
                                     </a>
                                     @endif

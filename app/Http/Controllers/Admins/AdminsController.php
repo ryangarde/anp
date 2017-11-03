@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admins;
 use App\Contracts\AdminInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AdminsController extends Controller
 {
@@ -63,7 +62,9 @@ class AdminsController extends Controller
     {
         $admin = $this->admin->findOrFail($id);
 
-        return view('admins.admins.show', compact('admin'));
+        $roles = $this->admin->getAssignedRoles($id);
+
+        return view('admins.admins.show', compact('admin', 'roles'));
     }
 
     /**
@@ -78,7 +79,7 @@ class AdminsController extends Controller
             'name' => 'required|min:10|max:150',
         ]);
 
-        Auth::guard('admin')->user()->fill($request->all())->save();
+        auth()->guard('admin')->user()->fill($request->all())->save();
 
         return back()->with('message', 'Profile successfully updated');
     }

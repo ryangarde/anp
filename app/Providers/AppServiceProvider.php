@@ -42,6 +42,15 @@ class AppServiceProvider extends ServiceProvider
         );
 
         /**
+         * Bind entrust repository with entrust interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\EntrustInterface',
+            'App\Repositories\EntrustRepository'
+        );
+
+        /**
          * Bind permission repository with permission interface.
          *
          */

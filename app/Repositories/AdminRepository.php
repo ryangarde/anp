@@ -87,7 +87,7 @@ class AdminRepository extends Repository implements AdminInterface
 
             $counter++;
 
-            return $role;
+            return (object) $role;
         });
     }
 }

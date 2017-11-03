@@ -64,6 +64,11 @@ class Admin extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    /**
+     * The admin belongs to a producer
+     *
+     * @return object
+     */
     public function producer()
     {
         return $this->belongsTo(Producer::class);
