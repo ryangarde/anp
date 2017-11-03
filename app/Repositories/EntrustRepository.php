@@ -112,12 +112,16 @@ class EntrustRepository implements EntrustInterface
             foreach ($roles as $role) {
                 $checkedRoles[$role] = $this->hasRole($role);
             }
+        } else {
+            $checkedRoles[$roles] = $this->hasRole($roles);
         }
 
         if (is_array($permissions)) {
             foreach ($permissions as $permission) {
-                $checkedPermissions[$permission] = $this->hasRole($permission);
+                $checkedPermissions[$permission] = $this->hasPermission($permission);
             }
+        } else {
+            $checkedPermissions[$permissions] = $this->hasPermission($permissions);
         }
 
         if (($requiredAll && ! (in_array(false, $checkedRoles) || in_array(false, $checkedPermissions))) ||

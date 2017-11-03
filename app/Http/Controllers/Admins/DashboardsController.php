@@ -9,18 +9,12 @@ class DashboardsController extends Controller
 {
     public function index()
     {
-        if (EntrustInterface::hasPermission('')) {
+        if (EntrustInterface::hasAbility('encoder', 'products')) {
             return 'yes';
         }
 
         return 'no';
 
-        /*return auth('admin')->user()->with([
-            'roles' => function ($query) {
-                $query->with('permissions');
-            }
-        ])->first();
-
-        return view('admins.dashboards');*/
+        //return view('admins.dashboards');
     }
 }
