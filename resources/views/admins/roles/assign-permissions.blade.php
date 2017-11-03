@@ -27,6 +27,7 @@
                             <th>Name</th>
                             <th>Display Name</th>
                             <th>Description</th>
+                            <th>Status</th>
                             <th>Options</th>
                         </tr>
                     </thead>
@@ -34,12 +35,13 @@
                     <tbody>
                         @forelse ($permissions as $permission)
                         <tr>
-                            <form action="{{ route('roles.toggle-permission') }}" method="POST" accept-charset="utf-8">
+                            <form id="assign-permission-form" action="{{ route('roles.toggle-permission') }}" method="POST" accept-charset="utf-8">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="role_id" value="{{ $role->id }}">
                                 <input type="hidden" name="permission_id" value="{{ $permission['id'] }}">
                                 <td>{{ $permission['name'] }}</td>
                                 <td>{{ $permission['display_name'] }}</td>
+                                <td>{{ $permission['description'] }}</td>
                                 <td>
                                     @if ( ! $permission['assigned'])
                                     <span class="text-danger">Unassign</span>
@@ -49,9 +51,15 @@
                                 </td>
                                 <td>
                                     @if ( ! $permission['assigned'])
-                                    <button type="submit" class="btn btn-sm btn-success">Assign</button>
+                                    {{-- <button type="submit" class="text-success">Assign</button> --}}
+                                    <a class="text-success" href="#" onclick="event.preventDefault();document.getElementById('assign-permission-form').submit();">
+                                        Assign
+                                    </a>
                                     @else
-                                    <button type="submit" class="btn btn-sm btn-danger">Unassign</button>
+                                    {{-- <button type="submit" class="text-danger">Unassign</button> --}}
+                                    <a class="text-danger" href="#" onclick="event.preventDefault();document.getElementById('assign-permission-form').submit();">
+                                        Unassign
+                                    </a>
                                     @endif
                                 </td>
                             </form>
@@ -70,4 +78,3 @@
     </div>
 </div>
 @endsection
-
