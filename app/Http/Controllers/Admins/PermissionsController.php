@@ -32,11 +32,19 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        // Retrieve all permissions.
-        $permissions = $this->permission->all();
+        // Retrieve all news filter if needed.
+        $permissions = $this->permission->paginateWithFiltersAndWithTrashed(request());
 
-        // Pass all permissions to the view.
-        return view('admins.permissions.index', compact('permissions'));
+        // Get search url for filtering.
+        $searchUrl = $this->permission->getSearchUrl(request());
+
+        // Retrieve Archives
+        $archives = $this->permission->archives();
+
+        // Get current path for archives
+        $path = request()->path();
+
+        return view('admins.permissions.index', compact('permissions', 'searchUrl', 'archives', 'path'));
     }
 
     /**
@@ -47,7 +55,7 @@ class PermissionsController extends Controller
     public function create()
     {
         // Check if user is logged in.
-        $this->permission->authorize('create');
+        //$this->permission->authorize('create');
 
         // If user is logged in show create permission form.
         return view('admins.permissions.create');
@@ -62,7 +70,7 @@ class PermissionsController extends Controller
     public function store(Request $request)
     {
         // Check if user is logged in.
-        $this->permission->authorize('create');
+        // $this->permission->authorize('create');
 
         // Validate all fields.
         $this->validate($request, [
@@ -124,7 +132,7 @@ class PermissionsController extends Controller
 
         // If authorize fill the fields and save.
         $permission->fill($request->all())->save();
-        
+
         // After updating the permission redirect to edit page with a success message.
         return redirect()->route('permissions.edit', $permission->id)->with('message', 'Permission successfully updated');
     }

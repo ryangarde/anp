@@ -19,4 +19,12 @@ interface ProductInterface
         $removePage = false,
         $orderBy = 'desc'
     );
+
+    /**
+     * Find the resource using the specified id or else fail with producer and category.
+     *
+     * @param  int $id
+     * @return json object
+     */
+    public function findOrFailWithProducerAndCategory($id);
 }

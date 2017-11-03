@@ -1,6 +1,6 @@
 @extends('admins.layouts.app')
 
-@section('title', 'Create New Role')
+@section('title', 'Dashboards - Create New Role')
 
 @section('content')
 <nav class="breadcrumb">
@@ -13,7 +13,7 @@
         Create New Role
     </div>
     <div class="card-body">
-        <form method="POST" action="{{ route('roles.store') }}" accept-charset="utf-8" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('roles.store') }}" accept-charset="utf-8">
             {{ csrf_field() }}
 
             <div class="form-group">

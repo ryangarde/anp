@@ -36,7 +36,7 @@
                         <tr>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->description }}</td>
-                            <td><a href="{{ route('categories.show', $category->id) }}" class="btn btn-info btn-sm">View</a></td>
+                            <td><a href="{{ route('categories.show', $category->id) }}" class="text-info">View</a></td>
                         </tr>
                         @endforeach
                     </tbody>

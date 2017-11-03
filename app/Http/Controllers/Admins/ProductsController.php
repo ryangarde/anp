@@ -72,7 +72,7 @@ class ProductsController extends Controller
     public function create()
     {
         //$this->news->authorize('create');
-        
+
         // Get all categories
         $categories = $this->category->all();
 
@@ -158,7 +158,7 @@ class ProductsController extends Controller
     {
         // Check if news is owned by the current user.
         //$this->news->authorize('update');
-        
+
         // Validate all fields.
         $this->validate($request, [
             'producer_id' => 'required|integer',
@@ -174,7 +174,7 @@ class ProductsController extends Controller
 
         // If authorize fill the fields and save.
         $product->fill($request->all())->save();
-        
+
         // After updating the product redirect to edit page with a success message.
         return redirect()->route('products.show', $product->id)->with('message', 'Product successfully updated');
     }

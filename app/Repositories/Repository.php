@@ -219,8 +219,12 @@ abstract class Repository implements RepositoryInterface
      * @param  string $ability
      * @return boolean
      */
-    public function authorize($ability)
+    public function authorize($ability, $guard = null)
     {
+        if ($guard !== null) {
+            return auth()->guard($guard)->user()->can($ability, $this->model);
+        }
+
         return auth()->user()->can($ability, $this->model);
     }
 

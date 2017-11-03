@@ -25,7 +25,7 @@ class AdminsController extends Controller
     {
         $this->admin = $admin;
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -79,7 +79,7 @@ class AdminsController extends Controller
     public function destroy($id)
     {
         // $this->news->authorize('delete');
-        
+
         $this->admin->findOrFail($id)->delete();
 
         return redirect()->route('admin.index')->with('message', 'Admin successfully deleted');
