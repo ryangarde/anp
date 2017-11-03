@@ -37,7 +37,17 @@
                             <tr>
                                 <td>{{ $admin->name }}</td>
                                 <td>{{ $admin->email }}</td>
-                                {{-- <td><a href="{{ route('admin.show', $category->id) }}" class="btn btn-info btn-sm">View</a></td> --}}
+                                <td>
+                                    <a href="{{ route('admins.show', $admin->id) }}" class="text-info">View</a> |
+                                    <a href="{{ route('admins.show-assign-roles-form', $admin->id) }}" class="text-success">Assign Roles</a> |
+                                    <a href="{{ route('admins.destroy', $admin->id) }}" class="text-danger" onclick="event.preventDefault();document.getElementById('delete-form').submit();">
+                                        Delete
+                                    </a>
+                                    <form id="delete-form" action="{{ route('admins.destroy', $admin->id) }}" method="POST" style="display: none;">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -67,7 +77,6 @@
                             <button type="submit" class="btn btn-primary btn-sm">Filter</button>
                         </div>
                     </form>
-                    {{-- @include('admins.layouts.archives') --}}
                 </div>
             </div>
         </div>

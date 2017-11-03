@@ -64,6 +64,11 @@ class Admin extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function producer()
+    {
+        return $this->belongsTo(Producer::class);
+    }
+
     /**
      * Send the password reset notification.
      *

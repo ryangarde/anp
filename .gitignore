@@ -2,6 +2,8 @@
 /public/hot
 /public/storage
 /storage/*.key
+/routes/api.php
+/routes/web.php
 /vendor
 /.idea
 /.vagrant

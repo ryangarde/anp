@@ -1,16 +1,11 @@
 @extends('admins.layouts.app')
 
-@section('title', 'Dashboards - Assign Permissions to a Role')
+@section('title', 'Dashboards - Assign Roles to a User')
 
 @section('content')
-<nav class="breadcrumb">
-    <a class="breadcrumb-item" href="#">Roles</a>
-    <span class="breadcrumb-item">Role List</span>
-</nav>
-
 <div class="card">
     <div class="card-header">
-        Assign Permissions to {{ $role->display_name }} Role
+        Assign Roles to {{ $admin->name }}
         @if (session('message'))
         <div class="float-right text-success">
             {{ session('message') }}
@@ -21,6 +16,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
+
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -31,31 +27,30 @@
                             <th>Options</th>
                         </tr>
                     </thead>
-
                     <tbody>
-                        @forelse ($permissions as $permission)
+                        @forelse ($roles as $role)
                         <tr>
-                            <form id="assign-permission-form" action="{{ route('roles.toggle-permission') }}" method="POST" accept-charset="utf-8">
+                            <form id="assign-role-form" action="{{ route('admins.toggle-role') }}" method="POST" accept-charset="utf-8">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="role_id" value="{{ $role->id }}">
-                                <input type="hidden" name="permission_id" value="{{ $permission['id'] }}">
-                                <td>{{ $permission['name'] }}</td>
-                                <td>{{ $permission['display_name'] }}</td>
-                                <td>{{ $permission['description'] }}</td>
+                                <input type="hidden" name="admin_id" value="{{ $admin->id }}">
+                                <input type="hidden" name="role_id" value="{{ $role['id'] }}">
+                                <td>{{ $role['name'] }}</td>
+                                <td>{{ $role['display_name'] }}</td>
+                                <td>{{ $role['description'] }}</td>
                                 <td>
-                                    @if ( ! $permission['assigned'])
+                                    @if ( ! $role['assigned'])
                                     <span class="text-danger">Unassign</span>
                                     @else
                                     <span class="text-success">Assign</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if ( ! $permission['assigned'])
-                                    <a class="text-success" href="#" onclick="event.preventDefault();document.getElementById('assign-permission-form').submit();">
+                                    @if ( ! $role['assigned'])
+                                    <a class="text-success" href="#" onclick="event.preventDefault();document.getElementById('assign-role-form').submit();">
                                         Assign
                                     </a>
                                     @else
-                                    <a class="text-danger" href="#" onclick="event.preventDefault();document.getElementById('assign-permission-form').submit();">
+                                    <a class="text-danger" href="#" onclick="event.preventDefault();document.getElementById('assign-role-form').submit();">
                                         Unassign
                                     </a>
                                     @endif
@@ -64,7 +59,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="4"><a href="{{ route('permissions.create') }}" class="btn btn-sm btn-success">Create New Permission</a></td>
+                            <td colspan="4"><a href="{{ route('roles.create') }}" class="btn btn-sm btn-success">Create New Role</a></td>
                         </tr>
                         @endforelse
                     </tbody>

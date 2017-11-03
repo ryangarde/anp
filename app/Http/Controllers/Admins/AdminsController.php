@@ -54,6 +54,19 @@ class AdminsController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $admin = $this->admin->findOrFail($id);
+
+        return view('admins.admins.show', compact('admin'));
+    }
+
+    /**
      * Update admin profile
      *
      * @param  \Illuminate\Http\Request $request
@@ -78,10 +91,40 @@ class AdminsController extends Controller
      */
     public function destroy($id)
     {
-        // $this->news->authorize('delete');
-
+        // If authorize delete the news.
         $this->admin->findOrFail($id)->delete();
 
-        return redirect()->route('admin.index')->with('message', 'Admin successfully deleted');
+        // After creating the post redirect to news page with a success message.
+        return redirect()->route('admins.index')->with('message', 'Admin successfully deleted');
+    }
+
+    /**
+     * Show assign role form.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showAssignRoleForm($id)
+    {
+        $admin = $this->admin->findOrFail($id);
+
+        $roles = $this->admin->getAssignedRoles($id);
+
+        return view('admins.admins.assign-roles', compact('admin', 'roles'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function toggleRole(Request $request)
+    {
+        if ($this->admin->toggleRole($request)) {
+            return redirect()->route('admins.show-assign-roles-form', $request->admin_id)->with('message', 'Role successfully assigned');
+        }
+
+        return redirect()->route('admins.show-assign-roles-form', $request->admin_id)->with('message', 'Something went wrong');
     }
 }

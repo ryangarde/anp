@@ -131,7 +131,7 @@ class CategoriesController extends Controller
 
         // If authorize fill the fields and save.
         $category->fill($request->all())->save();
-        
+
         // After updating the category redirect to edit page with a success message.
         return redirect()->route('categories.show', $category->id)->with('message', 'Category successfully updated');
     }
@@ -144,9 +144,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        // Check if news is owned by the current user.
-        // $this->news->authorize('delete');
-
         // If authorize delete the news.
         $this->category->findOrFail($id)->delete();
 

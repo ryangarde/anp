@@ -25,7 +25,7 @@ Route::group(['domain' => 'admin.anp.dev', 'namespace' => 'Admins'], function ()
 
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/', 'DashboardsController@index')->name('admin.home');
-        Route::get('/dashboard', 'DashboardsController@index')->name('admin.dashboard');
+        Route::get('dashboard', 'DashboardsController@index')->name('admin.dashboard');
 
         // Create Admin Routes...
         Route::get('admins/create', 'Auth\RegisterController@showRegistrationForm')->name('admins.create');
@@ -33,19 +33,19 @@ Route::group(['domain' => 'admin.anp.dev', 'namespace' => 'Admins'], function ()
 
         // Admin Routes
         Route::get('admins/profile', 'AdminsController@profile')->name('admins.profile');
-        Route::patch('admins', 'AdminsController@update')->name('admins.update');
+        Route::get('admins/assign-role/{user}', 'AdminsController@showAssignRoleForm')->name('admins.show-assign-roles-form');
+        Route::post('admins/toggle-role', 'AdminsController@toggleRole')->name('admins.toggle-role');
+        Route::delete('admins/{admin}', 'AdminsController@destroy')->name('admins.destroy');
         Route::resource('admins', 'AdminsController', [
             'only' => [
-                'index', 'destory'
+                'index', 'show', 'update'
             ]
         ]);
 
         // ACL Routes
-        Route::get('/admins/assign-role/{user}', 'AdminsController@showAssignRoleForm')->name('admin.show-assign-roles-form');
-        Route::post('/admins/toggle-role', 'AdminsController@toggleRole')->name('admin.toggle-role');
         Route::resource('roles', 'RolesController');
-        Route::get('/roles/assign-permissions/{role}', 'RolesController@showAssignPermissionForm')->name('roles.show-assign-permissions-form');
-        Route::post('/roles/toggle-permission', 'RolesController@togglePermission')->name('roles.toggle-permission');
+        Route::get('roles/assign-permissions/{role}', 'RolesController@showAssignPermissionForm')->name('roles.show-assign-permissions-form');
+        Route::post('roles/toggle-permission', 'RolesController@togglePermission')->name('roles.toggle-permission');
         Route::resource('permissions', 'PermissionsController');
 
         // Categories Routes
