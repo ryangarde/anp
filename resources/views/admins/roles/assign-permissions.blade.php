@@ -35,27 +35,27 @@
                     <tbody>
                         @forelse ($permissions as $permission)
                         <tr>
-                            <form id="assign-permission-form" action="{{ route('roles.toggle-permission') }}" method="POST" accept-charset="utf-8">
+                            <form id="assign-permission-form{{ $permission->id }}" action="{{ route('roles.toggle-permission') }}" method="POST" accept-charset="utf-8">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="role_id" value="{{ $role->id }}">
-                                <input type="hidden" name="permission_id" value="{{ $permission['id'] }}">
-                                <td>{{ $permission['name'] }}</td>
-                                <td>{{ $permission['display_name'] }}</td>
-                                <td>{{ $permission['description'] }}</td>
+                                <input type="hidden" name="permission_id" value="{{ $permission->id }}">
+                                <td>{{ $permission->name }}</td>
+                                <td>{{ $permission->display_name }}</td>
+                                <td>{{ $permission->description }}</td>
                                 <td>
-                                    @if ( ! $permission['assigned'])
+                                    @if ( ! $permission->assigned)
                                     <span class="text-danger">Unassign</span>
                                     @else
                                     <span class="text-success">Assign</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if ( ! $permission['assigned'])
-                                    <a class="text-success" href="#" onclick="event.preventDefault();document.getElementById('assign-permission-form').submit();">
+                                    @if ( ! $permission->assigned)
+                                    <a class="text-success" href="#" onclick="event.preventDefault();document.getElementById('assign-permission-form{{ $permission->id }}').submit();">
                                         Assign
                                     </a>
                                     @else
-                                    <a class="text-danger" href="#" onclick="event.preventDefault();document.getElementById('assign-permission-form').submit();">
+                                    <a class="text-danger" href="#" onclick="event.preventDefault();document.getElementById('assign-permission-form{{ $permission->id }}').submit();">
                                         Unassign
                                     </a>
                                     @endif

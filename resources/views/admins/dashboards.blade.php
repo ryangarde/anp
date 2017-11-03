@@ -1,5 +1,7 @@
 @extends('admins.layouts.app')
 
+@section('title', 'Dashboard')
+
 @section('content')
 <div class="card">
     <div class="card-header">

@@ -3,7 +3,7 @@
 /*
  * This file is part of filtering.
  *
- * (c) Gether Medel <gether.medel@gmail.com>
+ * (c) Gether Kestrel B. Medel <dus.medel22@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,8 +14,8 @@
 | Auto filtering with pagination and archiving for models
 |--------------------------------------------------------------------------
 |
-| Here is where all the filtering logic happens
-| from filtering the current model to filtering entrust and other models
+| Here is where all the filtering logic happens, from filtering the
+| current model to filtering other models and entrust
 |
 |
 */

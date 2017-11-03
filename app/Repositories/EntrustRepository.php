@@ -3,13 +3,11 @@
 namespace App\Repositories;
 
 use App\Contracts\EntrustInterface;
-use App\User;
-use App\UserRole;
 
 class EntrustRepository implements EntrustInterface
 {
     /**
-     * Specify the model, change the model if necessary.
+     * Specify the model, leave blank for default guard.
      *
      * @var string
      */
@@ -24,11 +22,9 @@ class EntrustRepository implements EntrustInterface
      */
     public function hasRole($roles, $requiredAll = false)
     {
-        /*if ($user = auth()->user()) {
-            $userRoles = UserRole::with('role')->where('user_id', $user->id)->get();
-        }*/
+        $userRoles = auth($this->guard)->user()->with('roles')->first();
 
-        if (! $userRoles = auth($this->guard)->user()->with('roles')->first()) {
+        if (count($userRoles->roles) == 0) {
             return false;
         }
 
@@ -36,7 +32,7 @@ class EntrustRepository implements EntrustInterface
             foreach ($roles as $role) {
                 $hasRole = $this->hasRole($role);
 
-                if ($hasRole && !$requiredAll) {
+                if ($hasRole && ! $requiredAll) {
                     return true;
                 } elseif (! $hasRole && $requiredAll) {
                     return false;
@@ -64,15 +60,21 @@ class EntrustRepository implements EntrustInterface
      */
     public function hasPermission($permissions, $requiredAll = false)
     {
-        if ($user = auth()->user()) {
-            $userRoles = UserRole::with('permissions')->where('user_id', $user->id)->get();
+        $userRoles = auth($this->guard)->user()->with([
+                            'roles' => function ($query) {
+                                $query->with('permissions');
+                            }
+                        ])->first();
+
+        if (count($userRoles->roles) == 0) {
+            return false;
         }
 
         if (is_array($permissions)) {
             foreach ($permissions as $permission) {
-                $hasPermission = $this->hasRole($permission);
+                $hasPermission = $this->hasPermission($permission);
 
-                if ($hasPermission && !$requiredAll) {
+                if ($hasPermission && ! $requiredAll) {
                     return true;
                 } elseif (! $hasPermission && $requiredAll) {
                     return false;
@@ -81,7 +83,7 @@ class EntrustRepository implements EntrustInterface
 
             return $requiredAll;
         } else {
-            foreach ($userRoles as $userRole) {
+            foreach ($userRoles->roles as $userRole) {
                 foreach ($userRole->permissions as $permission) {
                     if ($permission->name == $permissions) {
                         return true;
@@ -118,7 +120,7 @@ class EntrustRepository implements EntrustInterface
             }
         }
 
-        if (($requiredAll && !(in_array(false, $checkedRoles) || in_array(false, $checkedPermissions))) ||
+        if (($requiredAll && ! (in_array(false, $checkedRoles) || in_array(false, $checkedPermissions))) ||
             (! $requiredAll && (in_array(true, $checkedRoles) || in_array(true, $checkedPermissions)))) {
             return true;
         }

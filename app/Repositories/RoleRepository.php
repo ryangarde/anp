@@ -88,7 +88,7 @@ class RoleRepository extends Repository implements RoleInterface
 
             $counter++;
 
-            return $permission;
+            return (object) $permission;
         });
     }
 
