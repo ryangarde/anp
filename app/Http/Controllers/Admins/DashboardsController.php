@@ -9,12 +9,12 @@ class DashboardsController extends Controller
 {
     public function index()
     {
-        if (EntrustInterface::hasAbility('encoder', 'products')) {
+        /*if (EntrustInterface::hasAbility('encoder', 'products')) {
             return 'yes';
         }
 
-        return 'no';
+        return 'no';*/
 
-        //return view('admins.dashboards');
+        return view('admins.dashboards');
     }
 }

@@ -55,7 +55,6 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //$this->news->authorize('create');
         return view('admins.categories.create');
     }
 
@@ -67,9 +66,6 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        // Check if user is logged in.
-        //$this->news->authorize('create');
-
         // Validate all fields.
         $this->validate($request, [
             'name' => 'required|min:2|max:255',
@@ -104,9 +100,6 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        // Check if post is owned by the current user.
-        //$this->news->authorize('update');
-
         // If authorize find resource.
         $category = $this->category->findOrFail($id);
 
@@ -123,9 +116,6 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Check if news is owned by the current user.
-        //$this->news->authorize('update');
-
         // If authorize find the news resource using id.
         $category = $this->category->findOrFail($id);
 
