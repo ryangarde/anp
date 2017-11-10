@@ -87,6 +87,12 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
     });
 
     // Orders
+    Route::group(['prefix' => 'orders'], function () {
+        Route::get('/', 'OrdersController@index')->name('orders.check-orders');
+        Route::post('order', 'OrdersController@order')->name('orders.order');
+        Route::post('cancel-order', 'OrdersController@cancelOrder')->name('orders.cancel-order');
+    });
+
 
     // Dashboards
     Route::group(['middleware' => 'auth'], function () {

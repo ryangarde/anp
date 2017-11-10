@@ -65,9 +65,7 @@
         </ul>
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="#transactions" data-toggle="collapse" href="#transactions" aria-expanded="false" aria-controls="transactions">
-            Transactions
-        </a>
+        <a class="nav-link" href="#orders">Orders</a>
     </li>
 </ul>
 
