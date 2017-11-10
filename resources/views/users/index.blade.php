@@ -3,9 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="card">
-    <div class="card-header">
-        Home Page
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Home Page
+        </div>
     </div>
 </div>
 @endsection

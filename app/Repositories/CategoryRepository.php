@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Contracts\CategoryInterface;
 use App\Category;
+use App\Contracts\CategoryInterface;
 
 class CategoryRepository extends Repository implements CategoryInterface
 {

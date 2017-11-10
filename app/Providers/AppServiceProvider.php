@@ -51,6 +51,24 @@ class AppServiceProvider extends ServiceProvider
         );
 
         /**
+         * Bind order product repository with order product interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\OrderProductInterface',
+            'App\Repositories\OrderProductRepository'
+        );
+
+        /**
+         * Bind order repository with order interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\OrderInterface',
+            'App\Repositories\OrderRepository'
+        );
+
+        /**
          * Bind permission repository with permission interface.
          *
          */
@@ -93,6 +111,24 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Contracts\RoleInterface',
             'App\Repositories\RoleRepository'
+        );
+
+        /**
+         * Bind shopping cart repository with shopping cart interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\ShoppingCartInterface',
+            'App\Repositories\ShoppingCartRepository'
+        );
+
+        /**
+         * Bind user repository with user interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\UserInterface',
+            'App\Repositories\UserRepository'
         );
     }
 }

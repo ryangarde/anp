@@ -79,7 +79,14 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
     Route::get('/', 'PagesController@index')->name('home');
 
     // Shop
-    Route::get('shop', 'ShopController@index')->name('shop');
+    Route::get('shop', 'ShopsController@index')->name('shop');
+
+    // Shopping cart
+    Route::group(['prefix' => 'shopping-cart'], function () {
+        Route::get('/');
+    });
+
+    // Orders
 
     // Dashboards
     Route::group(['middleware' => 'auth'], function () {

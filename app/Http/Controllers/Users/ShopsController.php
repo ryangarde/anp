@@ -6,8 +6,9 @@ use App\Contracts\CategoryInterface;
 use App\Contracts\ProducerInterface;
 use App\Contracts\ProductInterface;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class ShopController extends Controller
+class ShopsController extends Controller
 {
     /**
      * Category object.
