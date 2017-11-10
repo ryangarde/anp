@@ -90,7 +90,7 @@
 
             <div class="form-group">
                 <label for="searchColumnPrice">Price ₱1 - ₱10000</label>
-                <input id="ex2" type="text" class="span2" value="" data-slider-min="1" data-slider-max="10000" data-slider-step="1" data-slider-value="[1,10000]">
+                <input id="price-slider" type="text" class="span2" value="" data-slider-min="1" data-slider-max="10000" data-slider-step="1" data-slider-value="[1,10000]">
             </div>
 
             <div class="form-group">
@@ -99,11 +99,3 @@
         </form>
     </div>
 </ul>
-
-@section('scripts')
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#ex2").slider({});
-    });
-</script>
-@endsection

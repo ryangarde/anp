@@ -33,6 +33,25 @@ class ShoppingCart extends Model
     protected $dates = ['deleted_at'];
 
     /**
+     * Run functions on boot.
+     *
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->user_id = auth()->user()->id;
+        });
+
+        static::updating(function ($model) {
+        });
+
+        static::deleting(function ($model) {
+        });
+    }
+
+    /**
      * The shopping cart has many products.
      *
      * @return json object array

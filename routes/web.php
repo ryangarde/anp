@@ -83,7 +83,12 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
 
     // Shopping cart
     Route::group(['prefix' => 'shopping-cart'], function () {
-        Route::get('/');
+        /*Route::get('check-cart', 'ShoppingCartsController@index')->name('shopping-cart');
+        Route::get('checkout', 'ShoppingCartsController@checkout')->name('checkout');*/
+        Route::post('add-to-cart', 'ShoppingCartsController@addToCart')->name('carts.add-to-cart');
+        Route::post('remove-from-cart', 'ShoppingCartsController@removeFromCart')->name('carts.remove-from-cart');
+        Route::post('add-quantity', 'ShoppingCartsController@addQuantity')->name('carts.add-quantity');
+        Route::post('subtract-quantity', 'ShoppingCartsController@subtractQuantity')->name('carts.subtract-quantity');
     });
 
     // Orders

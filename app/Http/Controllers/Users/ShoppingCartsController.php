@@ -56,11 +56,14 @@ class ShoppingCartsController extends Controller
      */
     public function addToCart(Request $request)
     {
+        // Check if item exists in the shopping cart.
+
+        // Add Item
         if ($this->user->addToCart($request)) {
-            return redirect()->route('home')->with('message', 'Successfully added to shopping cart.');
+            return redirect()->route('shop')->with('message', 'Successfully added to shopping cart.');
         }
 
-        return redirect()->route('home')->with('message', 'Product already added to shopping cart');
+        return redirect()->route('shop')->with('message', 'Product already added to shopping cart');
     }
 
     /**

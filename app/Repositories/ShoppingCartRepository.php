@@ -53,16 +53,16 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
      * @param  \Illuminate\Http\Request $request
      * @return boolean
      */
-    public function store($request)
+    /*public function store($request)
     {
-        $this->shoppingCart->insert([
+        $this->shoppingCart->create([
             'user_id' => auth()->user()->id,
             'product_id' => $request->product_id,
             'quantity' => 1
-            ]);
+        ]);
 
         return true;
-    }
+    }*/
 
     /**
      * Add quantity to item in the cart.
