@@ -67,16 +67,6 @@ class Product extends Model
     }
 
     /**
-     * The product belongs to many shopping carts.
-     *
-     * @return array object
-     */
-    public function shoppingCart()
-    {
-        return $this->hasMany(ShoppingCart::class);
-    }
-
-    /**
      * The product belongs to a producer.
      *
      * @return object
@@ -87,12 +77,12 @@ class Product extends Model
     }
 
     /**
-     * The product has many product transactions.
+     * The product belongs to many shopping carts.
      *
      * @return array object
      */
-    public function productTransactions()
+    public function shoppingCart()
     {
-        return $this->hasMany(ProductTransaction::class);
+        return $this->hasMany(ShoppingCart::class);
     }
 }

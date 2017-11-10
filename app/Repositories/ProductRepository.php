@@ -18,11 +18,6 @@ class ProductRepository extends Repository implements ProductInterface
         $this->product = $product;
     }
 
-    public function filterCategory($id)
-    {
-        return $this->product->where('category_id', $id)->paginate(15);
-    }
-
     /**
      * Create pagination with filters and join producers from the resources.
      *
@@ -45,6 +40,17 @@ class ProductRepository extends Repository implements ProductInterface
             ->withPath(
                 $this->model->createPaginationUrl($request, $removePage)
             );
+    }
+
+    /**
+     * Find the resource using the specified id or else fail with category.
+     *
+     * @param  int $id
+     * @return json object
+     */
+    public function findOrFailWithCategory($id)
+    {
+        return $this->model->with('category')->findOrFail($id);
     }
 
     /**

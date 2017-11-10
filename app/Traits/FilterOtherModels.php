@@ -11,12 +11,12 @@
 
 /*
 |--------------------------------------------------------------------------
-| Filter other models
+| Filter Other Models
 |--------------------------------------------------------------------------
 |
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
+| Here is where all filtering of other models logic happens.
+| Current version supports single or array value of filtering one column
+| from another model.
 |
 */
 
@@ -27,21 +27,33 @@ trait FilterOtherModels
     private $keyValue = [];
     private $check = false;
 
+    /**
+     * Filter other models.
+     *
+     * @param  [type] $query   [description]
+     * @param  [type] $request [description]
+     * @return [type]          [description]
+     */
     public function filterOtherModels(& $query, & $request)
     {
         foreach ($request->all() as $key => $value) {
-            // Check if the the column is not valid and if filtering from other model is specified.
-            if (! in_array($this->convertToColumn($key), $this->fillable) && self::checkFilterFromOtherModels($key)) {
+            // Check if the column is not valid in the current model and if filtering from other model is specified.
+            if (self::checkFilterFromOtherModels($key)) {
                 // Check if this model has relation with the specified model.
                 if (method_exists($this, self::convertToRelationship($key))) {
                     // Check for not array value
-                    if (strpos($key, 'searchColumn') !== false && strpos($key, 'FromModel') !== false && ! is_array($value) && $value !== null) {
+                    if (strpos($key, 'searchColumn') !== false &&
+                        strpos($key, 'FromModel') !== false &&
+                        ! is_array($value) && $value !== null
+                    ) {
                         $this->check = true;
                         $keyValue[$key] = $value;
                     }
 
                     // Check if value is array
-                    if (strpos($key, 'searchArrayColumn') !== false && strpos($key, 'FromModel') !== false && is_array($value)) {
+                    if (strpos($key, 'searchArrayColumn') !== false &&
+                        strpos($key, 'FromModel') !== false && is_array($value)
+                    ) {
                         foreach ($value as $arrayValue) {
                             $this->check = true;
                             $keyValue[$key] = $value;
@@ -50,6 +62,10 @@ trait FilterOtherModels
                 }
             }
         }
+
+        /*echo '<pre>';
+        echo print_r(request()->all());
+        echo '</pre>';*/
 
         if ($this->check) {
             $query->whereHas(self::convertToRelationship($key), function ($query) use ($keyValue) {
@@ -61,6 +77,7 @@ trait FilterOtherModels
 
                         if (is_array($value)) {
                             foreach ($value as $arrayValue) {
+                                echo $arrayValue . '<br>';
                                 $query->orWhere($this->convertToColumn($key), 'LIKE', '%' . $arrayValue . '%');
                             }
                         }
@@ -68,6 +85,11 @@ trait FilterOtherModels
                 });
             });
         }
+
+        /*echo '<br>';
+        echo $query->toSql();*/
+
+        //$query->whereColumn('gether');
     }
 
     /**

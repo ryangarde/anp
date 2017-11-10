@@ -1,5 +1,5 @@
 <div class="card">
-    <img class="card-img-top" src="http://i.imgur.com/RRUe0Mo.png" alt="Card image cap">
+    <img class="card-img-top img-fluid" src="https://wallpaperscraft.com/image/space_sky_stars_79233_1366x768.jpg" alt="Card image cap">
     <div class="card-body">
         <h6 class="card-title">
             {{ auth()->guard('admin')->user()->name }}
@@ -9,11 +9,7 @@
 </div>
 
 @if (request()->is('products'))
-<ul class="nav flex-column background py-1 mt-3 sidebar-nav">
-    <li class="nav-item">
-        <span class="nav-link">Filtering</span>
-    </li>
-</ul>
+@include('admins.products.filter')
 @endif
 
 <ul class="nav flex-column background py-1 mt-3 sidebar-nav">
@@ -87,10 +83,10 @@
     <div class="collapse {{ request()->is('admins') ? 'show' : '' }} {{ request()->is('admins/create') ? 'show' : '' }}" id="admins">
         <ul class="nav flex-column nav-sub-menu">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admins.create') }}">Create New Admin</a>
+                <a class="nav-link {{ request()->is('admins/create') ? 'active' : '' }}" href="{{ route('admins.create') }}">Create New Admin</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admins.index') }}">View Admins</a>
+                <a class="nav-link {{ request()->is('admins') ? 'active' : '' }}" href="{{ route('admins.index') }}">View Admins</a>
             </li>
         </ul>
     </div>
@@ -99,13 +95,13 @@
             Roles <i class="float-right fa fa-caret-down"></i>
         </a>
     </li>
-    <div class="collapse" id="roles">
+    <div class="collapse {{ request()->is('roles') ? 'show' : '' }} {{ request()->is('roles/create') ? 'show' : '' }}" id="roles">
         <ul class="nav flex-column nav-sub-menu">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('roles.create') }}">Create New Role</a>
+                <a class="nav-link {{ request()->is('roles/create') ? 'active' : '' }}" href="{{ route('roles.create') }}">Create New Role</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('roles.index') }}">View Roles</a>
+                <a class="nav-link {{ request()->is('roles') ? 'active' : '' }}" href="{{ route('roles.index') }}">View Roles</a>
             </li>
         </ul>
     </div>
@@ -114,13 +110,13 @@
             Permissions <i class="float-right fa fa-caret-down"></i>
         </a>
     </li>
-    <div class="collapse" id="permissions">
+    <div class="collapse {{ request()->is('permissions') ? 'show' : '' }} {{ request()->is('permissions/create') ? 'show' : '' }}" id="permissions">
         <ul class="nav flex-column nav-sub-menu">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('permissions.create') }}">Create New Permission</a>
+                <a class="nav-link {{ request()->is('permissions/create') ? 'active' : '' }}" href="{{ route('permissions.create') }}">Create New Permission</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('permissions.index') }}">View Permissions</a>
+                <a class="nav-link {{ request()->is('permissions') ? 'active' : '' }}" href="{{ route('permissions.index') }}">View Permissions</a>
             </li>
         </ul>
     </div>
@@ -130,3 +126,5 @@
 </ul>
 
 <div class="mt-2 copyright">&copy; 2017 Association of Negros Producers</div>
+
+<br>

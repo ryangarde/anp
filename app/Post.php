@@ -3,18 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class AuditTrail extends Model
+class Post extends Model
 {
-    use SoftDeletes;
+    use Filtering, SoftDeletes;
 
     /**
-     * Audit trails table.
+     * Post table.
      *
      * @var string
      */
-    protected $table = 'audit_trails';
+    protected $table = 'posts';
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +21,7 @@ class AuditTrail extends Model
      * @var array
      */
     protected $fillable = [
-        'admin_id', 'module', 'description'
+        'admin_id', 'slug', 'title', 'body'
     ];
 
     /**
@@ -33,12 +32,12 @@ class AuditTrail extends Model
     protected $dates = ['deleted_at'];
 
     /**
-     * The audit trail belongs to a admin.
+     * The post belongs to an admin.
      *
      * @return object
      */
     public function admin()
     {
-        return $this->belongsTo(Admins::class);
+        return $this->belongsTo(Admin::class);
     }
 }

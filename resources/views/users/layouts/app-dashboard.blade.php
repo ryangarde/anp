@@ -24,7 +24,22 @@
 <body>
     <div id="app">
         @include('users.layouts.navbar')
+
+        @auth
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-md-3">
+                    @include('users.layouts.sidebar')
+                </div>
+                <div class="col-md-9">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
+        @else
+
         @yield('content')
+        @endauth
     </div>
 
     <!-- Scripts -->

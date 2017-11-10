@@ -18,7 +18,7 @@
         @endif
     </div>
     <div class="card-body">
-        <form method="POST" action="{{ route('admins.update') }}" accept-charset="utf-8" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admins.update', $admin->id) }}" accept-charset="utf-8" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
 

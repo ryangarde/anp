@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of filtering.
+ * This file is part of Imaging.
  *
  * (c) Gether Kestrel B. Medel <dus.medel22@gmail.com>
  *

@@ -1,5 +1,22 @@
 <?php
 
+/*
+ * This file is part of Entrust.
+ *
+ * (c) Gether Kestrel B. Medel <dus.medel22@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+/*
+|--------------------------------------------------------------------------
+| Entrust Repository for Access Control List
+|--------------------------------------------------------------------------
+|
+|
+*/
+
 namespace App\Repositories;
 
 use App\Contracts\EntrustInterface;
@@ -34,7 +51,9 @@ class EntrustRepository implements EntrustInterface
 
                 if ($hasRole && ! $requiredAll) {
                     return true;
-                } elseif (! $hasRole && $requiredAll) {
+                }
+
+                if (! $hasRole && $requiredAll) {
                     return false;
                 }
             }
@@ -76,7 +95,9 @@ class EntrustRepository implements EntrustInterface
 
                 if ($hasPermission && ! $requiredAll) {
                     return true;
-                } elseif (! $hasPermission && $requiredAll) {
+                }
+
+                if (! $hasPermission && $requiredAll) {
                     return false;
                 }
             }
@@ -126,25 +147,6 @@ class EntrustRepository implements EntrustInterface
 
         if (($requiredAll && ! (in_array(false, $checkedRoles) || in_array(false, $checkedPermissions))) ||
             (! $requiredAll && (in_array(true, $checkedRoles) || in_array(true, $checkedPermissions)))) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Check if the user has the required department.
-     *
-     * @param  string  $department Department code
-     * @return boolean             Return true or false
-     */
-    public function hasDepartment($department)
-    {
-        if ($user = auth()->user()) {
-            $userDepartment = User::with('department')->where('id', $user->id)->first();
-        }
-
-        if ($userDepartment->department->code == $department) {
             return true;
         }
 

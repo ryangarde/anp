@@ -37,7 +37,7 @@
                             <tr>
                                 <td>{{ $producer->name }}</td>
                                 <td>{{ $producer->website }}</td>
-                                <td><a href="{{ route('producers.show', $producer->id) }}" class="btn btn-info btn-sm">View</a></td>
+                                <td><a href="{{ route('producers.show', $producer->id) }}" class="text-info">View</a></td>
                             </tr>
                             @endforeach
                         </tbody>

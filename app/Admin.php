@@ -65,16 +65,6 @@ class Admin extends Authenticatable
     }
 
     /**
-     * The admin belongs to a producer
-     *
-     * @return object
-     */
-    public function producer()
-    {
-        return $this->belongsTo(Producer::class);
-    }
-
-    /**
      * Send the password reset notification.
      *
      * @param  string  $token

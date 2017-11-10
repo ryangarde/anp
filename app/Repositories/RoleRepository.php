@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Contracts\RoleInterface;
-use App\Contracts\PermissionInterface as PermissionObject;
+use App\Contracts\PermissionInterface;
 use App\Role;
 
 class RoleRepository extends Repository implements RoleInterface
@@ -18,14 +18,14 @@ class RoleRepository extends Repository implements RoleInterface
     /**
      * Create new instance of role repository.
      *
-     * @param PermissionObject $permission Permission interface
-     * @param Role             $role       Role model
+     * @param Role                $role       Role model
+     * @param PermissionInterface $permission Permission interface
      */
-    public function __construct(PermissionObject $permission, Role $role)
+    public function __construct(Role $role, PermissionInterface $permission)
     {
         parent::__construct($role);
-        $this->permission = $permission;
         $this->role = $role;
+        $this->permission = $permission;
     }
 
     /**
@@ -101,8 +101,12 @@ class RoleRepository extends Repository implements RoleInterface
      * @param  string                    $orderBy
      * @return array json object
      */
-    public function paginateWithFiltersAndWithTrashed($request = null, $length = 10, $removePage = false, $orderBy = 'desc')
-    {
+    public function paginateWithFiltersAndWithTrashed(
+        $request = null,
+        $length = 10,
+        $removePage = false,
+        $orderBy = 'desc'
+    ) {
         return $this->model->filter($request)
             ->withTrashed()
             ->orderBy('created_at', $orderBy)

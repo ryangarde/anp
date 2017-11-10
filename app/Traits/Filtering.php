@@ -15,8 +15,7 @@
 |--------------------------------------------------------------------------
 |
 | Here is where all the filtering logic happens, from filtering the
-| current model to filtering other models and entrust
-|
+| current model to filtering other models and entrust.
 |
 */
 
@@ -53,9 +52,9 @@ trait Filtering
      * 3-f. Then add '_' to every upper case and convert it to lowercase
      * 3-g. Remove the first '_' in the string then add it to query
      *
-     * @param  string $query
-     * @param  array $request
-     * @return string
+     * @param  object $query
+     * @param  \Illimunate\Http\Request $request
+     * @return void
      */
     public function scopeFilter($query, $request)
     {
@@ -70,11 +69,18 @@ trait Filtering
         $query->where(function ($query) use ($request) {
             foreach ($request->all() as $key => $value) {
                 if (in_array(self::convertToColumn($key), $this->fillable)) {
-                    if (strpos($key, 'searchColumn') !== false && ! is_array($value) && $value !== null) {
+                    if (strpos($key, 'searchColumn') !== false &&
+                        strpos($key, 'FromModel') == false &&
+                        ! is_array($value) && $value !== null
+                    ) {
+                        echo 'this model filter';
                         $query->orWhere(self::convertToColumn($key), 'Like', '%' . $value . '%');
                     }
 
-                    if (strpos($key, 'searchArrayColumn') !== false && is_array($value)) {
+                    if (strpos($key, 'searchArrayColumn') !== false &&
+                        strpos($key, 'FromModel') == false &&
+                        is_array($value)
+                    ) {
                         $query->orWhere(function ($query) use ($key, $value) {
                             foreach ($value as $arrayValue) {
                                 if ($arrayValue !== null) {

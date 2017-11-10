@@ -24,7 +24,7 @@ Route::group(['domain' => 'admin.anp.dev', 'namespace' => 'Admins'], function ()
     Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('admin.reset');
 
     Route::group(['middleware' => 'admin'], function () {
-        Route::get('/', 'DashboardsController@index')->name('admin.home');
+        Route::get('/', 'DashboardsController@index')->name('admin.home')->middleware('role:admin');
         Route::get('dashboard', 'DashboardsController@index')->name('admin.dashboard');
 
         // Create Admin Routes...
@@ -75,8 +75,14 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
     Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('show-reset-form');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('reset');
 
+    // Pages
     Route::get('/', 'PagesController@index')->name('home');
 
+    // Shop
+    Route::get('shop', 'ShopController@index')->name('shop');
+
+    // Dashboards
     Route::group(['middleware' => 'auth'], function () {
+        Route::get('dashboard', 'DashboardsController@index')->name('dashboard');
     });
 });

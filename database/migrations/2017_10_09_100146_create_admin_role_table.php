@@ -20,16 +20,13 @@ class CreateAdminRoleTable extends Migration
                 ->on('admins')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-
             $table->integer('role_id')->unsigned();
             $table->foreign('role_id')
                 ->references('id')
                 ->on('roles')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-
             $table->primary(['admin_id', 'role_id']);
-
             $table->timestamps();
             $table->softDeletes();
         });

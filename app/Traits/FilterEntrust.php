@@ -11,12 +11,12 @@
 
 /*
 |--------------------------------------------------------------------------
-| Filter by Roles and Permissions
+| Filter Entrust (Filter by Roles and Permissions)
 |--------------------------------------------------------------------------
 |
-| Here is where all the logic of filetering entrust happens
-|
-|
+| Here is where all filtering entrust logic happens.
+| Current version supports simple ACL filtering, meaning you can't make
+| the same role with different permissions on it.
 |
 */
 

@@ -31,12 +31,4 @@ interface EntrustInterface
      * @return boolean                    Return true or false
      */
     public function hasAbility($roles, $permissions, $requiredAll = false);
-
-    /**
-     * Check if the user has the required department.
-     *
-     * @param  string  $department Department code
-     * @return boolean             Return true or false
-     */
-    public function hasDepartment($department);
 }

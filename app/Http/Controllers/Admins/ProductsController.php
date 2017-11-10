@@ -33,6 +33,7 @@ class ProductsController extends Controller
 
     /**
      * Create new instance of product controller.
+     *
      * @param CategoryInterface $category Category interface
      * @param ProducerInterface $producer Producer interface
      * @param ProductInterface  $product  Product interface
@@ -54,14 +55,26 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        // Retrieve all news filter if needed.
+        $arr1 = [1,2,3];
+        $arr2 = [1,2,3,4,5,6,7];
+        $arr3 = array_diff($arr1, $arr2);
+        if (count($arr3) == 0) {
+            // all of $arr1 is in $arr2
+        }
+        // Retrieve all categories
+        $categories = $this->category->all();
+
+        // Retrieve all producers
+        $producers = $this->producer->all();
+
+        // Retrieve all products, filter if needed.
         $products = $this->product->paginateWithFiltersAndProducer(request());
 
         // Get search url for filtering.
         $searchUrl = $this->product->getSearchUrl(request());
 
         // Return view and pass variables.
-        return view('admins.products.index', compact('products', 'searchUrl'));
+        return view('admins.products.index', compact('categories', 'producers', 'products', 'searchUrl'));
     }
 
     /**
@@ -71,8 +84,6 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //$this->news->authorize('create');
-
         // Get all categories
         $categories = $this->category->all();
 
@@ -90,9 +101,6 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        // Check if user is logged in.
-        //$this->news->authorize('create');
-
         // Validate all fields.
         $this->validate($request, [
             'producer_id' => 'required|integer',
@@ -131,9 +139,6 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        // Check if post is owned by the current user.
-        //$this->news->authorize('update');
-
         // If authorize find resource.
         $product = $this->product->findOrFail($id);
 
@@ -156,9 +161,6 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Check if news is owned by the current user.
-        //$this->news->authorize('update');
-
         // Validate all fields.
         $this->validate($request, [
             'producer_id' => 'required|integer',
@@ -187,9 +189,6 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        // Check if news is owned by the current user.
-        // $this->news->authorize('delete');
-
         // If authorize delete the news.
         $this->product->findOrFail($id)->delete();
 

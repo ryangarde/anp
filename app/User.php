@@ -43,22 +43,22 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     /**
-     * The user belongs to many products.
+     * The users has many orders.
+     *
+     * @return array object
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    /**
+     * The user has many products in the shopping cart.
      *
      * @return array object
      */
     public function shoppingCart()
     {
         return $this->hasMany(ShoppingCart::class);
-    }
-
-    /**
-     * The user has many transactions.
-     *
-     * @return array object
-     */
-    public function transactions()
-    {
-        return $this->hasMany(Transactions::class);
     }
 }

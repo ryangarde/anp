@@ -24,7 +24,7 @@
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <label for="email">E-Mail Address</label>
 
-                <input id="email" type="email" class="form-control" name="email" value="{{ auth()->guard('admin')->user()->email }}" required>
+                <input id="email" type="email" class="form-control" name="email" value="" required>
 
                 @if ($errors->has('email'))
                 <span class="help-block">

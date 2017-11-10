@@ -27,8 +27,12 @@ class PermissionRepository extends Repository implements PermissionInterface
      * @param  string                    $orderBy
      * @return array json object
      */
-    public function paginateWithFiltersAndWithTrashed($request = null, $length = 10, $removePage = false, $orderBy = 'desc')
-    {
+    public function paginateWithFiltersAndWithTrashed(
+        $request = null,
+        $length = 10,
+        $removePage = false,
+        $orderBy = 'desc'
+    ) {
         return $this->model->filter($request)
             ->withTrashed()
             ->orderBy('created_at', $orderBy)

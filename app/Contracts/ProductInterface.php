@@ -21,6 +21,14 @@ interface ProductInterface
     );
 
     /**
+     * Find the resource using the specified id or else fail with category.
+     *
+     * @param  int $id
+     * @return json object
+     */
+    public function findOrFailWithCategory($id);
+
+    /**
      * Find the resource using the specified id or else fail with producer and category.
      *
      * @param  int $id
