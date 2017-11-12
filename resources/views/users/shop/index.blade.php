@@ -30,16 +30,17 @@
                     <div class="card-body clearfix">
                         <a href="{{ route('products.show', $product->id) }}" class="float-left card-link text-info">View</a>
 
-                        <a href="#" class="float-right card-link text-success" onclick="event.preventDefault();document.getElementById('add-to-cart-form').submit();">Add to Cart</a>
-                        <form id="add-to-cart-form" action="{{ route('carts.add-to-cart') }}" method="POST" accept-charset="utf-8">
-                            {{ csrf_field() }}
-
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        </form>
+                        <a href="#" class="float-right card-link text-success add-to-cart-button" product-id="{{ $product->id }}">Add to Cart</a>
                     </div>
                 </div>
                 @endforeach
             </div>
+
+            <form id="add-to-cart-form" action="{{ route('carts.add-to-cart') }}" method="POST" accept-charset="utf-8">
+                {{ csrf_field() }}
+
+                <input type="hidden" name="product_id" value="">
+            </form>
         </div>
     </div>
 </div>
@@ -48,7 +49,17 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        $("#price-slider").slider({});
-    });
+        $("#price-slider").slider({})
+
+        $('.add-to-cart-button').on('click', function(event) {
+            event.preventDefault()
+
+            let productId = $(this).attr('product-id')
+            let form = $('#add-to-cart-form')
+
+            form.find('input[name="product_id"]').val(productId)
+            form.submit()
+        })
+    })
 </script>
 @endsection

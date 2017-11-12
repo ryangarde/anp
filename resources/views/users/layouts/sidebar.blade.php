@@ -19,7 +19,7 @@
         <a class="nav-link" href="#">Account Information</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Shopping Cart</a>
+        <a class="nav-link" href="{{ route('shopping-cart') }}">Shopping Cart</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#transactions">Orders</a>

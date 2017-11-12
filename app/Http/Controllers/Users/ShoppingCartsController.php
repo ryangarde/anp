@@ -48,6 +48,17 @@ class ShoppingCartsController extends Controller
         $this->user         = $user;
     }
 
+    public function index()
+    {
+        $user = $this->user->shoppingCart();
+
+        /*echo '<pre>';
+        echo print_r($user->shoppingCart);
+        echo '</pre>';*/
+
+        return view('users.dashboards.shopping-cart', compact('user'));
+    }
+
     /**
      * Add item to cart.
      *

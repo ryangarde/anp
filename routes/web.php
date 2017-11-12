@@ -24,7 +24,7 @@ Route::group(['domain' => 'admin.anp.dev', 'namespace' => 'Admins'], function ()
     Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('admin.reset');
 
     Route::group(['middleware' => 'admin'], function () {
-        Route::get('/', 'DashboardsController@index')->name('admin.home')->middleware('role:admin');
+        Route::get('/', 'DashboardsController@index')->name('admin.home');
         Route::get('dashboard', 'DashboardsController@index')->name('admin.dashboard');
 
         // Create Admin Routes...
@@ -83,8 +83,8 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
 
     // Shopping cart
     Route::group(['prefix' => 'shopping-cart'], function () {
-        /*Route::get('check-cart', 'ShoppingCartsController@index')->name('shopping-cart');
-        Route::get('checkout', 'ShoppingCartsController@checkout')->name('checkout');*/
+        Route::get('/', 'ShoppingCartsController@index')->name('shopping-cart');
+        /*Route::get('checkout', 'ShoppingCartsController@checkout')->name('checkout');*/
         Route::post('add-to-cart', 'ShoppingCartsController@addToCart')->name('carts.add-to-cart');
         Route::post('remove-from-cart', 'ShoppingCartsController@removeFromCart')->name('carts.remove-from-cart');
         Route::post('add-quantity', 'ShoppingCartsController@addQuantity')->name('carts.add-quantity');
@@ -97,7 +97,6 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
         Route::post('order', 'OrdersController@order')->name('orders.order');
         Route::post('cancel-order', 'OrdersController@cancelOrder')->name('orders.cancel-order');
     });
-
 
     // Dashboards
     Route::group(['middleware' => 'auth'], function () {

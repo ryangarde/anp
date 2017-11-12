@@ -48,23 +48,6 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
     }
 
     /**
-     * Store the data in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return boolean
-     */
-    /*public function store($request)
-    {
-        $this->shoppingCart->create([
-            'user_id' => auth()->user()->id,
-            'product_id' => $request->product_id,
-            'quantity' => 1
-        ]);
-
-        return true;
-    }*/
-
-    /**
      * Add quantity to item in the cart.
      *
      * @param  integer $id
@@ -108,7 +91,7 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
     /**
      * Retrieve all items from user cart.
      *
-     * @return json object
+     * @return array object
      */
     public function getItems()
     {
@@ -137,15 +120,15 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
 
                 json_encode($product);
 
-                $shoppingCart[] = $product;
+                $shoppingCart[] = (object) $product;
             }
 
             $totalItems = 0;
             $grandTotal = 0;
 
             foreach ($shoppingCart as $shoppingCartItem) {
-                $totalItems = $totalItems + $shoppingCartItem['quantity'];
-                $grandTotal = $grandTotal + $shoppingCartItem['subTotal'];
+                $totalItems = $totalItems + $shoppingCartItem->quantity;
+                $grandTotal = $grandTotal + $shoppingCartItem->subTotal;
             }
 
             $newItem['totalItems'] = $totalItems;
@@ -154,7 +137,7 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
 
             json_encode($newItem);
 
-            return $newItem;
+            return (object) $newItem;
         })->first();
     }
 
