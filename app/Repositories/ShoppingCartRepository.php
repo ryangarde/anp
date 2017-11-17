@@ -106,6 +106,8 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
             $newItem['phone_number'] = $item->phone_number;
 
             $shoppingCart = [];
+            $totalItems = 0;
+            $grandTotal = 0;
 
             foreach ($item->shoppingCart as $shoppingCartItem) {
                 $product = [];
@@ -118,17 +120,12 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
                 $product['price'] = $shoppingCartItem->product->price;
                 $product['subTotal'] = $shoppingCartItem->quantity * $shoppingCartItem->product->price;
 
+                $totalItems = $totalItems + $shoppingCartItem->quantity;
+                $grandTotal = $grandTotal + ($shoppingCartItem->quantity * $shoppingCartItem->product->price);
+
                 json_encode($product);
 
                 $shoppingCart[] = (object) $product;
-            }
-
-            $totalItems = 0;
-            $grandTotal = 0;
-
-            foreach ($shoppingCart as $shoppingCartItem) {
-                $totalItems = $totalItems + $shoppingCartItem->quantity;
-                $grandTotal = $grandTotal + $shoppingCartItem->subTotal;
             }
 
             $newItem['totalItems'] = $totalItems;

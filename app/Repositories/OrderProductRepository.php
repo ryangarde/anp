@@ -28,9 +28,9 @@ class OrderProductRepository extends Repository implements OrderProductInterface
     public function orderItems($id, $user)
     {
         foreach ($user->shoppingCart as $item) {
-            $this->orderProduct->insert([
+            $this->orderProduct->create([
                 'order_id' => $id,
-                'product_id' => $item->product_id,
+                'product_id' => $item->id,
                 'quantity' => $item->quantity
             ]);
         }

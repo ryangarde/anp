@@ -8,7 +8,6 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
             <ul class="nav navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
@@ -20,13 +19,24 @@
                     <a class="nav-link" href="#">About Us</a>
                 </li>
             </ul>
+
             <div class="mr-auto"></div>
 
             <ul class="nav navbar-nav">
                 @auth
+                <li class="nav-item">
+                    <a class="nav-link text-info" href="#" onclick="event.preventDefault();">
+                        @if (session('message'))
+                        {{ session('message') }}
+                        @endif
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('shopping-cart') }}">{{ $users->totalItems }} <i class="fa fa-shopping-cart"></i></a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        {{ auth()->user()->name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>

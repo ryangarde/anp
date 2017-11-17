@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Users;
 use App\Contracts\OrderInterface;
 use App\Contracts\UserInterface;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Order;
+use App\Http\Resources\OrderCollection;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -42,47 +44,53 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = $this->user->getOrders();
+        $orders = new OrderCollection($this->user->getUserOrders());
+        //$orders = $this->user->getUserOrders();
 
-        return view('orders', compact('orders'));
+        return $orders;
+
+        //return new OrderCollection($this->user->getUserOrders());
+
+        //return view('users.dashboards.orders', compact('orders'));
     }
 
     /**
      * Process order.
      *
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function order()
+    public function order(Request $request)
     {
         if (! $this->user->isShoppingCartEmpty()) {
             $user = $this->user->shoppingCart();
 
-            /*if ($this->order->order($user)) {
-
-                $orderMail = new orderMail([
+            if ($this->order->order($user)) {
+                /*$orderMail = new orderMail([
                     'name'         => auth()->user()->name,
                     'email'        => auth()->user()->email,
                     'phone_number' => auth()->user()->phone_number,
                     'message'      => auth()->user()->name . ' has ordered'
                 ]);
 
-                Mail::send($orderMail);
+                Mail::send($orderMail);*/
 
                 if ($this->user->clearShoppingCart()) {
                     return redirect()->route('orders.check-orders')->with('message', 'Order successful please wait for confirmation on your email');
                 }
             }
 
-            return redirect()->route('orders.check-orders')->with('message', 'Whoops something went wrong please try again');*/
+            return redirect()->route('orders.check-orders')->with('message', 'Whoops something went wrong please try again');
         }
     }
 
     /**
      * Cancel order.
      *
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function cancelOrder()
+    public function cancelOrder(Request $request)
     {
         if ($this->order->cancelOrder(request())) {
             $cancelOrderMail = new cancelOrderMail([

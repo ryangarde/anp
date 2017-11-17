@@ -81,25 +81,25 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
     // Shop
     Route::get('shop', 'ShopsController@index')->name('shop');
 
-    // Shopping cart
-    Route::group(['prefix' => 'shopping-cart'], function () {
-        Route::get('/', 'ShoppingCartsController@index')->name('shopping-cart');
-        /*Route::get('checkout', 'ShoppingCartsController@checkout')->name('checkout');*/
-        Route::post('add-to-cart', 'ShoppingCartsController@addToCart')->name('carts.add-to-cart');
-        Route::post('remove-from-cart', 'ShoppingCartsController@removeFromCart')->name('carts.remove-from-cart');
-        Route::post('add-quantity', 'ShoppingCartsController@addQuantity')->name('carts.add-quantity');
-        Route::post('subtract-quantity', 'ShoppingCartsController@subtractQuantity')->name('carts.subtract-quantity');
-    });
-
-    // Orders
-    Route::group(['prefix' => 'orders'], function () {
-        Route::get('/', 'OrdersController@index')->name('orders.check-orders');
-        Route::post('order', 'OrdersController@order')->name('orders.order');
-        Route::post('cancel-order', 'OrdersController@cancelOrder')->name('orders.cancel-order');
-    });
-
     // Dashboards
     Route::group(['middleware' => 'auth'], function () {
         Route::get('dashboard', 'DashboardsController@index')->name('dashboard');
+
+        // Shopping cart
+        Route::group(['prefix' => 'shopping-cart'], function () {
+            Route::get('/', 'ShoppingCartsController@index')->name('shopping-cart');
+            /*Route::get('checkout', 'ShoppingCartsController@checkout')->name('checkout');*/
+            Route::post('add-to-cart', 'ShoppingCartsController@addToCart')->name('carts.add-to-cart');
+            Route::post('remove-from-cart', 'ShoppingCartsController@removeFromCart')->name('carts.remove-from-cart');
+            Route::post('add-quantity', 'ShoppingCartsController@addQuantity')->name('carts.add-quantity');
+            Route::post('subtract-quantity', 'ShoppingCartsController@subtractQuantity')->name('carts.subtract-quantity');
+        });
+
+        // Orders
+        Route::group(['prefix' => 'orders'], function () {
+            Route::get('/', 'OrdersController@index')->name('orders.check-orders');
+            Route::post('order', 'OrdersController@order')->name('orders.order');
+            Route::post('cancel-order', 'OrdersController@cancelOrder')->name('orders.cancel-order');
+        });
     });
 });

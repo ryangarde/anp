@@ -62,5 +62,5 @@ interface UserInterface
      *
      * @return json object
      */
-    public function getOrders();
+    public function getUserOrders();
 }

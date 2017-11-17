@@ -33,6 +33,16 @@ class Order extends Model
     protected $dates = ['deleted_at'];
 
     /**
+     * The order has many order products.
+     *
+     * @return array object
+     */
+    public function orderProduct()
+    {
+        return $this->hasMany(OrderProduct::class);
+    }
+
+    /**
      * The order belongs to a user.
      *
      * @return object

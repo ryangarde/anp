@@ -13,16 +13,16 @@
 
 <ul class="nav flex-column background py-1 mt-3 sidebar-nav">
     <li class="nav-item">
-        <span class="nav-link" href="{{ route('admin.dashboard') }}">Dashboards</span>
+        <span class="nav-link" href="{{ route('dashboard') }}">Dashboards</span>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">Account Information</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('shopping-cart') }}">Shopping Cart</a>
+        <a class="nav-link {{ request()->is('shopping-cart') ? 'active' : '' }}" href="{{ route('shopping-cart') }}">Shopping Cart</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#transactions">Orders</a>
+        <a class="nav-link  {{ request()->is('orders') ? 'active' : '' }}" href="{{ route('orders.check-orders') }}">Orders</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">Settings</a>

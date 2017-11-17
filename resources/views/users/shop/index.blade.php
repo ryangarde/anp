@@ -9,12 +9,6 @@
             @include('users.shop.filter')
         </div>
         <div class="col-md-9">
-            @if (session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-            <br>
-            @endif
             <div class="card-columns">
                 @foreach ($products as $product)
                 <div class="card">

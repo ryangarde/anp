@@ -60,7 +60,12 @@
         <tr>
             <td colspan="2"></td>
             <td colspan="2"><a href="{{ route('shop') }}" class="btn btn-sm btn-success">Continue Shopping</a></td>
-            <td><button class="btn btn-sm btn-info">Order</button></td>
+            <td>
+                <form id="order-form" method="POST" action="{{ route('orders.order') }}" accept-charset="utf-8">
+                    {{ csrf_field() }}
+                    <button class="btn btn-sm btn-info">Order</button>
+                </form>
+            </td>
         </tr>
     </tbody>
 </table>

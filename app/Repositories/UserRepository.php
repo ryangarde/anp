@@ -140,7 +140,7 @@ class UserRepository extends Repository implements UserInterface
      *
      * @return json object
      */
-    public function getOrders()
+    public function getUserOrders()
     {
         return $this->order->getUserOrders();
     }

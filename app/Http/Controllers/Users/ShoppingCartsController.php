@@ -53,7 +53,7 @@ class ShoppingCartsController extends Controller
         $user = $this->user->shoppingCart();
 
         /*echo '<pre>';
-        echo print_r($user->shoppingCart);
+        echo print_r($user);
         echo '</pre>';*/
 
         return view('users.dashboards.shopping-cart', compact('user'));
