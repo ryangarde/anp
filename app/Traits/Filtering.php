@@ -73,7 +73,6 @@ trait Filtering
                         strpos($key, 'FromModel') == false &&
                         ! is_array($value) && $value !== null
                     ) {
-                        echo 'this model filter';
                         $query->orWhere(self::convertToColumn($key), 'Like', '%' . $value . '%');
                     }
 
@@ -153,7 +152,7 @@ trait Filtering
      * @param  \Illuminate\Http\Request &$request
      * @return string
      */
-    public static function createPaginationUrl($request, $removePage = true)
+    public static function createPaginationUrl($request, $removePage = false)
     {
         if (parse_url($request->path() . '?' . http_build_query(($request->all())), PHP_URL_QUERY)) {
             parse_str(parse_url($request->path() . '?' . http_build_query(($request->all())), PHP_URL_QUERY), $output);
@@ -165,7 +164,7 @@ trait Filtering
             $uri = $request->path() . '?' . http_build_query($output);
 
             if ($removePage) {
-                return '/' . preg_replace('/\?&/', '?', rtrim(preg_replace('/&page=[\d]{1,}/', '', $uri), '&'));
+                return preg_replace('/\?page=[\d]{1,}/', '', '/' . preg_replace('/\?&/', '?', rtrim(preg_replace('/\?page=[\d]{1,}\&page=[\d]{1,/', '', $uri), '&')));
             }
 
             return '/' . preg_replace('/\?&/', '?', rtrim($uri, '&'));

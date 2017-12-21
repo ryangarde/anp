@@ -85,7 +85,7 @@
             </div>
 
             <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
-            <button type="submit" class="btn btn-primary btn-sm">Create New Producer</button>
+            <button type="submit" class="btn btn-primary btn-sm">Create New Product</button>
         </form>
     </div>
 </div>

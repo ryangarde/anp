@@ -21,7 +21,7 @@ class RoleMiddleware
         $requiredAll = preg_replace('/\s+/', '', $requiredAll);
 
         if (! EntrustInterface::hasRole(explode('|', $roles), $requiredAll)) {
-            return redirect('/error');
+            return redirect('/dashboard');
         }
 
         return $next($request);
