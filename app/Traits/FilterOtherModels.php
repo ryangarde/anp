@@ -26,14 +26,7 @@ trait FilterOtherModels
 {
     private $keyValue = [];
     private $check = false;
-
-    /**
-     * Filter other models.
-     *
-     * @param  [type] $query   [description]
-     * @param  [type] $request [description]
-     * @return [type]          [description]
-     */
+    
     public function filterOtherModels(& $query, & $request)
     {
         foreach ($request->all() as $key => $value) {
@@ -63,10 +56,6 @@ trait FilterOtherModels
             }
         }
 
-        /*echo '<pre>';
-        echo print_r(request()->all());
-        echo '</pre>';*/
-
         if ($this->check) {
             $query->whereHas(self::convertToRelationship($key), function ($query) use ($keyValue) {
                 $query->where(function ($query) use ($keyValue) {
@@ -77,7 +66,6 @@ trait FilterOtherModels
 
                         if (is_array($value)) {
                             foreach ($value as $arrayValue) {
-                                echo $arrayValue . '<br>';
                                 $query->orWhere($this->convertToColumn($key), 'LIKE', '%' . $arrayValue . '%');
                             }
                         }
@@ -85,11 +73,6 @@ trait FilterOtherModels
                 });
             });
         }
-
-        /*echo '<br>';
-        echo $query->toSql();*/
-
-        //$query->whereColumn('gether');
     }
 
     /**

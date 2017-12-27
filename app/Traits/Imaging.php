@@ -23,7 +23,7 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManagerStatic as Image;
 
 trait Imaging
 {
@@ -53,8 +53,12 @@ trait Imaging
     public static function storeImage(& $image, $storagePath)
     {
         $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
+//
+//        $image->storeAs($storagePath, $imageName);
 
-        $image->storeAs($storagePath, $imageName);
+        $img = Image::make($image)->resize(1366, 768);
+        $img->save(storage_path('app/public/images/'. $imageName), 70);
+
 
         return $imageName;
     }
