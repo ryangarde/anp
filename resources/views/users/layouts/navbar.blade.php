@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
     <div class="container">
         <a class="navbar-brand" href="#">
+            <img src="{{ asset('storage/anp-logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
             {{ config('app.name') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +33,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('shopping-cart') }}">{{ $users->totalItems }} <i class="fa fa-shopping-cart"></i></a>
+                    <a class="nav-link" href="{{ route('shopping-cart') }}">{{ $users['totalItems'] }} <i class="fa fa-shopping-cart"></i></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

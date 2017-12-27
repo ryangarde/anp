@@ -20,36 +20,35 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($user->shoppingCart as $product)
+        @foreach ($user['shoppingCart'] as $product)
         <tr>
-            <td><img class="img-fluid" style="max-width: 220px;" src="{{ asset('storage/images/' . $product->image) }}"></td>
+            <td><img class="img-fluid" style="max-width: 220px;" src="{{ asset('storage/images/' . $product['image']) }}"></td>
             <td style="max-width: 300px;">
                 <span class="text-success">Name</span>
                 <br>
-                {{ $product->name }}
+                {{ $product['name'] }}
                 <br><br>
                 <span class="text-success">Description</span>
                 <p style="font-size: 85%;">
-                    {{ $product->description }} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
+                    {{ $product['description'] }}
                 </p>
             </td>
-            <td>{{ $product->price }}</td>
-            <td>{{ $product->quantity }}</td>
-            <th>₱ {{ $product->subTotal }}</th>
+            <td>{{ $product['price'] }}</td>
+            <td>{{ $product['quantity'] }}</td>
+            <th>₱ {{ $product['subTotal'] }}</th>
         </tr>
         @endforeach
         <tr>
             <td></td>
             <td></td>
             <td colspan="2">Total Items</td>
-            <td>{{ $user->totalItems }}</td>
+            <td>{{ $user['totalItems'] }}</td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td colspan="2">Grand Total</td>
-            <td>₱ {{ $user->grandTotal }}</td>
+            <td>₱ {{ $user['grandTotal'] }}</td>
         </tr>
         <tr>
             <td></td>

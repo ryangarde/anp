@@ -47,8 +47,6 @@ class OrdersController extends Controller
         $orders = new OrderCollection($this->user->getUserOrders());
         //$orders = $this->user->getUserOrders();
 
-        return $orders;
-
         //return new OrderCollection($this->user->getUserOrders());
 
         //return view('users.dashboards.orders', compact('orders'));

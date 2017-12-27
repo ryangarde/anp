@@ -52,6 +52,8 @@ class ShoppingCartsController extends Controller
     {
         $user = $this->user->shoppingCart();
 
+        //return $user;
+
         return view('users.dashboards.shopping-cart', compact('user'));
     }
 
