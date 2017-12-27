@@ -50,11 +50,9 @@ class ShoppingCartsController extends Controller
 
     public function index()
     {
-        $user = $this->user->shoppingCart();
+        $shoppingCart = $this->user->shoppingCart();
 
-        //return $user;
-
-        return view('users.dashboards.shopping-cart', compact('user'));
+        return view('users.dashboards.shopping-cart', compact('shoppingCart'));
     }
 
     /**

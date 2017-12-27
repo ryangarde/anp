@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('shopping-cart') }}">{{ $users['totalItems'] }} <i class="fa fa-shopping-cart"></i></a>
+                    <a class="nav-link" href="{{ route('shopping-cart') }}">{{ $shoppingCart['total_items'] }} <i class="fa fa-shopping-cart"></i></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
