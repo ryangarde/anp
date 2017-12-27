@@ -22,8 +22,6 @@
                         <li class="list-group-item">{{ $product->producer->name }}</li>
                     </ul>
                     <div class="card-body clearfix">
-                        <a href="{{ route('products.show', $product->id) }}" class="float-left card-link text-info">View</a>
-
                         <a href="#" class="float-right card-link text-success add-to-cart-button" product-id="{{ $product->id }}">Add to Cart</a>
                     </div>
                 </div>
