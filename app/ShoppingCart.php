@@ -33,6 +33,15 @@ class ShoppingCart extends Model
     protected $dates = ['deleted_at'];
 
     /**
+     * Eager load relationships
+     *
+     * @var array
+     */
+    protected $with = [
+        'product'
+    ];
+
+    /**
      * Run functions on boot.
      *
      */

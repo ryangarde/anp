@@ -95,9 +95,61 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
      */
     public function getItems()
     {
-        return auth()->user()->with(['shoppingCart' => function ($query) {
+        $products = $this->shoppingCart->with([
+                'product' => function ($query) {
+                    $query->with('producer', 'category');
+                }
+            ])
+            ->where('user_id', auth()->user()->id)
+            ->get()
+            ->map(function ($item, $key) {
+                return [
+                    'id' => $item->product->id,
+                    'producer' => $item->product->producer->name,
+                    'category' => $item->product->category->name,
+                    'image' => $item->product->image,
+                    'name' => $item->product->name,
+                    'description' => $item->product->description,
+                    'quantity' => $item->quantity,
+                    'price' => $item->product->price,
+                    'sub_total' => ($item->quantity * $item->product->price)
+                ];
+            });
+
+        $shoppingCart = [
+            'total_items' => $products->sum('quantity'),
+            'grand_total' => $products->sum('sub_total'),
+            'products' => $products->all()
+        ];
+
+        return collect($shoppingCart);
+
+        /*->transform(function ($item) {
+            $totalItems = null;
+            $grandTotal = null;
+            $products = [];
+
+            foreach ($item as $shoppingCartItem) {
+                $product = [
+                    'id'          => $shoppingCartItem->product->id,
+                    'image'       => $shoppingCartItem->product->image,
+                    'name'        => $shoppingCartItem->product->name,
+                    'description' => $shoppingCartItem->product->description,
+                    'quantity'    => $shoppingCartItem->product->quantity,
+                    'price'       => $shoppingCartItem->product->price,
+                    'subTotal'    => $shoppingCartItem->quantity * $shoppingCartItem->product->price
+                ];
+
+                $totalItems = $totalItems + $shoppingCartItem->quantit;
+                $grandTotal = $grandTotal + ($shoppingCartItem->quantity * $shoppingCartItem->product->price);
+
+                array_push($products, $product);
+            }
+        });*/
+
+        /*return auth()->user()->with(['shoppingCart' => function ($query) {
             return $query->with('product');
-        }])->get()->transform(function ($item) {
+        }])->transform(function ($item) {
             $newItem = [];
 
             $newItem['id'] = $item->id;
@@ -137,7 +189,7 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
 
             return collect($newItem);
             //return (object) $newItem;
-        })->first();
+        });*/
     }
 
     /**

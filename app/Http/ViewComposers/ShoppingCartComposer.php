@@ -34,7 +34,7 @@ class ShoppingCartComposer
     public function compose(View $view)
     {
         if (auth()->check()) {
-            $view->with('users', $this->users->shoppingCart());
+            $view->with('shoppingCart', $this->users->shoppingCart());
         }
     }
 }

@@ -20,7 +20,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($user['shoppingCart'] as $product)
+        @foreach ($shoppingCart['products'] as $product)
         <tr>
             <td><img class="img-fluid" style="max-width: 220px;" src="{{ asset('storage/images/' . $product['image']) }}"></td>
             <td style="max-width: 300px;">
@@ -35,20 +35,20 @@
             </td>
             <td>{{ $product['price'] }}</td>
             <td>{{ $product['quantity'] }}</td>
-            <th>₱ {{ $product['subTotal'] }}</th>
+            <th>₱ {{ $product['sub_total'] }}</th>
         </tr>
         @endforeach
         <tr>
             <td></td>
             <td></td>
             <td colspan="2">Total Items</td>
-            <td>{{ $user['totalItems'] }}</td>
+            <td>{{ $shoppingCart['total_items'] }}</td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td colspan="2">Grand Total</td>
-            <td>₱ {{ $user['grandTotal'] }}</td>
+            <td>₱ {{ $shoppingCart['grand_total'] }}</td>
         </tr>
         <tr>
             <td></td>
