@@ -22,7 +22,7 @@
         <a class="nav-link {{ request()->is('shopping-cart') ? 'active' : '' }}" href="{{ route('shopping-cart') }}">Shopping Cart</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link  {{ request()->is('orders') ? 'active' : '' }}" href="{{ route('orders.check-orders') }}">Orders</a>
+        <a class="nav-link  {{ request()->is('orders') ? 'active' : '' }}" href="#">Orders</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">Settings</a>
