@@ -26,7 +26,6 @@ class OrderCollection extends ResourceCollection
             $orderItem['status'] = $order->status;
             $orderItem['created_at'] = new Carbon($order->created_at);
             $orderItem['updated_at'] = new Carbon($order->updated_at);
-            $orderItem
 
             /*if (! empty($order->deleted_at)) {
                 $orders['deleted_at'] = $order->deleted_at->toDateTimeString();

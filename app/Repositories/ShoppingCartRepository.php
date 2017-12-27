@@ -125,6 +125,7 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
 
                 json_encode($product);
 
+                //$shoppingCart[] = collect($product);
                 $shoppingCart[] = (object) $product;
             }
 
@@ -134,6 +135,7 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
 
             json_encode($newItem);
 
+            //return collect($newItem);
             return (object) $newItem;
         })->first();
     }
