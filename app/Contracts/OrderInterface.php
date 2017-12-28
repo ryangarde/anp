@@ -7,10 +7,9 @@ interface OrderInterface
     /**
      * Store user order.
      *
-     * @param  object $user User object
      * @return int
      */
-    public function order($user);
+    public function order();
 
     /**
      * Retrieve user orders.

@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar" {{-- style="background-color: rgba(229, 202, 159, 1) !important;" --}}>
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand text-white" href="#">
             <img src="{{ asset('storage/anp-logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
             {{ config('app.name') }}
         </a>
@@ -9,7 +9,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav custom-navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
@@ -17,13 +17,19 @@
                     <a class="nav-link" href="{{ route('shop') }}">Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="#">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Partners</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('contact-us') }}">Contact Us</a>
                 </li>
             </ul>
 
             <div class="mr-auto"></div>
 
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav custom-navbar-nav">
                 @auth
                 <li class="nav-item">
                     <a class="nav-link text-info" href="#" onclick="event.preventDefault();">

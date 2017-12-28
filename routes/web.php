@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.show-login-form');
@@ -77,6 +66,7 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
 
     // Pages
     Route::get('/', 'PagesController@index')->name('home');
+    Route::get('contact-us', 'PagesController@contactUs')->name('contact-us');
 
     // Shop
     Route::get('shop', 'ShopsController@index')->name('shop');
@@ -97,7 +87,7 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
 
         // Orders
         Route::group(['prefix' => 'orders'], function () {
-            Route::get('/', 'OrdersController@index')->name('orders.check-orders');
+            Route::get('/', 'OrdersController@index')->name('orders.index');
             Route::post('order', 'OrdersController@order')->name('orders.order');
             Route::post('cancel-order', 'OrdersController@cancelOrder')->name('orders.cancel-order');
         });

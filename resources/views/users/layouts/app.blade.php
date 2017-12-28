@@ -17,15 +17,17 @@
     <link href="{{ asset('css/bootstrap-grid.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/admin-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css" rel="stylesheet">
 
 </head>
 <body>
-    <div id="app">
-        @include('users.layouts.navbar')
-        @yield('content')
-    </div>
+    
+    @include('users.layouts.navbar')
+
+    @yield('content')
+
+    @include('users.layouts.footer')
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
