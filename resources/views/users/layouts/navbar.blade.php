@@ -1,63 +1,81 @@
-<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="{{ asset('storage/anp-logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-            {{ config('app.name') }}
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav id="global-nav" class="navbar navbar-expand-lg navbar-light">
+    {{-- <a class="navbar-brand" href="">
+        <img class="img-fluid logo-hybrain" src="{{ asset('images/hybrain-logo.png') }}" alt="HYBrain Logo">
+    </a> --}}
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('shop') }}">Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
-                </li>
-            </ul>
+    <a class="navbar-brand ml-md-5 ml-0" href="/">
+        <img src="{{ asset('images/anp-logo.png') }}" class="d-inline-block img-fluid" alt="" style="max-height: 100px">
+        {{-- <span class="small" style="color: white;">HYBrain</span> --}}
+    </a>
 
-            <div class="mr-auto"></div>
+    <button class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-            <ul class="nav navbar-nav">
-                @auth
-                <li class="nav-item">
-                    <a class="nav-link text-info" href="#" onclick="event.preventDefault();">
-                        @if (session('message'))
-                        {{ session('message') }}
-                        @endif
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('shopping-cart') }}">{{ $shoppingCart['total_items'] }} <i class="fa fa-shopping-cart"></i></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ auth()->user()->name }} <span class="caret"></span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </div>
-                </li>
-                @else
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Register</a>
-                </li>
-                @endauth
-            </ul>
-        </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="mr-auto"></div>
+
+        <ul class="navbar-nav small">
+            <li class="nav-item">
+                <a class="nav-link mx-2" href="/">HOME</a>
+            </li>
+            <li class="nav-item dropdown show-on-hover">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    WHO WE ARE
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown show-on-hover">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    MEMBERSHIP
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown show-on-hover">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    PROGRAMS AND SERVICES
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-2" href="/">PARTNERS</a>
+            </li>
+            <li class="nav-item dropdown show-on-hover">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    NEWS
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-2" href="/">E COMMERCE</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-2" href="/">CONTACT US</a>
+            </li>
+        </ul>
     </div>
 </nav>

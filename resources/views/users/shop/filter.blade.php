@@ -1,6 +1,6 @@
 <ul class="nav flex-column background py-1 sidebar-nav">
-    <li class="nav-item">
-        <span class="nav-link">Filtering</span>
+    <li class="nav-item text-center">
+        <span class="nav-link" style="color: #fff"><h6>Filtering</h6></span>
     </li>
 
     <div class="container-fluid">
@@ -94,16 +94,8 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+                <button type="submit" class="btn btn-danger btn-sm form-control">Filter</button>
             </div>
         </form>
     </div>
 </ul>
-
-<br>
-
-<img class="img-fluid" src="{{ asset('storage/dti.jpg') }}">
-
-<br><br>
-
-<img class="img-fluid" src="{{ asset('storage/otop-logo.png') }}">
