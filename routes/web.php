@@ -48,7 +48,7 @@ Route::group(['domain' => 'admin.anp.dev', 'namespace' => 'Admins'], function ()
     });
 });
 
-Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
+Route::group(['domain' => 'anp.loc', 'namespace' => 'Users'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -90,6 +90,12 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
             Route::get('/', 'OrdersController@index')->name('orders.index');
             Route::post('order', 'OrdersController@order')->name('orders.order');
             Route::post('cancel-order', 'OrdersController@cancelOrder')->name('orders.cancel-order');
+        });
+    });
+
+    Route::group(['prefix' => 'v2'], function () {
+        Route::get('/', function () {
+            return view('users.v2.index');
         });
     });
 });

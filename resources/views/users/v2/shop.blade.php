@@ -1,6 +1,6 @@
 @extends('users.layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Official Website of the Association of Negros Producers')
 
 @section('content')
     <div class="container-fluid" style="background: url('/images/home-banner.jpg') no-repeat top/cover; height: 600px"></div>
@@ -129,7 +129,7 @@
                     </div>
                 </div>
 
-                <div><a class="btn btn-sm anp-btn px-4" href="">more here...</a></div>
+                <div class="mb-5"><a class="btn btn-sm anp-btn px-4" href="">more here...</a></div>
             </div>
         </div>
     </div>
