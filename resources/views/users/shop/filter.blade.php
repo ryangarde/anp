@@ -99,3 +99,11 @@
         </form>
     </div>
 </ul>
+
+<br>
+
+<img class="img-fluid" src="{{ asset('storage/dti.jpg') }}">
+
+<br><br>
+
+<img class="img-fluid" src="{{ asset('storage/otop-logo.png') }}">
