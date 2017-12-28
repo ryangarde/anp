@@ -4,6 +4,18 @@
 
 @section('content')
 <div class="container mb-5">
+    {{-- <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="img-fluid" src="{{ asset('storage/DTI.jpg') }}">
+                </div>
+                <div class="col-md-6">
+                    <img class="img-fluid" src="{{ asset('storage/OTOP-LOGO.png') }}">
+                </div>
+            </div>
+        </div>
+    </div> --}}
     <div class="row">
         <div class="col-md-3">
             @include('users.shop.filter')
