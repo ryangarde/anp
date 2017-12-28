@@ -83,13 +83,12 @@ a:hover {
     /* border-radius: .25rem; */
 }
 
-.background {
-    background-color: #A11E00;
-    border: 1px solid rgba(172, 67, 45, 0.91);
-    border-radius: 1px;
-    color: #fff;
-    font-weight: 500;
-}
+/*.background {*/
+    /*background-color: #A11E00;*/
+    /*border: 1px solid rgba(172, 67, 45, 0.91);*/
+    /*border-radius: 1px;*/
+    /*font-weight: 500;*/
+/*}*/
 
 /** Product description scroll */
 .c--anim-btn span {
@@ -146,4 +145,15 @@ a:hover {
     background: #912513;
     border-radius: 1px;
     color: #fff;
+}
+
+.btn-cart {
+    border: 1px solid #912513;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.btn-cart:hover {
+    background: rgba(248, 90, 71, 0.66);
+    transform: scale(1.05);
 }

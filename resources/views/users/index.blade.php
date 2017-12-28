@@ -64,19 +64,19 @@
                 <div class="card-deck mb-3">
                     <div class="card image-box mb-2">
                         <a href="{{ asset('images/anp-tradefair-1.jpg') }}" data-lightbox="image-1">
-                            <div class="image" style="background: url('images/anp-tradefair-1.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
+                            <div class="image" style="background: url('../images/anp-tradefair-1.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
                         </a>
                     </div>
 
                     <div class="card image-box mb-2">
                         <a href="{{ asset('images/anp-tradefair-2.jpg') }}" data-lightbox="image-2">
-                            <div class="image" style="background: url('images/anp-tradefair-2.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
+                            <div class="image" style="background: url('/images/anp-tradefair-2.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
                         </a>
                     </div>
 
                     <div class="card image-box mb-2">
                         <a href="{{ asset('images/anp-tradefair-3.jpg') }}" data-lightbox="image-3">
-                            <div class="image" style="background: url('images/anp-tradefair-3.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
+                            <div class="image" style="background: url('/images/anp-tradefair-3.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
                         </a>
                     </div>
                 </div>
@@ -88,19 +88,19 @@
                 <div class="card-deck mb-3">
                     <div class="card image-box mb-2">
                         <a href="{{ asset('images/anp-showroom-1.jpg') }}" data-lightbox="image-1">
-                            <div class="image" style="background: url('images/anp-showroom-1.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
+                            <div class="image" style="background: url('/images/anp-showroom-1.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
                         </a>
                     </div>
 
                     <div class="card image-box mb-2">
                         <a href="{{ asset('images/anp-showroom-2.jpg') }}" data-lightbox="image-2">
-                            <div class="image" style="background: url('images/anp-showroom-2.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
+                            <div class="image" style="background: url('/images/anp-showroom-2.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
                         </a>
                     </div>
 
                     <div class="card image-box mb-2">
                         <a href="{{ asset('images/anp-showroom-3.jpg') }}" data-lightbox="image-3">
-                            <div class="image" style="background: url('images/anp-showroom-3.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
+                            <div class="image" style="background: url('/images/anp-showroom-3.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
                         </a>
                     </div>
                 </div>
@@ -112,24 +112,24 @@
                 <div class="card-deck mb-3">
                     <div class="card image-box mb-2">
                         <a href="{{ asset('images/anp-product-1.jpg') }}" data-lightbox="image-1">
-                            <div class="image" style="background: url('images/anp-product-1.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
+                            <div class="image" style="background: url('/images/anp-product-1.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
                         </a>
                     </div>
 
                     <div class="card image-box mb-2">
                         <a href="{{ asset('images/anp-product-2.jpg') }}" data-lightbox="image-2">
-                            <div class="image" style="background: url('images/anp-product-2.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
+                            <div class="image" style="background: url('/images/anp-product-2.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
                         </a>
                     </div>
 
                     <div class="card image-box mb-2">
                         <a href="{{ asset('images/anp-product-3.jpg') }}" data-lightbox="image-3">
-                            <div class="image" style="background: url('images/anp-product-3.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
+                            <div class="image" style="background: url('/images/anp-product-3.jpg') no-repeat center; height: 200px; border-radius: 1px"></div>
                         </a>
                     </div>
                 </div>
 
-                <div><a class="btn btn-sm anp-btn px-4" href="">more here...</a></div>
+                <div class="mb-5"><a class="btn btn-sm anp-btn px-4" href="">more here...</a></div>
             </div>
         </div>
     </div>
