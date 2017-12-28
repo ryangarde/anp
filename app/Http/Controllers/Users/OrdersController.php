@@ -6,7 +6,6 @@ use App\Contracts\OrderInterface;
 use App\Contracts\UserInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Order;
-use App\Http\Resources\OrderCollection;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -44,12 +43,11 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = new OrderCollection($this->user->getUserOrders());
-        //$orders = $this->user->getUserOrders();
+        $orders = $this->user->getUserOrders();
 
-        //return new OrderCollection($this->user->getUserOrders());
+        return $orders;
 
-        //return view('users.dashboards.orders', compact('orders'));
+        return view('users.dashboards.orders', compact('orders'));
     }
 
     /**
@@ -61,9 +59,7 @@ class OrdersController extends Controller
     public function order(Request $request)
     {
         if (! $this->user->isShoppingCartEmpty()) {
-            $user = $this->user->shoppingCart();
-
-            if ($this->order->order($user)) {
+            if ($this->order->order()) {
                 /*$orderMail = new orderMail([
                     'name'         => auth()->user()->name,
                     'email'        => auth()->user()->email,

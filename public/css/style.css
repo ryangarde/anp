@@ -1,0 +1,120 @@
+.custom-navbar {
+    /*background-color: white !important;*/
+    /*border-bottom: 1px solid #CC491E !important;*/
+    background-color: rgba(161, 30, 0, 1) !important;
+    border-bottom-color: none !important;
+    margin-bottom: 22px;
+    min-height: 50px;
+    padding: .2rem 1rem;
+}
+
+a.navbar-brand {
+    color: white !important;
+    /*color: #CC491E !important;*/
+    font-size: 18px;
+}
+
+.custom-navbar-nav li a {
+    color: white !important;
+    /*color: #CC491E !important;*/
+}
+
+.content {
+    margin-top: 73px;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    /*background-color: #f5f8fa;*/
+    font-size: 14px;
+    line-height: 1.6;
+    /*color: #636b6f;*/
+    color: black;
+}
+
+.background {
+    background-color: white;
+    /*border: 1px solid #d3e0e9;*/
+    border: 1px solid rgb(161, 30, 0);
+    border-radius: 5px;
+}
+
+.sidebar-nav li > span {
+    color: rgb(161, 30, 0, .7)
+    font-size: 90%;
+}
+
+.text-color {
+    color: #EF9A7D !important;
+}
+
+.card {
+    border: 1px solid #A11E00;
+}
+
+.btn-color {
+    background-color: #A11E00 !important;
+    color: white !important;
+}
+
+.nav-link {
+    /*color: #636b6f;*/
+    color: black;
+}
+
+.nav-item > a.active {
+    background-color: #007bff;
+    /*background-color: #d3e0e9;*/
+    /*color: #333;*/
+    color: white;
+}
+
+.nav-sub-menu {
+    width: 100%;
+}
+
+.nav-sub-menu li a.nav-link {
+    padding-left: 25px;
+    font-size: 85%;
+    color: black;
+    /*background-color: #fbfbfb;*/
+}
+
+.nav-sub-menu li a.nav-link.active {
+    padding-left: 25px;
+    font-size: 85%;
+    color: white;
+    /*background-color: #fbfbfb;*/
+}
+
+.dropdown-item {
+    font-size: 90%;
+}
+
+.footer {
+    bottom: 0;
+    background-color: white;
+    border-top: 1px solid #d3e0e9;
+    border-bottom: 1px solid #d3e0e9;
+    margin-top: 22px;
+}
+
+.copyright {
+    font-size: 90%;
+}
+
+div.dropdown-menu a.dropdown-item {
+    color: black !important;
+}
+
+footer, footer a {
+    color: white !important;
+}
+
+footer div.footer-background {
+    background-color: rgba(177, 40, 9, 1) !important;
+}
+
+footer div.copyright-background{
+    background-color: rgba(161, 30, 0, 1) !important;
+}

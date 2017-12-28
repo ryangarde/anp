@@ -102,94 +102,27 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
             ])
             ->where('user_id', auth()->user()->id)
             ->get()
-            ->map(function ($item, $key) {
+            ->map(function ($item) {
                 return [
-                    'id' => $item->product->id,
-                    'producer' => $item->product->producer->name,
-                    'category' => $item->product->category->name,
-                    'image' => $item->product->image,
-                    'name' => $item->product->name,
+                    'id'          => $item->product->id,
+                    'producer'    => $item->product->producer->name,
+                    'category'    => $item->product->category->name,
+                    'image'       => $item->product->image,
+                    'name'        => $item->product->name,
                     'description' => $item->product->description,
-                    'quantity' => $item->quantity,
-                    'price' => $item->product->price,
-                    'sub_total' => ($item->quantity * $item->product->price)
+                    'quantity'    => $item->quantity,
+                    'price'       => $item->product->price,
+                    'sub_total'   => ($item->quantity * $item->product->price)
                 ];
             });
 
         $shoppingCart = [
             'total_items' => $products->sum('quantity'),
             'grand_total' => $products->sum('sub_total'),
-            'products' => $products->all()
+            'products'    => $products->all()
         ];
 
         return collect($shoppingCart);
-
-        /*->transform(function ($item) {
-            $totalItems = null;
-            $grandTotal = null;
-            $products = [];
-
-            foreach ($item as $shoppingCartItem) {
-                $product = [
-                    'id'          => $shoppingCartItem->product->id,
-                    'image'       => $shoppingCartItem->product->image,
-                    'name'        => $shoppingCartItem->product->name,
-                    'description' => $shoppingCartItem->product->description,
-                    'quantity'    => $shoppingCartItem->product->quantity,
-                    'price'       => $shoppingCartItem->product->price,
-                    'subTotal'    => $shoppingCartItem->quantity * $shoppingCartItem->product->price
-                ];
-
-                $totalItems = $totalItems + $shoppingCartItem->quantit;
-                $grandTotal = $grandTotal + ($shoppingCartItem->quantity * $shoppingCartItem->product->price);
-
-                array_push($products, $product);
-            }
-        });*/
-
-        /*return auth()->user()->with(['shoppingCart' => function ($query) {
-            return $query->with('product');
-        }])->transform(function ($item) {
-            $newItem = [];
-
-            $newItem['id'] = $item->id;
-            $newItem['name'] = $item->name;
-            $newItem['email'] = $item->email;
-            $newItem['phone_number'] = $item->phone_number;
-
-            $shoppingCart = [];
-            $totalItems = 0;
-            $grandTotal = 0;
-
-            foreach ($item->shoppingCart as $shoppingCartItem) {
-                $product = [];
-
-                $product['id'] = $shoppingCartItem->product->id;
-                $product['image'] = $shoppingCartItem->product->image;
-                $product['name'] = $shoppingCartItem->product->name;
-                $product['description'] = $shoppingCartItem->product->description;
-                $product['quantity'] = $shoppingCartItem->quantity;
-                $product['price'] = $shoppingCartItem->product->price;
-                $product['subTotal'] = $shoppingCartItem->quantity * $shoppingCartItem->product->price;
-
-                $totalItems = $totalItems + $shoppingCartItem->quantity;
-                $grandTotal = $grandTotal + ($shoppingCartItem->quantity * $shoppingCartItem->product->price);
-
-                json_encode($product);
-
-                $shoppingCart[] = collect($product);
-                //$shoppingCart[] = (object) $product;
-            }
-
-            $newItem['totalItems'] = $totalItems;
-            $newItem['grandTotal'] = $grandTotal;
-            $newItem['shoppingCart'] = $shoppingCart;
-
-            json_encode($newItem);
-
-            return collect($newItem);
-            //return (object) $newItem;
-        });*/
     }
 
     /**

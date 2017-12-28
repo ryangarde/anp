@@ -32,17 +32,16 @@ class OrderRepository extends Repository implements OrderInterface
     /**
      * Store user order.
      *
-     * @param  object $user User object
      * @return int
      */
-    public function order($user)
+    public function order()
     {
         $order = $this->order->create([
-            'user_id' => $user->id,
+            'user_id' => auth()->user()->id,
             'status' => 0
         ]);
 
-        if (! $this->orderProduct->orderItems($order->id, $user)) {
+        if (! $this->orderProduct->orderItems($order->id)) {
             return false;
         }
 
@@ -56,10 +55,24 @@ class OrderRepository extends Repository implements OrderInterface
      */
     public function getUserOrders()
     {
-        return $this->order->where('user_id', auth()->user()->id)
+        /*return $this->order->where('user_id', auth()->user()->id)
             ->with(['orderProduct' => function ($query) {
                 return $query->with('product');
-            }])->paginate(2);
+            }])->paginate(2);*/
+
+        $orders = $this->order->with([
+                'orderProduct' => function ($query) {
+                    $query->with('product');
+                }
+            ])
+            ->where('user_id', auth()->user()->id)
+            ->get()
+            ->map(function ($item) {
+                return $item;
+            });
+
+        return $orders;
+
         /*return $this->order->where('user_id', auth()->user()->id)
             ->with(['orderProduct' => function ($query) {
                 return $query->with('product');

@@ -1,6 +1,6 @@
 <ul class="nav flex-column background py-1 sidebar-nav">
     <li class="nav-item">
-        <span class="nav-link">Filtering</span>
+        <span class="nav-link">Filter By</span>
     </li>
 
     <div class="container-fluid">
@@ -9,7 +9,7 @@
             {{ method_field('GET') }}
 
             <div class="form-group">
-                <label for="searchColumnName">Name</label>
+                <label for="searchColumnName text-color">Name</label>
                 <input type="search" class="form-control form-control-sm" id="searchColumnName" name="searchColumnName" placeholder="Search Name" value="{{ request()->searchColumnName }}" autocomplete="off">
             </div>
 
@@ -94,7 +94,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+                <button type="submit" class="btn btn-sm btn-color">Filter</button>
             </div>
         </form>
     </div>
@@ -107,3 +107,5 @@
 <br><br>
 
 <img class="img-fluid" src="{{ asset('storage/otop-logo.png') }}">
+
+<br><br>

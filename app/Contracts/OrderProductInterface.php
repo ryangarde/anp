@@ -7,9 +7,8 @@ interface OrderProductInterface
     /**
      * Retrieve order items.
      *
-     * @param  int    $id   Order id
-     * @param  object $user User object
+     * @param  int $id Order id
      * @return boolean
      */
-    public function orderItems($id, $user);
+    public function orderItems($id);
 }
