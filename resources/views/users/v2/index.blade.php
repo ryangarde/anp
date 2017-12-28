@@ -1,6 +1,6 @@
 @extends('users.layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Official Website of the Association of Negros Producers')
 
 @section('content')
     <div class="container-fluid" style="background: url('/images/home-banner.jpg') no-repeat top/cover; height: 600px"></div>

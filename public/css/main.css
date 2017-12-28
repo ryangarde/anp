@@ -2,6 +2,25 @@ body {
     font-family: "Century Gothic";
 }
 
+hr {
+    color: #912513;
+    height:1px;
+    border:none;
+    background-color: rgba(193, 45, 25, 0.59);
+}
+
+a {
+    color: #912513;
+}
+
+a:hover {
+    color: #ff8b5c;
+    text-decoration: none;
+    text-shadow: 0 0 10px rgba(253, 119, 83, 0.61);
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
 .navbar-light .navbar-nav .nav-link{
     color: #942E08;
 }
@@ -33,7 +52,7 @@ body {
 .scrolled-nav {
     height: 60px !important;
     line-height: 30px !important;
-    background: rgba(233, 207, 172, 0.75) !important;
+    background: rgba(233, 181, 149, 0.96) !important;
 }
 
 .show-on-hover {
@@ -102,7 +121,29 @@ body {
     color: #912513;
 }
 
-hr {
-    color: #912513;
-    line-height: 3px;
+.image-box{
+    width: 100%;
+    overflow:hidden;
+}
+.image {
+    width: 100%;
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+.image:hover {
+    transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2); /* IE 9 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand')"; /* IE8 */
+    filter: progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand'); /* IE6 and 7 */
+}
+
+.anp-btn {
+    background: #912513;
+    border-radius: 1px;
+    color: #fff;
 }
