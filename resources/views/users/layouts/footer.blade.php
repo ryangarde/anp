@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="container pt-2 pb-3">
+        {{-- <div class="container pt-4 pb-3">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-3">
@@ -85,7 +85,7 @@
     </div>
 
     <div class="copyright-background">
-        <div class="container clearfix pt-3 pb-2">
+        <div class="container clearfix pt-3 pb-3">
             <div class="float-left">
                 Association of Negros Producers &copy; 2017. All Rights Reserved.
             </div>

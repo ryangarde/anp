@@ -68,7 +68,7 @@ class ShopsController extends Controller
         $producers = $this->producer->all();
 
         // Retrieve all products, filter if needed
-        $products = $this->product->paginateWithFiltersAndProducer(request());
+        $products = $this->product->paginateWithFiltersAndProducer(request(), 9);
 
         // Get search url for filtering
         $searchUrl = $this->product->getSearchUrl(request());

@@ -3,10 +3,10 @@
 @section('title', 'Register')
 
 @section('content')
-<div class="container">
+<div class="container content">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <div class="card">
+            <div class="card mb-5 mt-3 custom-card-login">
                 <div class="card-header">
                     Register
                 </div>
@@ -76,13 +76,9 @@
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
-                                <button type="submit" class="btn btn-primary btn-sm">
-                                    Sign in
+                                <button type="submit" class="btn btn-theme-color btn-sm">
+                                    Register
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('admin.show-link-request-form') }}">
-                                    Forgot Your Password?
-                                </a>
                             </div>
                         </div>
                     </form>

@@ -66,6 +66,7 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
 
     // Pages
     Route::get('/', 'PagesController@index')->name('home');
+    Route::get('contact-us', 'PagesController@contactUs')->name('contact-us');
 
     // Shop
     Route::get('shop', 'ShopsController@index')->name('shop');

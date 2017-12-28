@@ -18,7 +18,6 @@
                 <input type="search" class="form-control form-control-sm" id="searchColumnDescription" name="searchColumnDescription" placeholder="Search Description" value="{{ request()->searchColumnDescription }}" autocomplete="off">
             </div>
 
-
             <div class="form-group">
                 <label for="searchProducers">Producers</label>
                 <div style="max-height: 100px; overflow-y: scroll;">
@@ -94,7 +93,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-sm btn-color">Filter</button>
+                <button type="submit" class="btn btn-sm btn-theme-color">Filter</button>
             </div>
         </form>
     </div>
