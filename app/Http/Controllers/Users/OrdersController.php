@@ -70,11 +70,11 @@ class OrdersController extends Controller
                 Mail::send($orderMail);*/
 
                 if ($this->user->clearShoppingCart()) {
-                    return redirect()->route('orders.check-orders')->with('message', 'Order successful please wait for confirmation on your email');
+                    return redirect()->route('orders.index')->with('message', 'Order successful please wait for confirmation on your email');
                 }
             }
 
-            return redirect()->route('orders.check-orders')->with('message', 'Whoops something went wrong please try again');
+            return redirect()->route('orders.index')->with('message', 'Whoops something went wrong please try again');
         }
     }
 
