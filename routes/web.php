@@ -92,4 +92,8 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
             Route::post('cancel-order', 'OrdersController@cancelOrder')->name('orders.cancel-order');
         });
     });
+
+    //Paul's layout
+    Route::get('/v2', 'PagesController@index')->name('home');
+    Route::get('/v2/shop', 'ShopsController@index')->name('shop');
 });

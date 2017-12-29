@@ -1,0 +1,159 @@
+body {
+    font-family: "Century Gothic";
+}
+
+hr {
+    color: #912513;
+    height:1px;
+    border:none;
+    background-color: rgba(193, 45, 25, 0.59);
+}
+
+a {
+    color: #912513;
+}
+
+a:hover {
+    color: #ff8b5c;
+    text-decoration: none;
+    text-shadow: 0 0 10px rgba(253, 119, 83, 0.61);
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: #942E08;
+}
+
+#global-nav {
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    height: 100px;
+    width: 100%;
+    background: transparent;
+    color: #942E08;
+    font-size: 16px;
+    line-height: 30px;
+    -webkit-transition: height .5s, line-height .5s; /* Safari */
+    transition: height .5s, line-height .5s;
+}
+
+.site-title {
+    display: inline-block;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+.scrolled-nav .site-title  {
+    font-size: 16px;
+}
+
+.scrolled-nav {
+    height: 60px !important;
+    line-height: 30px !important;
+    background: rgba(233, 181, 149, 0.96) !important;
+}
+
+.show-on-hover {
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+}
+
+.show-on-hover:hover > ul.dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 60%;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    /* padding: .5rem 0; */
+    margin: .125rem 0 0;
+    padding-left: 5px;
+    font-size: 14px;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    /* border-radius: .25rem; */
+}
+
+/*.background {*/
+    /*background-color: #A11E00;*/
+    /*border: 1px solid rgba(172, 67, 45, 0.91);*/
+    /*border-radius: 1px;*/
+    /*font-weight: 500;*/
+/*}*/
+
+/** Product description scroll */
+.c--anim-btn span {
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
+
+.c--anim-btn, .c-anim-btn {
+    transition: 0.65s;
+}
+
+.c--anim-btn {
+    height: 64px;
+    color: #707070;
+    overflow: hidden;
+    font-size: 85%;
+}
+
+.c-anim-btn {
+    margin-top: 0em;
+}
+
+.c--anim-btn:hover .c-anim-btn {
+    margin-top: -3em;
+}
+
+.title-color {
+    color: #912513;
+}
+
+.image-box{
+    width: 100%;
+    overflow:hidden;
+}
+.image {
+    width: 100%;
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+.image:hover {
+    transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2); /* IE 9 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand')"; /* IE8 */
+    filter: progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod='auto expand'); /* IE6 and 7 */
+}
+
+.anp-btn {
+    background: #912513;
+    border-radius: 1px;
+    color: #fff;
+}
+
+.btn-cart {
+    border: 1px solid #912513;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.btn-cart:hover {
+    background: rgba(248, 90, 71, 0.66);
+    transform: scale(1.05);
+}
