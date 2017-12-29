@@ -5,7 +5,7 @@
 @section('content')
 
 <div style="position: relative; width: 100%; height: 100%;">
-    <img class="img-fluid" src="{{ asset('storage/banner2-300.jpg') }}">
+    <img class="img-fluid" src="{{ asset('storage/shop-banner-300.jpg') }}">
     <div class="shop-header-cover">
         <h1 class="shop-header-cover-title">Shop</h1>
     </div>
