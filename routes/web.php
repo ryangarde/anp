@@ -48,7 +48,7 @@ Route::group(['domain' => 'admin.anp.dev', 'namespace' => 'Admins'], function ()
     });
 });
 
-Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
+Route::group(['domain' => 'anp.loc', 'namespace' => 'Users'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -95,5 +95,5 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
 
     //Paul's layout
     Route::get('/v2', 'PagesController@index')->name('home');
-    Route::get('/v2/shop', 'ShopsController@index')->name('shop');
+    Route::get('/v2/shop', 'ShopsController@indexV2')->name('shop-v2');
 });
