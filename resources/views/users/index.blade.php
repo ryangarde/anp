@@ -8,9 +8,12 @@
 @endsection
 
 @section('content')
-    <div class="owl-carousel">
-        <div class="item" style="max-height: 600px"><img src="{{ asset('images/home-banner.jpg') }}" alt=""></div>
-        <div class="item" style="max-height: 600px"><img src="{{ asset('images/shop-banner-2.jpg') }}" alt=""></div>
+    <div class="owl-carousel mt-5">
+        <div class="item" style="max-height: 550px"><img class="img-fluid" src="{{ asset('images/slide-1.jpg') }}" alt=""></div>
+        <div class="item" style="max-height: 550px"><img class="img-fluid" src="{{ asset('images/slide-2.jpg') }}" alt=""></div>
+        <div class="item" style="max-height: 550px"><img class="img-fluid" src="{{ asset('images/slide-3.jpg') }}" alt=""></div>
+        <div class="item" style="max-height: 550px"><img class="img-fluid" src="{{ asset('images/slide-4.jpg') }}" alt=""></div>
+        <div class="item" style="max-height: 550px"><img class="img-fluid" src="{{ asset('images/slide-5.jpg') }}" alt=""></div>
     </div>
     <div class="container">
         <div class="row">
@@ -155,6 +158,8 @@
                 autoWidth:false,
                 responsiveClass:true,
                 center:true,
+                smartSpeed:250,
+                fluidSpeed:true,
                 items:1
             });
         });
