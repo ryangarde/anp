@@ -32,7 +32,7 @@ a:hover {
     height: 100px;
     width: 100%;
     background: transparent;
-    color: #942E08;
+    color: maroon;
     font-size: 16px;
     line-height: 30px;
     -webkit-transition: height .5s, line-height .5s; /* Safari */
@@ -117,7 +117,7 @@ a:hover {
 }
 
 .title-color {
-    color: #912513;
+    color: maroon;
 }
 
 .image-box{
