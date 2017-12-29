@@ -2,8 +2,16 @@
 
 @section('title', 'Dashboard')
 
+@section('styles')
+    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-    <div class="container-fluid" style="background: url('/images/home-banner.jpg') no-repeat top/cover; height: 600px"></div>
+    <div class="owl-carousel">
+        <div class="item" style="max-height: 600px"><img src="{{ asset('images/home-banner.jpg') }}" alt=""></div>
+        <div class="item" style="max-height: 600px"><img src="{{ asset('images/shop-banner-2.jpg') }}" alt=""></div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center mt-5">
@@ -133,4 +141,22 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel({
+                autoplay:true,
+                autoplayTimeout:5000,
+                loop:true,
+                autoWidth:false,
+                responsiveClass:true,
+                center:true,
+                items:1
+            });
+        });
+    </script>
 @endsection
