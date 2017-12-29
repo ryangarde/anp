@@ -17,7 +17,7 @@
     <link href="{{ asset('css/bootstrap-grid.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/admin-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css" rel="stylesheet">
 
 </head>
@@ -26,7 +26,7 @@
         @include('users.layouts.navbar')
 
         @auth
-        <div class="container mb-5">
+        <div class="container mb-5 content">
             <div class="row">
                 <div class="col-md-3">
                     @include('users.layouts.sidebar')

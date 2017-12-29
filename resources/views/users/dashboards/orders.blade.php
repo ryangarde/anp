@@ -1,6 +1,6 @@
 @extends('users.layouts.app-dashboard')
 
-@section('title', 'Dashboard')
+@section('title', 'Dashboard | Orders')
 
 @section('content')
 @foreach ($orders->chunk(3) as $chunk)
@@ -31,5 +31,5 @@
 </div>
 <div class="w-100"></div><br>
 @endforeach
-{{ $orders->links('vendor.pagination.bootstrap-4') }}
+{{-- {{ $orders->links('vendor.pagination.bootstrap-4') }} --}}
 @endsection
