@@ -74,11 +74,27 @@ class ShopsController extends Controller
         $searchUrl = $this->product->getSearchUrl(request());
 
         // Return v2 view of shop.
-        if (request()->is('v2/shop')) {
-            return view('users.v2.shop', compact('categories', 'producers', 'products', 'searchUrl'));
-        }
+
 
         // Return view and pass variables.
         return view('users.shop.index', compact('categories', 'producers', 'products', 'searchUrl'));
+    }
+
+    public function indexV2()
+    {
+        // Retrieve all categories
+        $categories = $this->category->all();
+
+        // Retrieve all producers
+        $producers = $this->producer->all();
+
+        // Retrieve all products, filter if needed
+        $products = $this->product->paginateWithFiltersAndProducer(request(), 9);
+
+        // Get search url for filtering
+        $searchUrl = $this->product->getSearchUrl(request());
+
+        // Return v2 view of shop.
+        return view('users.v2.shop', compact('categories', 'producers', 'products', 'searchUrl'));
     }
 }

@@ -94,6 +94,6 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
     });
 
     //Paul's layout
-    Route::get('/v2', 'PagesController@index')->name('home');
-    Route::get('/v2/shop', 'ShopsController@index')->name('shop');
+    Route::get('/v2', 'PagesController@index')->name('home-v2');
+    Route::get('/v2/shop', 'ShopsController@indexV2')->name('shop-v2');
 });
