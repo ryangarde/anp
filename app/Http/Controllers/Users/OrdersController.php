@@ -45,8 +45,6 @@ class OrdersController extends Controller
     {
         $orders = $this->user->getUserOrders();
 
-        return $orders;
-
         return view('users.dashboards.orders', compact('orders'));
     }
 
