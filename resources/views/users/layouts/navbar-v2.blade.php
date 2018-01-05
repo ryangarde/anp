@@ -4,7 +4,7 @@
     </a> --}}
 
     <a class="navbar-brand ml-md-5 ml-0" href="/">
-        <img src="{{ asset('images/anp-logo.png') }}" class="d-inline-block img-fluid" alt="" style="max-height: 100px">
+        <img id="anp-logo" src="{{ asset('images/anp-logo.png') }}" class="d-inline-block img-fluid" alt="" style="max-height: 100px">
         {{-- <span class="small" style="color: white;">HYBrain</span> --}}
     </a>
 

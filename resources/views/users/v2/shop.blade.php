@@ -3,7 +3,13 @@
 @section('title', 'Official Website of the Association of Negros Producers')
 
 @section('content')
-    <div class="container-fluid" style="background: url('/images/shop-banner-2.jpg') no-repeat top/cover; height: 400px"></div>
+    <div class="d-flex align-content-center justify-content-center text-center" style="background: url('/images/shop-banner-2.jpg') no-repeat top/cover; height: 400px">
+        @if (Request::is('v2') || Request::is('v2/shop'))
+            @include('users.layouts.navbar-v2')
+        @else
+            @include('users.layouts.navbar')
+        @endif
+    </div>
 
     <div class="container-fluid">
         <div class="row my-5 text-center">

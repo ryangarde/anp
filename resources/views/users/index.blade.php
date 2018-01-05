@@ -8,18 +8,20 @@
 @endsection
 
 @section('content')
-    <div class="owl-carousel mt-5">
-        <div class="item" style="max-height: 550px"><img class="img-fluid" src="{{ asset('images/slide-1.jpg') }}" alt=""></div>
-        <div class="item" style="max-height: 550px"><img class="img-fluid" src="{{ asset('images/slide-2.jpg') }}" alt=""></div>
-        <div class="item" style="max-height: 550px"><img class="img-fluid" src="{{ asset('images/slide-3.jpg') }}" alt=""></div>
-        <div class="item" style="max-height: 550px"><img class="img-fluid" src="{{ asset('images/slide-4.jpg') }}" alt=""></div>
-        <div class="item" style="max-height: 550px"><img class="img-fluid" src="{{ asset('images/slide-5.jpg') }}" alt=""></div>
+    <div class="d-flex align-content-center justify-content-center text-center" style="background: url('/images/home-banner.jpg') no-repeat top/cover; height: 400px">
+        @if (Request::is('v2') || Request::is('v2/shop'))
+            @include('users.layouts.navbar-v2')
+        @else
+            @include('users.layouts.navbar')
+        @endif
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center mt-5">
-                <h1 class="title-color">WELCOME TO THE</h1>
-                <h1 class="title-color">ASSOCIATION OF NEGROS PRODUCERS</h1>
+            <div class="col-md-12 text-center">
+                <div class="mt-5">
+                    <h1 class="h1-color">WELCOME TO THE</h1>
+                    <h1 class="h1-color">ASSOCIATION OF NEGROS PRODUCERS</h1>
+                </div>
 
                 <div class="d-flex-nowrap mt-5">
                     <div class="d-inline-block">
@@ -158,9 +160,9 @@
                 autoWidth:false,
                 responsiveClass:true,
                 center:true,
-                smartSpeed:250,
+                smartSpeed:700,
                 fluidSpeed:true,
-                items:1
+                items:3
             });
         });
     </script>

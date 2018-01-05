@@ -52,7 +52,11 @@ a:hover {
 .scrolled-nav {
     height: 60px !important;
     line-height: 30px !important;
-    background: rgba(233, 181, 149, 0.96) !important;
+    background: maroon !important;
+}
+
+.scrolled-links {
+    color: #d2cbcb !important;
 }
 
 .show-on-hover {
@@ -118,6 +122,11 @@ a:hover {
 
 .title-color {
     color: maroon;
+}
+
+.h1-color {
+    color: maroon;
+    text-shadow: #ff3109 1px 1px 1px;
 }
 
 .image-box{

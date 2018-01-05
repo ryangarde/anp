@@ -24,13 +24,6 @@
     @yield('styles')
 </head>
 <body>
-
-    @if (Request::is('v2') || Request::is('v2/shop'))
-        @include('users.layouts.navbar-v2')
-    @else
-        @include('users.layouts.navbar')
-    @endif
-
     @yield('content')
 
     @if (Request::is('v2') || Request::is('v2/shop'))
