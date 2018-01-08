@@ -8,7 +8,11 @@
 @endsection
 
 @section('content')
-    <div class="d-flex align-content-center justify-content-center text-center" style="background: url('/images/home-banner.jpg') no-repeat top/cover; height: 400px">
+    <div class="owl-carousel">
+        <div class="item" style="background: url('/images/home-banner.jpg') no-repeat top/cover; height: 400px;"></div>
+        <div class="item" style="background: url('/images/shop-banner-2.jpg') no-repeat top/cover; height: 400px;"></div>
+    </div>
+    <div class="d-flex align-content-center justify-content-center text-center">
         @if (Request::is('v2') || Request::is('v2/shop'))
             @include('users.layouts.navbar-v2')
         @else
@@ -162,7 +166,7 @@
                 center:true,
                 smartSpeed:700,
                 fluidSpeed:true,
-                items:3
+                items:1
             });
         });
     </script>

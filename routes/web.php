@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['domain' => 'admin.anp.dev', 'namespace' => 'Admins'], function () {
+Route::group(['domain' => 'admin.anp.loc', 'namespace' => 'Admins'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('admin.login');
@@ -48,7 +48,7 @@ Route::group(['domain' => 'admin.anp.dev', 'namespace' => 'Admins'], function ()
     });
 });
 
-Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
+Route::group(['domain' => 'anp.loc', 'namespace' => 'Users'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('login');
