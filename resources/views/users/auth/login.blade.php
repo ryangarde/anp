@@ -3,6 +3,9 @@
 @section('title', 'Login')
 
 @section('content')
+<div class="d-flex align-content-center justify-content-center text-center" style="background: url('/images/shop-banner-2.jpg') no-repeat top/cover; height: 200px">
+    @include('users.layouts.navbar-v2')
+</div>
 <div class="container content">
     <div class="row">
         <div class="col-md-6 mx-auto">

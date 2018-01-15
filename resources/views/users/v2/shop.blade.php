@@ -32,6 +32,8 @@
                 @include('users.shop.filter')
             </div>
 
+            <products></products>
+
             <div class="col-md-9">
                 <div class="card-columns">
                     @foreach ($products as $product)

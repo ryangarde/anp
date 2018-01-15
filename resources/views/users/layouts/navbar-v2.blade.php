@@ -70,7 +70,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link mx-2" href="/"><strong>E COMMERCE</strong></a>
+                <a class="nav-link mx-2" href="{{ route('shop-v2') }}"><strong>E COMMERCE</strong></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link mx-2" href="/"><strong>CONTACT US</strong></a>
@@ -137,7 +137,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link mx-2" href="/"><strong>E COMMERCE</strong></a>
+            <a class="nav-link mx-2" href="{{ route('shop-v2') }}"><strong>E COMMERCE</strong></a>
         </li>
         <li class="nav-item">
             <a class="nav-link mx-2" href="/"><strong>CONTACT US</strong></a>

@@ -24,17 +24,14 @@
     @yield('styles')
 </head>
 <body>
-    @yield('content')
+    <div id="app">
+        @yield('content')
 
-    @if (Request::is('v2') || Request::is('v2/shop'))
         @include('users.layouts.footer-v2')
-    @else
-        @include('users.layouts.footer')
-    @endif
-
+    </div>
 
     <!-- Scripts -->
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>

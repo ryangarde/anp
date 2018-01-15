@@ -93,7 +93,12 @@ Route::group(['domain' => 'anp.loc', 'namespace' => 'Users'], function () {
         });
     });
 
-    //Paul's layout
+    //V2 with VueJS
     Route::get('/v2', 'PagesController@index')->name('home-v2');
     Route::get('/v2/shop', 'ShopsController@indexV2')->name('shop-v2');
+    Route::resource('/products', 'ProductsController');
+
+    Route::group(['prefix' => 'cart'], function () {
+        Route::post('add', 'CartsController@addToCart')->name('cart.add');
+    });
 });

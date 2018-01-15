@@ -10,14 +10,12 @@
 @section('content')
     <div class="owl-carousel">
         <div class="item" style="background: url('/images/home-banner.jpg') no-repeat top/cover; height: 400px;"></div>
-        <div class="item" style="background: url('/images/shop-banner-2.jpg') no-repeat top/cover; height: 400px;"></div>
+        <div class="item" style="background: url('/images/transparent.png') repeat center/cover, url('/images/home-banner-2.jpg') no-repeat center/cover; height: 400px;"></div>
+        <div class="item" style="background: url('/images/transparent.png') repeat center/cover, url('/images/home-banner-3.jpg') no-repeat top/cover; height: 400px;"></div>
+        <div class="item" style="background: url('/images/transparent.png') repeat center/cover, url('/images/home-banner-4.jpg') no-repeat center/cover; height: 400px;"></div>
     </div>
     <div class="d-flex align-content-center justify-content-center text-center">
-        @if (Request::is('v2') || Request::is('v2/shop'))
-            @include('users.layouts.navbar-v2')
-        @else
-            @include('users.layouts.navbar')
-        @endif
+        @include('users.layouts.navbar-v2')
     </div>
     <div class="container">
         <div class="row">
