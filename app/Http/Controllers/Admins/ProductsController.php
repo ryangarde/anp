@@ -55,12 +55,6 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $arr1 = [1,2,3];
-        $arr2 = [1,2,3,4,5,6,7];
-        $arr3 = array_diff($arr1, $arr2);
-        if (count($arr3) == 0) {
-            // all of $arr1 is in $arr2
-        }
         // Retrieve all categories
         $categories = $this->category->all();
 

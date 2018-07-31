@@ -16,19 +16,25 @@
                 <p class="card-text">Total Amount: {{ $order->grandTotal }}</p>
                 <a href="#" class="btn btn-primary btn-sm">View Products</a>
             </div>
-            <div class="card-footer text-muted">
+            <div class="card-footer text-muted clearfix">
                 @if ($order->status == 0)
-                <span class="text-info">Pending</span>
+                <span class="float-left text-info">Pending</span>
                 @elseif ($order->status == 1)
-                <span class="text-success">Confirmed</span>
+                <span class="float-left text-success">Confirmed</span>
                 @else
-                <span class="text-danger">Cancelled</span>
+                <span class="float-left text-danger">Cancelled</span>
                 @endif
-            </div>
+                @if ($order->status == 0)
+                <a href="{{ route('admins.orders.confirm', $order->id) }}" class="float-right btn btn-primary btn-sm">Confirm</a>
+                @elseif ($order->status == 1)
+                <a href="{{ route('admins.orders.cancel', $order->id) }}" class="float-right btn btn-danger btn-sm">Cancel</a>
+                @else
+                @endif
+            </a>
         </div>
     </div>
-    @endforeach
 </div>
+@endforeach
 <div class="w-100"></div><br>
 @endforeach
 @endsection

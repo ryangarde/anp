@@ -62,12 +62,16 @@ abstract class Repository implements RepositoryInterface
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  integer                   $length
-     * @param  boolean                   $removePage
      * @param  string                    $orderBy
+     * @param  boolean                   $removePage
      * @return array json object
      */
-    public function paginateWithFilters($request = null, $length = 10, $removePage = false, $orderBy = 'desc')
-    {
+    public function paginateWithFilters(
+        $request = null,
+        $length = 10,
+        $orderBy = 'desc',
+        $removePage = true
+    ) {
         return $this->model->filter($request)
             ->orderBy('created_at', $orderBy)
             ->paginate($length)

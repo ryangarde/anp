@@ -3,7 +3,7 @@
 /*
  * This file is part of filtering.
  *
- * (c) Gether Kestrel B. Medel <dus.medel22@gmail.com>
+ * (c) Gether Kestrel B. Medel <gether.medel@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -91,6 +91,12 @@ trait Filtering
                 }
             }
         });
+
+        if ($request->has('is_published')) {
+            if ($request->is_published == 1 || $request->is_published == 0) {
+                $query->where('is_published', $request->is_published);
+            }
+        }
 
         self::checkTraits($query, $request);
     }

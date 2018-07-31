@@ -44,7 +44,7 @@ class Product extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            static::insertImage($model);
+            static::storeImage($model);
         });
 
         static::updating(function ($model) {
