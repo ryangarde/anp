@@ -10,6 +10,14 @@
     </div>
 </div>
 
+<div class="d-flex align-content-center justify-content-center text-center">
+    @if (Request::is('v2') || Request::is('v2/shop'))
+        @include('users.layouts.navbar-v2')
+    @else
+        @include('users.layouts.navbar')
+    @endif
+</div>
+
 <div class="container mb-5 mt-4">
     <div class="row">
         <div class="col-md-3">

@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Contracts\OrderProductInterface;
 use App\Contracts\ShoppingCartInterface;
 use App\OrderProduct;
+use App\Order;
 
 class OrderProductRepository extends Repository implements OrderProductInterface
 {
@@ -45,4 +46,42 @@ class OrderProductRepository extends Repository implements OrderProductInterface
 
         return true;
     }
+
+    /**
+     * Retrieve a single order.
+     *
+     * @return array object
+     */
+    public function showOrder($id)
+    {
+        $order = Order::find($id);
+        $orderProduct = $this->orderProduct->all();
+        $orderProduct = $orderProduct->where('order_id',$order->id);
+
+        return $orderProduct;
+    }
+
+    /**
+     * Retrieve a list of products to be ordered.
+     *
+     * @return array object
+     */
+    public function getProductList()
+    {
+        $id = OrderProduct::latest()->first();
+        $products = OrderProduct::where('order_id',$id->order_id)->get();
+        return $products;
+    }
+
+    /**
+     * Show a single order with list of items.
+     *
+     * @return array object
+     */
+    public function findOrFailWithOrder($id)
+    {
+        return $this->model->with('order')->findOrFail($id);
+    }
 }
+
+

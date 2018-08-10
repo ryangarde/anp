@@ -202,3 +202,20 @@ footer .page-header {
     padding: .2rem 0rem !important;
     font-size: 90% !important;
 }
+
+#order-successful {
+    bottom: 20px;
+    position: fixed;
+    right: 20px;
+    z-index: 10;
+    border-radius: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: #CC491E;
+}
+
+
+@keyframes order-successful {
+    0%   {opacity: 1;}
+    100% {opacity: 0; display:none;}
+}

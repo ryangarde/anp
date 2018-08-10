@@ -26,6 +26,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group row {{ $errors->has('phone_number') ? 'has-error' : '' }}">
+                            <label for="phone_number" class="col-sm-3 col-form-label">Phone Number</label>
+                            <div class="col-sm-9">
+                                <input id="phone_number" type="number" class="form-control" name="phone_number" value="{{ old('phone_number') }}" required autofocus>
+                                @if ($errors->has('phone_number'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row {{ $errors->has('email') ? 'has-error' : '' }}">
                             <label for="email" class="col-sm-3 col-form-label">Email Address</label>
                             <div class="col-sm-9">
@@ -81,6 +93,9 @@
                                 </button>
                             </div>
                         </div>
+                        <br>
+                        @include('users.layouts.errors')
+
                     </form>
                 </div>
             </div>

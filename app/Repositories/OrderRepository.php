@@ -48,6 +48,8 @@ class OrderRepository extends Repository implements OrderInterface
         return true;
     }
 
+
+
     /**
      * Retrieve user orders.
      *
@@ -114,6 +116,8 @@ class OrderRepository extends Repository implements OrderInterface
                 return collect($order);
             });*/
     }
+
+
 
     /**
      * Retrieve all orders.

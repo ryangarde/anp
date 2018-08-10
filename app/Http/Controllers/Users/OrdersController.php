@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Users;
 
 use App\Contracts\OrderInterface;
 use App\Contracts\UserInterface;
+use App\Contracts\OrderProductInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Order;
 use Illuminate\Http\Request;
+use App\User;
+use App\Mail\OrderSuccessful;
 
 class OrdersController extends Controller
 {
@@ -25,15 +28,21 @@ class OrdersController extends Controller
     protected $user;
 
     /**
+     * OrderProduct object.
+     *
+     * @var App\Contracts\OrderInterface
+     */
+    protected $orderProduct;
+    /**
      * Create new instance of product object.
      *
      * @param OrderInterface $order Order interface
      * @param UserInterface  $user  User interface
      */
-    public function __construct(OrderInterface $order, UserInterface $user)
-    {
+    public function __construct(OrderInterface $order, UserInterface $user, OrderProductInterface $orderProduct){
         $this->order = $order;
         $this->user  = $user;
+        $this->orderProduct = $orderProduct;
     }
 
     /**
@@ -44,8 +53,20 @@ class OrdersController extends Controller
     public function index()
     {
         $orders = $this->user->getUserOrders();
-
         return view('users.dashboards.orders', compact('orders'));
+    }
+
+    /**
+     * Show an order with list of items.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function show($id)
+    {
+        $orderProduct = $this->orderProduct->showOrder($id);
+        return view ('users.dashboards.show-orders',compact('orderProduct'));
     }
 
     /**
@@ -54,6 +75,7 @@ class OrdersController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+
     public function order(Request $request)
     {
         if (! $this->user->isShoppingCartEmpty()) {
@@ -63,9 +85,10 @@ class OrdersController extends Controller
                     'email'        => auth()->user()->email,
                     'phone_number' => auth()->user()->phone_number,
                     'message'      => auth()->user()->name . ' has ordered'
-                ]);
-
-                Mail::send($orderMail);*/
+                ]);*/
+                $user = User::all();
+                $products = $this->orderProduct->getProductList();
+                \Mail::to($user)->send(new OrderSuccessful($products));
 
                 if ($this->user->clearShoppingCart()) {
                     return redirect()->route('orders.index')->with('message', 'Order successful please wait for confirmation on your email');
@@ -85,16 +108,15 @@ class OrdersController extends Controller
     public function cancelOrder(Request $request)
     {
         if ($this->order->cancelOrder(request())) {
-            $cancelOrderMail = new cancelOrderMail([
+            /*$cancelOrderMail = new cancelOrderMail([
                 'name'         => auth()->user()->name,
                 'email'        => auth()->user()->email,
                 'phone_number' => auth()->user()->phone_number,
                 'message'      => 'Order number ' . request()->id . ' has been cancelled'
             ]);
 
-            Mail::send($cancelOrderMail);
-
-            return redirect()->route('orders.check-orders')->with('message', 'Order successfully cancelled');
+            Mail::send($cancelOrderMail);*/
+            return redirect()->route('orders.index')->with('message', 'Order successfully cancelled');
         }
 
         return redirect()->route('orders.check-orders')->with('message', 'Whoops something went wrong please try again');

@@ -15,4 +15,14 @@ class PagesController extends Controller
     {
         return view('users.contact-us');
     }
+
+    public function aboutUs()
+    {
+        return view('users.about-us');
+    }
+
+    public function instructions()
+    {
+        return view('users.instructions');
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['domain' => 'admin.anp.dev', 'namespace' => 'Admins'], function () {
+Route::group(['domain' => 'admin.anp.test', 'namespace' => 'Admins'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('admin.login');
@@ -52,7 +52,7 @@ Route::group(['domain' => 'admin.anp.dev', 'namespace' => 'Admins'], function ()
     });
 });
 
-Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
+Route::group(['domain' => 'anp.test', 'namespace' => 'Users'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -70,7 +70,9 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
 
     // Pages
     Route::get('/', 'PagesController@index')->name('home');
+    Route::get('instructions','PagesController@instructions')->name('instructions');
     Route::get('contact-us', 'PagesController@contactUs')->name('contact-us');
+    Route::get('about-us', 'PagesController@aboutUs')->name('about-us');
 
     // Shop
     Route::get('shop', 'ShopsController@index')->name('shop');
@@ -93,6 +95,7 @@ Route::group(['domain' => 'anp.dev', 'namespace' => 'Users'], function () {
         Route::group(['prefix' => 'orders'], function () {
             Route::get('/', 'OrdersController@index')->name('orders.index');
             Route::post('order', 'OrdersController@order')->name('orders.order');
+            Route::get('/{order}', 'OrdersController@show');
             Route::post('cancel-order', 'OrdersController@cancelOrder')->name('orders.cancel-order');
         });
     });

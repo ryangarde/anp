@@ -10,6 +10,13 @@
         <h1 class="shop-header-cover-title">Contact Us</h1>
     </div>
 </div>
+<div class="d-flex align-content-center justify-content-center text-center">
+    @if (Request::is('v2') || Request::is('v2/shop'))
+        @include('users.layouts.navbar-v2')
+    @else
+        @include('users.layouts.navbar')
+    @endif
+</div>
 
 <div class="container mb-5 mt-4 pt-3">
     <div class="row">
