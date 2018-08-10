@@ -62,9 +62,9 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <img class="img-fluid" src="{{ asset('storage/dti.jpg') }}">
+                    <img class="img-fluid" src="{{ asset('storage/app/public/dti.jpg') }}">
                     <br><br>
-                    <img class="img-fluid" src="{{ asset('storage/otop-logo.png') }}">
+                    <img class="img-fluid" src="{{ asset('storage/app/public/otop-logo.png') }}">
                 </div>
             </div>
         </div>

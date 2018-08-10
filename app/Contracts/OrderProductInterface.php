@@ -11,4 +11,12 @@ interface OrderProductInterface
      * @return boolean
      */
     public function orderItems($id);
+
+    /**
+     * Show ordered items
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return boolean
+     */
+    public function findOrFailWithOrder($id);
 }

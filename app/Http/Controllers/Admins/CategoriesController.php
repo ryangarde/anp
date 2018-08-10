@@ -39,7 +39,7 @@ class CategoriesController extends Controller
         $searchUrl = $this->category->getSearchUrl(request());
 
         // Retrieve Archives
-        $archives = $this->category->archives();
+        // $archives = $this->category->archives();
 
         // Get current path for archives
         $path = request()->path();

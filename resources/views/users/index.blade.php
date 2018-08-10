@@ -2,13 +2,30 @@
 
 @section('title', 'Dashboard')
 
+@section('styles')
+    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-    <div class="container-fluid" style="background: url('/images/home-banner.jpg') no-repeat top/cover; height: 600px"></div>
+    <div class="owl-carousel">
+        <div class="item" style="background: url('/images/home-banner.jpg') no-repeat top/cover; height: 400px;"></div>
+        <div class="item" style="background: url('/images/shop-banner-2.jpg') no-repeat top/cover; height: 400px;"></div>
+    </div>
+    <div class="d-flex align-content-center justify-content-center text-center">
+        @if (Request::is('v2') || Request::is('v2/shop'))
+            @include('users.layouts.navbar-v2')
+        @else
+            @include('users.layouts.navbar')
+        @endif
+    </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center mt-5">
-                <h1 class="title-color">WELCOME TO THE</h1>
-                <h1 class="title-color">ASSOCIATION OF NEGROS PRODUCERS</h1>
+            <div class="col-md-12 text-center">
+                <div class="mt-5">
+                    <h1 class="h1-color">WELCOME TO THE</h1>
+                    <h1 class="h1-color">ASSOCIATION OF NEGROS PRODUCERS</h1>
+                </div>
 
                 <div class="d-flex-nowrap mt-5">
                     <div class="d-inline-block">
@@ -133,4 +150,24 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel({
+                autoplay:true,
+                autoplayTimeout:5000,
+                loop:true,
+                autoWidth:false,
+                responsiveClass:true,
+                center:true,
+                smartSpeed:700,
+                fluidSpeed:true,
+                items:1
+            });
+        });
+    </script>
 @endsection

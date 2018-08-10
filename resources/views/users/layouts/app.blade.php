@@ -21,16 +21,9 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/lightbox.min.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css" rel="stylesheet">
-
+    @yield('styles')
 </head>
 <body>
-
-    @if (Request::is('v2') || Request::is('v2/shop'))
-        @include('users.layouts.navbar-v2')
-    @else
-        @include('users.layouts.navbar')
-    @endif
-
     @yield('content')
 
     @if (Request::is('v2') || Request::is('v2/shop'))
@@ -38,7 +31,6 @@
     @else
         @include('users.layouts.footer')
     @endif
-
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}

@@ -2,7 +2,6 @@
     <div class="container">
         <a class="navbar-brand text-white" href="#">
             <img src="{{ asset('storage/anp-logo-white-2.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-            {{ config('app.name') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -10,6 +9,12 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav custom-navbar-nav">
+                <li>
+                    <a class="navbar-brand text-white" href="#">
+                        <img src="http://anp.hybrain.co/storage/anp-logo-white-2.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                        Association of Negros Producers
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
@@ -25,6 +30,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contact-us') }}">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('about-us') }}">About Us</a>
+                </li>
             </ul>
 
             <div class="mr-auto"></div>
@@ -34,7 +42,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-info" href="#" onclick="event.preventDefault();">
                         @if (session('message'))
-                        {{ session('message') }}
+                        <div id="order-successful" class="order-successful">
+                            {{ session('message') }}
+                        </div>
                         @endif
                     </a>
                 </li>

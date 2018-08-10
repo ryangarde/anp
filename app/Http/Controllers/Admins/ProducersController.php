@@ -39,7 +39,7 @@ class ProducersController extends Controller
         $searchUrl = $this->producer->getSearchUrl(request());
 
         // Retrieve Archives
-        $archives = $this->producer->archives();
+        //$archives = $this->producer->archives();
 
         // Get current path for archives
         $path = request()->path();
@@ -125,7 +125,7 @@ class ProducersController extends Controller
     {
         // Check if news is owned by the current user.
         //$this->news->authorize('update');
-        
+
         $this->validate($request, [
             'name'    => 'required|min:2|max:255',
             'website' => 'max:255'
@@ -136,7 +136,7 @@ class ProducersController extends Controller
 
         // If authorize fill the fields and save.
         $producer->fill($request->all())->save();
-        
+
         // After updating the category redirect to edit page with a success message.
         return redirect()->route('producers.show', $producer->id)->with('message', 'Producer successfully updated');
     }
