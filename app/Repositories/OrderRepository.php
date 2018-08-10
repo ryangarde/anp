@@ -157,9 +157,9 @@ class OrderRepository extends Repository implements OrderInterface
      * @param  \Illuminate\Http\Request $request
      * @return boolean
      */
-    public function cancelOrder($request)
+    public function cancelOrder($id)
     {
-        if ($this->order->findOrFail($request->id)->delete()) {
+        if ($this->order->findOrFail($id)->delete()) {
             return true;
         }
 

@@ -105,9 +105,10 @@ class OrdersController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function cancelOrder(Request $request)
+    public function cancelOrder($id)
     {
-        if ($this->order->cancelOrder(request())) {
+
+        if ($this->order->cancelOrder($id)) {
             /*$cancelOrderMail = new cancelOrderMail([
                 'name'         => auth()->user()->name,
                 'email'        => auth()->user()->email,
@@ -118,7 +119,7 @@ class OrdersController extends Controller
             Mail::send($cancelOrderMail);*/
             return redirect()->route('orders.index')->with('message', 'Order successfully cancelled');
         }
-
-        return redirect()->route('orders.check-orders')->with('message', 'Whoops something went wrong please try again');
+        dd('hi');
+        return redirect()->route('orders.index')->with('message', 'Whoops something went wrong please try again');
     }
 }

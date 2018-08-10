@@ -1,7 +1,7 @@
 <?php
 
 
-Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], function () {
+Route::group(['domain' => 'admin.anp.test', 'namespace' => 'Admins'], function () {
 
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.show-login-form');
@@ -54,7 +54,7 @@ Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], func
     });
 });
 
-Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function () {
+Route::group(['domain' => 'anp.test', 'namespace' => 'Users'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -98,7 +98,7 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
             Route::get('/', 'OrdersController@index')->name('orders.index');
             Route::post('order', 'OrdersController@order')->name('orders.order');
             Route::get('/{order}', 'OrdersController@show');
-            Route::post('cancel-order', 'OrdersController@cancelOrder')->name('orders.cancel-order');
+            Route::post('/{order}', 'OrdersController@cancelOrder');
         });
     });
 

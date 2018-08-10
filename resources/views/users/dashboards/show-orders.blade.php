@@ -27,7 +27,7 @@
             </tbody>
         </table>
         <a href="/orders" class="btn btn-primary">Back</a>
-        <form method="POST" action="orders.cancel-order">
+        <form method="POST" action="/orders/{{ $order->order->id }}">
             {{ csrf_field() }}
             <button type="submit" class="btn btn-danger">Cancel</button>
         </form>
