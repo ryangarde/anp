@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['domain' => 'admin.anp.test', 'namespace' => 'Admins'], function () {
+Route::group(['domain' => 'admin.anp.hybain.co', 'namespace' => 'Admins'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('admin.login');
@@ -52,7 +52,7 @@ Route::group(['domain' => 'admin.anp.test', 'namespace' => 'Admins'], function (
     });
 });
 
-Route::group(['domain' => 'anp.test', 'namespace' => 'Users'], function () {
+Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('login');
