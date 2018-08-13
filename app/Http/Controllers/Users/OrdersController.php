@@ -66,7 +66,7 @@ class OrdersController extends Controller
     public function show($id)
     {
         $orderProduct = $this->orderProduct->showOrder($id);
-        return view ('users.dashboards.show-orders',compact('orderProduct'));
+        return view ('users.dashboards.show-orders',compact('orderProduct','id'));
     }
 
     /**
@@ -86,9 +86,8 @@ class OrdersController extends Controller
                     'phone_number' => auth()->user()->phone_number,
                     'message'      => auth()->user()->name . ' has ordered'
                 ]);*/
-                $user = User::all();
                 $products = $this->orderProduct->getProductList();
-                \Mail::to($user)->send(new OrderSuccessful($products));
+                //\Mail::to(auth()->user())->send(new OrderSuccessful($products));
 
                 if ($this->user->clearShoppingCart()) {
                     return redirect()->route('orders.index')->with('message', 'Order successful please wait for confirmation on your email');
@@ -105,16 +104,16 @@ class OrdersController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function cancelOrder(Request $request)
+    public function cancelOrder($id)
     {
-        if ($this->order->cancelOrder(request())) {
+        if ($this->order->cancelOrder($id)) {
+            $this->order->changeStatus($id);
             /*$cancelOrderMail = new cancelOrderMail([
                 'name'         => auth()->user()->name,
                 'email'        => auth()->user()->email,
                 'phone_number' => auth()->user()->phone_number,
                 'message'      => 'Order number ' . request()->id . ' has been cancelled'
             ]);
-
             Mail::send($cancelOrderMail);*/
             return redirect()->route('orders.index')->with('message', 'Order successfully cancelled');
         }

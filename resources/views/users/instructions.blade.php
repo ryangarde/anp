@@ -41,7 +41,7 @@
                         <input type="checkbox" class="form-check-input" onchange="document.getElementById('sendNewSms').disabled = !this.checked;">
                         I have read and understood the instructions and information on this page, and agree to the
                         Terms and Conditions on the use of this online appointment and scheduling system.<br><br>
-                        <input type="submit" class="btn btn-primary" id="sendNewSms" value="Proceed" disabled="disabled" onclick="window.location='/';">
+                        <input type="submit" class="btn btn-primary" id="sendNewSms" value="Proceed" disabled="disabled" onclick="window.location='/shop';">
                     </div>
                     </p>
                 </div>

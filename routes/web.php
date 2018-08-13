@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['domain' => 'admin.anp.hybain.co', 'namespace' => 'Admins'], function () {
+Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('admin.login');
@@ -48,7 +48,8 @@ Route::group(['domain' => 'admin.anp.hybain.co', 'namespace' => 'Admins'], funct
 
         // Orders Routes
         Route::get('orders', 'OrdersController@index')->name('admins.orders.index');
-        Route::get('orders/confirm', 'OrdersController@confirm')->name('admins.orders.confirm');
+        Route::post('orders/confirm/{order}', 'OrdersController@confirm')->name('admins.orders.confirm');
+        Route::post('orders/cancel/{order}', 'OrdersController@cancel')->name('admins.orders.cancel');
     });
 });
 
@@ -96,7 +97,7 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
             Route::get('/', 'OrdersController@index')->name('orders.index');
             Route::post('order', 'OrdersController@order')->name('orders.order');
             Route::get('/{order}', 'OrdersController@show');
-            Route::post('cancel-order', 'OrdersController@cancelOrder')->name('orders.cancel-order');
+            Route::post('/{order}', 'OrdersController@cancelOrder');
         });
     });
 

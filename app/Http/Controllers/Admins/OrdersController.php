@@ -37,13 +37,21 @@ class OrdersController extends Controller
         return view('admins.orders.index', compact('orders'));
     }
 
-    public function confirm(Request $request)
+    public function confirm(Order $order)
     {
-        $order = Order::findOrFail($id);
         $order->fill([
             'status' => 1
         ]);
+        $order->save();
+        return back();
+    }
 
-        return $order->save();
+    public function cancel(Order $order)
+    {
+        $order->fill([
+            'status' => 3
+        ]);
+        $order->save();
+        return back();
     }
 }
