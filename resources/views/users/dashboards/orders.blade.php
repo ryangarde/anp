@@ -21,6 +21,8 @@
                 <span class="text-info">Pending</span>
                 @elseif ($order->status == 1)
                 <span class="text-success">Confirmed</span>
+                @elseif ($order->status == 2)
+                <span class="text-warning">Requesting for cancellation</span>
                 @else
                 <span class="text-danger">Cancelled</span>
                 @endif

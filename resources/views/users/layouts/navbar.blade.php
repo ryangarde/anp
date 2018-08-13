@@ -19,7 +19,7 @@
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('shop') }}">Shop</a>
+                    <a class="nav-link" href="{{ route('instructions') }}">Shop</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">News</a>

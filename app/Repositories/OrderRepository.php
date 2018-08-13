@@ -159,10 +159,22 @@ class OrderRepository extends Repository implements OrderInterface
      */
     public function cancelOrder($id)
     {
-        if ($this->order->findOrFail($id)->delete()) {
+
+        if ($this->order->findOrFail($id)) {
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * change order status to '1'
+     *
+     */
+    public function changeStatus($id)
+    {
+        $order = Order::find($id);
+        $order->status = 2;
+        $order->save();
     }
 }

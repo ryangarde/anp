@@ -48,7 +48,7 @@ class OrderProductRepository extends Repository implements OrderProductInterface
     }
 
     /**
-     * Retrieve a single order.
+     * Retrieve a current order.
      *
      * @return array object
      */
@@ -62,7 +62,7 @@ class OrderProductRepository extends Repository implements OrderProductInterface
     }
 
     /**
-     * Retrieve a list of products to be ordered.
+     * Retrieve a list of products to be shown on email.
      *
      * @return array object
      */

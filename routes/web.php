@@ -1,7 +1,7 @@
 <?php
 
 
-Route::group(['domain' => 'admin.anp.test', 'namespace' => 'Admins'], function () {
+Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], function () {
 
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.show-login-form');
@@ -50,7 +50,8 @@ Route::group(['domain' => 'admin.anp.test', 'namespace' => 'Admins'], function (
 
         // Orders Routes
         Route::get('orders', 'OrdersController@index')->name('admins.orders.index');
-        Route::get('orders/confirm', 'OrdersController@confirm')->name('admins.orders.confirm');
+        Route::post('orders/confirm/{order}', 'OrdersController@confirm')->name('admins.orders.confirm');
+        Route::post('orders/cancel/{order}', 'OrdersController@cancel')->name('admins.orders.cancel');
     });
 });
 
