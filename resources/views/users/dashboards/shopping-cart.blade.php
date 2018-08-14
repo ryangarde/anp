@@ -53,6 +53,12 @@
         <tr>
             <td></td>
             <td></td>
+            <td colspan="2"></td>
+            <td>with additional shipment fee</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
             <td colspan="2">Discount</td>
             <td></td>
         </tr>

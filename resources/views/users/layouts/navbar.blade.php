@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar" {{-- style="background-color: rgba(229, 202, 159, 1) !important;" --}}>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar" style="background-color: rgba(161, 30, 0, 1) !important;">
     <div class="container">
         <a class="navbar-brand text-white" href="#">
             <img src="{{ asset('storage/anp-logo-white-2.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -77,3 +77,4 @@
         </div>
     </div>
 </nav>
+

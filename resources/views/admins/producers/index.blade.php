@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-header">
             Producer List
-            <a href="{{ route('producers.create') }}" class="float-right text-success">Create New Producer</a>
+            <a href="{{ route('producers.create') }}" class="float-right btn btn-success btn-sm">Create New Producer</a>
         </div>
         <div class="card-body">
             @if (session('message'))
@@ -23,7 +23,7 @@
             @endif
             <div class="row">
                 <div class="col-md-9">
-                    <table class="table table-striped">
+                    <table class="table table-hover table-producer">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -35,9 +35,9 @@
                         <tbody>
                             @foreach ($producers as $producer)
                             <tr>
-                                <td>{{ $producer->name }}</td>
-                                <td>{{ $producer->website }}</td>
-                                <td><a href="{{ route('producers.show', $producer->id) }}" class="text-info">View</a></td>
+                                <td class="name">{{ $producer->name }}</td>
+                                <td class="website">{{ $producer->website }}</td>
+                                <td class="options"><a href="{{ route('producers.show', $producer->id) }}" class="btn btn-info btn-sm">View</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -71,6 +71,11 @@
                 </div>
             </div>
         </div>
+        <div class="card-footer">
+            <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
+        </div>
     </div>
 </div>
 @endsection
+
+

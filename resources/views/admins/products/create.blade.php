@@ -18,7 +18,7 @@
 
             <div class="form-group">
                 <label for="image">Image</label>
-                <input type="file" class="form-control-file" name="image" id="image" autocomplete="off" required>
+                <input type="file" class="form-control-file" name="image" id="image" autocomplete="off" >
                 @if ($errors->has('image'))
                 <span class="help-block">
                     <strong>{{ $errors->first('image') }}</strong>
@@ -73,15 +73,25 @@
                 </span>
                 @endif
             </div>
-
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input type="text" class="form-control" name="price" id="price" autocomplete="off" required>
-                @if ($errors->has('price'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('price') }}</strong>
-                </span>
-                @endif
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" name="price" id="price" autocomplete="off" required>
+                    @if ($errors->has('price'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('price') }}</strong>
+                    </span>
+                    @endif
+                </div>
+                <div class="form-group col-md-7">
+                    <label for="retail size">Retail Size:</label>
+                    <input type="text" class="form-control" name="retail_size" id="retail_size" autocomplete="off">
+                    @if ($errors->has('retail_size'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('retail_size') }}</strong>
+                    </span>
+                    @endif
+                </div>
             </div>
 
             <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>

@@ -52,10 +52,10 @@
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
-                                <button type="submit" class="btn btn-theme-color btn-sm">
+                                <button type="submit" class="btn btn-theme-color btn-sm" style="cursor: pointer;">
                                     Sign in
                                 </button>
-
+                                <a href="/register" class="btn btn-theme-color btn-sm">Register</a>
                                 <a class="btn btn-link" href="{{ route('admin.show-link-request-form') }}">
                                     Forgot Your Password?
                                 </a>

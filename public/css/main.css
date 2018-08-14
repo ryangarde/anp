@@ -25,6 +25,7 @@ a:hover {
     color: #942E08;
 }
 
+
 #global-nav {
     position: fixed;
     top: 0;
@@ -157,7 +158,7 @@ a:hover {
 
 .anp-btn {
     background: #912513;
-    border-radius: 1px;
+    border-radius: 5px;
     color: #fff;
 }
 

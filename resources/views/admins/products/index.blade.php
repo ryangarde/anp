@@ -16,7 +16,7 @@
     @foreach ($products as $product)
     <div class="card">
         @if (! empty($product->image))
-            <img class="card-img-top" src="{{ asset('storage/images/' . $product->image) }}" alt="Card image cap">
+            <img class="card-img-top" src="{{ asset('public/products/images/' . $product->image) }}" alt="Card image cap">
         @endif
         <div class="card-body">
             <h4 class="card-title">{{ $product->name }}</h4>
@@ -26,8 +26,9 @@
             <li class="list-group-item">₱ {{ $product->price }}</li>
         </ul>
         <div class="card-body clearfix">
-            <a href="{{ route('products.show', $product->id) }}" class="float-left card-link text-info font-weight-bold">View</a>
-            <span class="float-right">{{ $product->producer->name }}</span>
+            <span>{{ $product->producer->name }}</span>
+            <br><br>
+            <a href="{{ route('products.show', $product->id) }}" class="btn btn-info btn-sm">View</a>
         </div>
     </div>
     @endforeach

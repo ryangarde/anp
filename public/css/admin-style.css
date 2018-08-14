@@ -81,3 +81,8 @@ body {
 .copyright {
     font-size: 90%;
 }
+
+.table-producer {
+    table-layout: fixed;
+    word-wrap: break-word;
+}

@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Role;
 use App\Contracts\RoleInterface;
 use App\Contracts\PermissionInterface;
-use App\Role;
 
 class RoleRepository extends Repository implements RoleInterface
 {

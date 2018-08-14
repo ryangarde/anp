@@ -23,7 +23,7 @@ class Producer extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'website'
+        'name', 'website','description'
     ];
 
     /**

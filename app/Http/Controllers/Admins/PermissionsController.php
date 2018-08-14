@@ -39,10 +39,10 @@ class PermissionsController extends Controller
         $searchUrl = $this->permission->getSearchUrl(request());
 
         // Retrieve Archives
-        $archives = $this->permission->archives();
+       // $archives = $this->permission->archives();
 
         // Get current path for archives
-        $path = request()->path();
+       // $path = request()->path();
 
         return view('admins.permissions.index', compact('permissions', 'searchUrl', 'archives', 'path'));
     }

@@ -102,7 +102,8 @@ class ProductsController extends Controller
             'image'       => 'required|image',
             'name'        => 'required|min:2|max:255',
             'description' => 'required|min:2|max:500',
-            'price'       => 'required|numeric'
+            'price'       => 'required|numeric',
+            'retail_size' => 'required'
         ]);
 
         // If validation passed add the product.

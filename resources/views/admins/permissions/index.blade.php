@@ -11,7 +11,7 @@
 <div class="card">
     <div class="card-header">
         Permission List
-        <a href="{{ route('permissions.create') }}" class="float-right text-success">Create New Permission</a>
+        <a href="{{ route('permissions.create') }}" class="float-right btn btn-primary btn-sm">Create New Permission</a>
     </div>
     <div class="card-body">
         @if (session('message'))
@@ -22,7 +22,7 @@
         @endif
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-striped">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Name</th>

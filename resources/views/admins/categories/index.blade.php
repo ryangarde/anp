@@ -11,7 +11,7 @@
 <div class="card">
     <div class="card-header">
         Category List
-        <a href="{{ route('categories.create') }}" class="float-right text-success">Create New Category</a>
+        <a href="{{ route('categories.create') }}" class="float-right btn btn-success btn-sm">Create New Category</a>
     </div>
     <div class="card-body">
         @if (session('message'))
@@ -22,7 +22,7 @@
         @endif
         <div class="row">
             <div class="col-md-9">
-                <table class="table table-striped">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -36,7 +36,7 @@
                         <tr>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->description }}</td>
-                            <td><a href="{{ route('categories.show', $category->id) }}" class="text-info">View</a></td>
+                            <td><a href="{{ route('categories.show', $category->id) }}" class="btn btn-info btn-sm">View</a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -69,6 +69,9 @@
                 {{-- @include('admins.layouts.archives') --}}
             </div>
         </div>
+    </div>
+    <div class="card-footer">
+        <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
     </div>
 </div>
 @endsection

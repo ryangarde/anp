@@ -45,17 +45,16 @@ class RolesController extends Controller
     {
         // Retrieve all news filter if needed.
         $roles = $this->role->paginateWithFiltersAndWithTrashed(request());
-
         // Get search url for filtering.
         $searchUrl = $this->role->getSearchUrl(request());
 
         // Retrieve Archives
-        $archives = $this->role->archives();
+       // $archives = $this->role->archives();
 
         // Get current path for archives
-        $path = request()->path();
+       // $path = request()->path();
 
-        return view('admins.roles.index', compact('roles', 'searchUrl', 'archives', 'path'));
+        return view('admins.roles.index', compact('roles', 'searchUrl'));
     }
 
     /**
@@ -99,8 +98,8 @@ class RolesController extends Controller
      */
     public function show($id)
     {
+        dd($this->role);
         $role = $this->role->findOrFail($id);
-
         $permissions = $this->role->findOrFail($id)->permissions()->get();
 
         return view('admins.roles.show', compact('role', 'permissions'));
@@ -135,7 +134,7 @@ class RolesController extends Controller
         $role = $this->role->findOrFail($id);
 
         $role->fill($request->all())->save();
-        
+
         return redirect()->route('roles.edit', $role->id)->with('message', 'Role successfully updated');
     }
 
@@ -149,7 +148,7 @@ class RolesController extends Controller
     {
         //$this->role->authorize('delete');
 
-        $this->role->findOrFail($id)->delete();
+        $this->role->findOrFail($id)->forceDelete();
 
         return redirect()->route('roles.index')->with('message', 'Role successfully deleted');
     }

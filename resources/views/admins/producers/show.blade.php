@@ -31,8 +31,13 @@
                     <input type="text" class="form-control" value="{{ $producer->website }}">
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" rows="10">{{ $producer->description }}</textarea>
+            </div>
         </fieldset>
-        
+
         <form action="{{ route('producers.destroy', $producer->id) }}" method="POST" accept-charset="utf-8">
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
@@ -41,7 +46,7 @@
             <a href="{{ route('producers.edit', $producer->id) }}" class="btn btn-primary btn-sm">Edit</a>
             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
         </form>
-        
+
     </div>
 </div>
 @endsection

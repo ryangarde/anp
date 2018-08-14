@@ -51,6 +51,11 @@
                         <label for="price">Price</label>
                         <input type="text" class="form-control" name="price" id="price" value="{{ $product->price }}">
                     </div>
+
+                    <div class="form-group">
+                        <label for="retail_size">Retail Size</label>
+                        <input type="text" class="form-control" name="retail_size" id="retail_size" value="{{ $product->retail_size }}">
+                    </div>
                 </fieldset>
 
                 <form action="{{ route('products.destroy', $product->id) }}" method="POST" accept-charset="utf-8">
@@ -75,11 +80,12 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">₱ {{ $product->price }}</li>
             </ul>
-            <div class="card-body clearfix">
-                <a href="{{ route('products.show', $product->id) }}" class="float-left card-link text-info font-weight-bold">View</a>
-                <span class="float-right">{{ $product->producer->name }}</span>
+            <div class="card-body">
+                <span>{{ $product->producer->name }}</span>
+                <br><br>
+                <a href="{{ route('products.show', $product->id) }}" class="btn btn-info btn-sm">View</a>
             </div>
-        </div>  
+        </div>
     </div>
 </div>
 @endsection

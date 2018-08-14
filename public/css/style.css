@@ -2,7 +2,7 @@
     /*background-color: white !important;*/
     /*border-bottom: 1px solid #CC491E !important;*/
     /*background-color: transparent;*/
-    background-color: maroon !important;
+    background-color: rgba(161, 30, 0, 1) !important;
     border-bottom-color: none !important;
     margin-bottom: 22px;
     min-height: 50px;
@@ -184,11 +184,11 @@ footer, footer a {
 }
 
 footer div.footer-background {
-    background-color: maroon !important;
+    background-color: rgba(218, 63, 28, 1) !important;
 }
 
 footer div.copyright-background{
-    background-color: #4e0000 !important;
+    background-color: rgba(161, 30, 0, 1) !important;
     border-top: 1px solid rgba(212, 65, 31, 1) !important;
 }
 

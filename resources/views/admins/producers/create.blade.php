@@ -21,7 +21,7 @@
                 <input type="text" class="form-control" name="name" id="name" autocomplete="off" required>
                 @if ($errors->has('name'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('name') }}</strong>
+                    <strong style="color: red">{{ $errors->first('name') }}</strong>
                 </span>
                 @endif
             </div>
@@ -31,7 +31,17 @@
                 <input type="text" class="form-control" name="website" id="website" autocomplete="off">
                 @if ($errors->has('website'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('website') }}</strong>
+                    <strong style="color: red">{{ $errors->first('website') }}</strong>
+                </span>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description" id="description" autocomplete="off" rows="6" required></textarea>
+                @if ($errors->has('description'))
+                <span class="help-block">
+                    <strong style="color: red">{{ $errors->first('description') }}</strong>
                 </span>
                 @endif
             </div>

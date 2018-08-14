@@ -11,7 +11,7 @@
 <div class="card">
     <div class="card-header">
         Role List
-        <a href="{{ route('roles.create') }}" class="float-right text-success">Create New Role</a>
+        <a href="{{ route('roles.create') }}" class="float-right btn btn-primary btn-sm">Create New Role</a>
     </div>
     <div class="card-body">
         @if (session('message'))
@@ -22,7 +22,7 @@
         @endif
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-striped">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -39,9 +39,9 @@
                             <td>{{ $role->display_name }}</td>
                             <td>{{ $role->description }}</td>
                             <td>
-                                <a href="{{ route('roles.show', $role->id) }}" class="text-dark">View</a> | 
-                                <a href="{{ route('roles.show-assign-permissions-form', $role->id) }}" class="text-success">Assign Permissions</a> |
-                                <a href="{{ route('roles.destroy', $role->id) }}" class="text-danger" onclick="event.preventDefault();document.getElementById('delete-form').submit();">
+                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-info btn-sm">View</a>
+                                <a href="{{ route('roles.show-assign-permissions-form', $role->id) }}" class="btn btn-success btn-sm"">Assign Permissions</a>
+                                <a href="{{ route('roles.destroy', $role->id) }}" class="btn btn-danger btn-sm"" onclick="event.preventDefault();document.getElementById('delete-form').submit();">
                                     Delete
                                 </a>
                                 <form id="delete-form" action="{{ route('roles.destroy', $role->id) }}" method="POST" style="display: none;">

@@ -34,10 +34,10 @@ class AdminsController extends Controller
     {
         $admins = $this->admin->paginateWithFilters(request());
         $searchUrl = $this->admin->getSearchUrl(request());
-        $archives = $this->admin->archives();
-        $path = request()->path();
+       // $archives = $this->admin->archives();
+       // $path = request()->path();
 
-        return view('admins.admins.index', compact('admins', 'searchUrl', 'archives', 'path'));
+        return view('admins.admins.index', compact('admins', 'searchUrl'));
     }
 
     /**
@@ -61,7 +61,6 @@ class AdminsController extends Controller
     public function show($id)
     {
         $admin = $this->admin->findOrFail($id);
-
         $roles = $this->admin->getAssignedRoles($id);
 
         return view('admins.admins.show', compact('admin', 'roles'));
@@ -93,7 +92,7 @@ class AdminsController extends Controller
     public function destroy($id)
     {
         // If authorize delete the news.
-        $this->admin->findOrFail($id)->delete();
+        $this->admin->findOrFail($id)->forceDelete();
 
         // After creating the post redirect to news page with a success message.
         return redirect()->route('admins.index')->with('message', 'Admin successfully deleted');
