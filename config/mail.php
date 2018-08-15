@@ -55,11 +55,11 @@ return [
     |
     */
 
-    'from' => [
+    /*'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'ryanpgarde@gmail.com'),
         'name' => env('MAIL_FROM_NAME', 'Ryan'),
     ],
-
+*/
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

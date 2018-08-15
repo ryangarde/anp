@@ -50,8 +50,13 @@ Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], func
 
         // Orders Routes
         Route::get('orders', 'OrdersController@index')->name('admins.orders.index');
+        Route::get('orders/{orders}', 'OrdersController@show');
         Route::post('orders/confirm/{order}', 'OrdersController@confirm')->name('admins.orders.confirm');
         Route::post('orders/cancel/{order}', 'OrdersController@cancel')->name('admins.orders.cancel');
+
+        // Messages Routes
+        Route::get('messages', 'MessagesController@index')->name('admins.messages.index');
+        Route::get('messages/{message}', 'MessagesController@show');
     });
 });
 
@@ -75,6 +80,7 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
     Route::get('/', 'PagesController@index')->name('home');
     Route::get('instructions','PagesController@instructions')->name('instructions');
     Route::get('contact-us', 'PagesController@contactUs')->name('contact-us');
+    Route::post('contact-us', 'PagesController@send');
     Route::get('about-us', 'PagesController@aboutUs')->name('about-us');
 
     // Shop

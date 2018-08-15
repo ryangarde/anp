@@ -14,7 +14,7 @@
             <div class="card-body">
                 <h5 class="card-title">Order Number {{ $order->id }}</h5>
                 <p class="card-text">Total Amount: {{ $order->grandTotal }}</p>
-                <a href="#" class="btn btn-primary btn-sm">View Products</a>
+                <a href="/orders/{{ $order->id }}" class="btn btn-primary btn-sm">View Products</a>
             </div>
             <div class="card-footer text-muted clearfix">
                 @if ($order->status == 0)
@@ -40,11 +40,14 @@
                 </form>
                 @else
                 @endif
-            </a>
+            </div>
+
         </div>
     </div>
+    @endforeach
+    <div class="w-100"></div><br>
+
 </div>
-@endforeach
-<div class="w-100"></div><br>
+
 @endforeach
 @endsection

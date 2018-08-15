@@ -5,7 +5,7 @@
 @section('content')
 
 <div style="position: relative; width: 100%; height: 100%;">
-    <img class="img-fluid" src="{{ asset('storage/contact-us-banner-300.jpg') }}">
+    <img class="img-fluid" src="{{ asset('images/contact-us-banner-300.jpg') }}">
     <div class="shop-header-cover">
         <h1 class="shop-header-cover-title">Contact Us</h1>
     </div>
@@ -19,24 +19,23 @@
 </div>
 
 <div class="container mb-5 mt-4 pt-3">
+    <br>
     <div class="row">
         <div class="col-md-6">
             <h3 class="text-color-theme">Our Address</h3>
-
             <br>
-
             <h5 class="text-color-secondary">The Negros Showroom</h5>
             <p>
-                <i class="fa fa-map-marker text-color-theme"></i> &nbsp;Level 1 Robinsons Place Bacolod, Lacson Street, Mandalagan,
+                <i class="fa fa-map-marker text-color-theme"></i> &nbsp;Central City Walk, Robinsons Place Bacolod, Lacson Street, Mandalagan,
                 <br>
                 Bacolod City, Negros Occidental, Philippines
             </p>
 
             <br>
 
-            <h5 class="text-color-secondary">Office Address</h5>
+            <h5 class="text-color-secondary">Office/Mailing Address</h5>
             <p>
-                <i class="fa fa-map-marker text-color-theme"></i> &nbsp;Lourdes-C Building, 9th cor. Lacson Street, Bacolod City,
+                <i class="fa fa-map-marker text-color-theme"></i> &nbsp;Room 301, A – Chan Bldg., 97 Lacson St. Mandalagan, Bacolod City, 6100
                 <br>
                 Negros Occidental, Philippines
             </p>
@@ -50,9 +49,9 @@
                 <br>
                 Just fill-up the form below and we'll respond as soon as we can.
             </p>
-            <form method="POST" action="#">
-                {{ csrf_field() }}
 
+            <form method="POST" action="/contact-us">
+                {{ csrf_field() }}
                 <div class="form-group row {{ $errors->has('name') ? 'has-error' : '' }}">
                     <label for="name" class="col-sm-3 col-form-label">Name</label>
                     <div class="col-sm-9">
@@ -124,7 +123,7 @@
         <div class="col-md-4">
             <h5 class="text-color-secondary">Mailing Address</h5>
             <p>
-                <i class="fa fa-address-book text-color-theme"></i> &nbsp;Association of Negros Producers Lourdes-C Building, 9th cor. Lacson Street, Bacolod City,
+                <i class="fa fa-address-book text-color-theme"></i> &nbsp;Room 301, A – Chan Bldg., 97 Lacson St. Mandalagan, Bacolod City, 6100
                 <br>
                 Negros Occidental, Philippines
             </p>

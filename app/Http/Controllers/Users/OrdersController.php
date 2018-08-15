@@ -87,7 +87,7 @@ class OrdersController extends Controller
                     'message'      => auth()->user()->name . ' has ordered'
                 ]);*/
                 $products = $this->orderProduct->getProductList();
-                //\Mail::to(auth()->user())->send(new OrderSuccessful($products));
+                \Mail::to(auth()->user())->send(new OrderSuccessful($products));
 
                 if ($this->user->clearShoppingCart()) {
                     return redirect()->route('orders.index')->with('message', 'Order successful please wait for confirmation on your email');

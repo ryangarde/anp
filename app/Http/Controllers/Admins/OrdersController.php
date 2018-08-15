@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admins;
 
-use App\Order;
-use Illuminate\Http\Request;
 use App\Contracts\OrderInterface;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Order;
+use App\OrderProduct;
+
 
 class OrdersController extends Controller
 {
@@ -17,13 +19,21 @@ class OrdersController extends Controller
     protected $order;
 
     /**
+     * OrderProduct object.
+     *
+     * @var App\Contracts\OrderInterface
+     */
+    protected $orderProduct;
+
+    /**
      * Create new instance of orders controller.
      *
      * @param OrderInterface $order Order interface
      */
-    public function __contruct(OrderInterface $order)
+    public function __contruct(OrderInterface $order, OrderProductInterface $orderProduct)
     {
         $this->order = $order;
+        $this->orderProduct = $orderProduct;
     }
 
     public function index()
@@ -35,6 +45,15 @@ class OrdersController extends Controller
         ])->get();
 
         return view('admins.orders.index', compact('orders'));
+    }
+
+    public function show($id)
+    {
+        $order = Order::find($id);
+        $orderProducts = OrderProduct::all();
+        $orderProducts = $orderProducts->where('order_id',$order->id);
+
+        return view('admins.orders.show', compact('orderProducts','order'));
     }
 
     public function confirm(Order $order)

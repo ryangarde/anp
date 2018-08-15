@@ -130,5 +130,14 @@ class AppServiceProvider extends ServiceProvider
             'App\Contracts\UserInterface',
             'App\Repositories\UserRepository'
         );
+
+        /**
+         * Bind user repository with messages interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\MessagesInterface',
+            'App\Repositories\MessagesRepository'
+        );
     }
 }

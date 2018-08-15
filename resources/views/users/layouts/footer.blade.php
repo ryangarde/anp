@@ -1,5 +1,5 @@
 <footer>
-    <div class="footer-background pt-5 pb-4" style="background-color: rgba(218, 63, 28, 1) !important">
+    <div class="footer-background pt-5 pb-4">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -62,9 +62,11 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <img class="img-fluid" src="{{ asset('http://anp.hybrain.co/storage/dti.jpg') }}">
-                    <br><br>
-                    <img class="img-fluid" src="{{ asset('http://anp.hybrain.co/storage/otop-logo.png') }}">
+                    <img class="img-fluid float-right" src="{{ asset('images/HYBrain Logo.png') }}" style="width: 150px;">
+                    <br><br><br>
+                    <img class="img-fluid float-right" src="{{ asset('images/dti.jpg') }}" style="width: 150px;">
+                    <br><br><br>
+                    <img class="img-fluid float-right" src="{{ asset('images/otop-logo.png') }}" style="width: 150px;">
                 </div>
             </div>
         </div>
@@ -84,7 +86,7 @@
         </div> --}}
     </div>
 
-    <div class="copyright-background" style="background-color: rgba(161, 30, 0, 1) !important">
+    <div class="copyright-background">
         <div class="container clearfix pt-3 pb-3">
             <div class="float-left">
                 Association of Negros Producers &copy; 2017. All Rights Reserved.

@@ -4,7 +4,7 @@
 
 @section('content')
 <div style="position: relative; width: 100%; height: 100%;">
-    <img class="img-fluid" src="{{ asset('http://anp.hybrain.co/storage/shop-banner-300.jpg') }}">
+    <img class="img-fluid" src="{{ asset('images/shop-banner-300.jpg') }}">
     <div class="shop-header-cover">
         <h1 class="shop-header-cover-title">Shop</h1>
     </div>
@@ -31,7 +31,7 @@
                             {{ strtoupper($product->name) }}
                         </div>
 
-                        <div style="background: url('/storage/images/{{ $product->image }}') no-repeat center/cover; width: 100%; height: 230px"></div>
+                        <div style="background: url('storage/images/{{ $product->image }}') no-repeat center/cover; width: 100%; height: 230px"></div>
                         <div class="d-flex justify-content-between mb-2">
                             <div class="d-inline-block" style="font-size: 120%">
                                 ₱ {{ $product->price }}
@@ -39,7 +39,7 @@
 
 
                             <div class="d-inline-block">
-                                <a href="#" class="btn btn-sm add-to-cart-button anp-btn" style="border-radius: 5px;" product-id="{{ $product->id }}">add to cart</a>
+                                <a href="#" class="btn btn-sm add-to-cart-button anp-btn" product-id="{{ $product->id }}">add to cart</a>
                             </div>
                         </div>
 

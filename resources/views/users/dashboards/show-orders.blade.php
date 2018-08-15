@@ -26,11 +26,11 @@
                  @endforeach
             </tbody>
         </table>
-        <a href="/orders" class="btn btn-primary">Back</a>
+        <a href="/orders" class="float-left btn btn-secondary btn-sm">Back</a>
         <form method="POST" action="/orders/{{ $id }}">
 
             {{ csrf_field() }}
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <button type="submit" class="float-left btn btn-danger btn-sm">Cancel</button>
         </form>
 
     </div>

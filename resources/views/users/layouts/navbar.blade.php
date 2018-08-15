@@ -1,8 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar" style="background-color: rgba(161, 30, 0, 1) !important;">
     <div class="container">
-        <a class="navbar-brand text-white" href="#">
-            <img src="{{ asset('storage/anp-logo-white-2.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,7 +8,7 @@
             <ul class="nav navbar-nav custom-navbar-nav">
                 <li>
                     <a class="navbar-brand text-white" href="#">
-                        <img src="http://anp.hybrain.co/storage/anp-logo-white-2.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                        <img src="{{ asset('/images/anp-logo-white-2.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
                         Association of Negros Producers
                     </a>
                 </li>

@@ -67,6 +67,9 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admins.orders.index') }}">Orders</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admins.messages.index') }}">Messages</a>
+    </li>
 </ul>
 
 <ul class="nav flex-column background py-1 mt-3 sidebar-nav">
