@@ -34,11 +34,12 @@ class OrderRepository extends Repository implements OrderInterface
      *
      * @return int
      */
-    public function order()
+    public function order($request)
     {
         $order = $this->order->create([
             'user_id' => auth()->user()->id,
-            'status' => 0
+            'status' => 0,
+            'total' => $request->total
         ]);
 
         if (! $this->orderProduct->orderItems($order->id)) {
@@ -68,6 +69,7 @@ class OrderRepository extends Repository implements OrderInterface
                 }
             ])
             ->where('user_id', auth()->user()->id)
+            ->orderBy('created_at','desc')
             ->get()
             ->map(function ($item) {
                 return $item;

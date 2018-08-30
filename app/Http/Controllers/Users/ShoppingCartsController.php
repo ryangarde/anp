@@ -55,6 +55,12 @@ class ShoppingCartsController extends Controller
         return view('users.dashboards.shopping-cart', compact('shoppingCart'));
     }
 
+    public function showCartItems()
+    {
+        $shoppingCart = $this->user->shoppingCart();
+
+        return view('users.dashboards.cart-items', compact('shoppingCart'));
+    }
     /**
      * Add item to cart.
      *
@@ -64,13 +70,11 @@ class ShoppingCartsController extends Controller
     public function addToCart(Request $request)
     {
         // Check if item exists in the shopping cart.
-
-        // Add Item
         if ($this->user->addToCart($request)) {
-            return redirect()->route('shop')->with('message', 'Successfully added.');
+            return back()->with('message', 'Product successfully added.');
         }
 
-        return redirect()->route('shop')->with('message', 'Product already added.');
+        return back()->with('message', 'Product updated.');
     }
 
     /**

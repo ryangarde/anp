@@ -20,7 +20,18 @@ class CreateOrdersTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+            $table->integer('admin_id')->unsigned()->nullable();
+            $table->foreign('admin_id')
+                ->references('id')
+                ->on('admins')
+                ->onDelete('cascade');
+            $table->decimal('total', 20, 2)->nullable()->unsigned();
+            $table->decimal('total_returned', 20, 2)->nullable()->unsigned();
+            $table->decimal('shipment', 10, 2)->nullable()->unsigned();
+            $table->decimal('discount', 10, 2)->nullable()->unsigned();
             $table->smallInteger('status')->unsigned();
+            $table->date('receipt_date')->nullable();
+            $table->string('receipt')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

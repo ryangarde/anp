@@ -27,7 +27,7 @@
                 @endif
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="description">Description</label>
                 <textarea class="form-control" name="description" id="description" rows="5">{{ $category->description }}</textarea>
                 @if ($errors->has('description'))
@@ -35,11 +35,14 @@
                     <strong>{{ $errors->first('description') }}</strong>
                 </span>
                 @endif
-            </div>
+            </div> --}}
 
-            <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
-            <button type="submit" class="btn btn-primary btn-sm">Update Category</button>
+
         </form>
+    </div>
+    <div class="card-footer">
+        <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
+        <button type="submit" class="btn btn-primary btn-sm">Update Category</button>
     </div>
 </div>
 @endsection

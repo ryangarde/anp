@@ -23,6 +23,10 @@ class CreateShoppingCartsTable extends Migration
             $table->foreign('product_id')
                 ->references('id')->on('products')
                 ->onDelete('cascade');
+            $table->integer('retail_size_id')->unsigned();
+            $table->foreign('retail_size_id')
+                  ->references('id')->on('retail_sizes')
+                  ->onDelete('cascade');
             $table->integer('quantity')->unsigned()->default(1);
             $table->timestamps();
             $table->softDeletes();

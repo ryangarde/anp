@@ -22,7 +22,7 @@ class OrderProduct extends Model
      * @var array
      */
     protected $fillable = [
-        'order_id', 'product_id', 'quantity'
+        'order_id', 'product_id', 'quantity','quantity_returned','retail_size_id','shipment','in_stock'
     ];
 
     /**
@@ -50,5 +50,10 @@ class OrderProduct extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function retailSize()
+    {
+        return $this->belongsTo(RetailSize::class);
     }
 }

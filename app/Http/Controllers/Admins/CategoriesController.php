@@ -69,7 +69,7 @@ class CategoriesController extends Controller
         // Validate all fields.
         $this->validate($request, [
             'name' => 'required|min:2|max:255',
-            'description' => 'required|min:2'
+            //'description' => 'required|min:2'
         ]);
 
         // If validation passed add the product.

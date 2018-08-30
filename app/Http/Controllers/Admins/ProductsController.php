@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admins;
 use App\Contracts\CategoryInterface;
 use App\Contracts\ProducerInterface;
 use App\Contracts\ProductInterface;
+use App\Contracts\RetailSizeInterface;
+use App\Contracts\ImageInterface;
+use App\Contracts\ProductRetailSizeInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -32,20 +35,49 @@ class ProductsController extends Controller
     protected $product;
 
     /**
+     * Retail Size object.
+     *
+     * @var \App\Contracts\RetailSizeInterface
+     */
+    protected $retailSize;
+
+    /**
+     * Product Retail Size object.
+     *
+     * @var \App\Contracts\ProductRetailSizeInterface
+     */
+    protected $productRetailSize;
+
+    /**
+     * Image object.
+     *
+     * @var \App\Contracts\ImageInterface
+     */
+    protected $image;
+
+    /**
      * Create new instance of product controller.
      *
      * @param CategoryInterface $category Category interface
      * @param ProducerInterface $producer Producer interface
      * @param ProductInterface  $product  Product interface
+     * @param RetailSizeInterface  $retailSize  RetailSize interface
+     * @param ProductRetailSizeInterface  $productRetailSize  ProductRetailSize interface
      */
     public function __construct(
         CategoryInterface $category,
         ProducerInterface $producer,
-        ProductInterface $product
+        ProductInterface $product,
+        RetailSizeInterface $retailSize,
+        ProductRetailSizeInterface $productRetailSize,
+        ImageInterface $image
     ) {
         $this->category = $category;
         $this->producer = $producer;
-        $this->product  = $product;
+        $this->product = $product;
+        $this->retailSize  = $retailSize;
+        $this->productRetailSize  = $productRetailSize;
+        $this->image = $image;
     }
 
     /**
@@ -84,7 +116,10 @@ class ProductsController extends Controller
         // Get all producers
         $producers = $this->producer->all();
 
-        return view('admins.products.create', compact('categories', 'producers'));
+        // Get all retail sizes
+        $retailSizes = $this->retailSize->all();
+
+        return view('admins.products.create', compact('categories', 'producers','retailSizes'));
     }
 
     /**
@@ -95,17 +130,16 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+
         // Validate all fields.
         $this->validate($request, [
             'producer_id' => 'required|integer',
             'category_id' => 'required|integer',
-            'image'       => 'required|image',
             'name'        => 'required|min:2|max:255',
             'description' => 'required|min:2|max:500',
             'price'       => 'required|numeric',
-            'retail_size' => 'required'
+            'image'       => 'required'
         ]);
-
         // If validation passed add the product.
         $this->product->store(request());
 
@@ -122,8 +156,9 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product = $this->product->findOrFailWithProducerAndCategory($id);
+        $retailSizes = $this->retailSize->all();
 
-        return view('admins.products.show', compact('product'));
+        return view('admins.products.show', compact('product','retailSizes'));
     }
 
     /**
@@ -143,8 +178,11 @@ class ProductsController extends Controller
         // Get all producers
         $producers = $this->producer->all();
 
+        // Get all retail sizes
+        $retailSizes = $this->retailSize->all();
+
         // If authorize pass the news object to the view.
-        return view('admins.products.edit', compact('product', 'categories', 'producers'));
+        return view('admins.products.edit', compact('product', 'categories', 'producers', 'retailSizes'));
     }
 
     /**
@@ -170,6 +208,7 @@ class ProductsController extends Controller
         $product = $this->product->findOrFail($id);
 
         // If authorize fill the fields and save.
+        $product->retailSizes()->attach($request->retail_size_id);
         $product->fill($request->all())->save();
 
         // After updating the product redirect to edit page with a success message.
@@ -185,9 +224,30 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         // If authorize delete the news.
+        $this->productRetailSize->findOrFailWithProductDelete($id);
         $this->product->findOrFail($id)->delete();
 
         // After creating the post redirect to news page with a success message.
         return redirect()->route('products.index')->with('message', 'Product successfully deleted');
+    }
+
+    public function addRetail(Request $request, $id)
+    {
+        $product = $this->product->findOrFail($id);
+        // If authorize fill the fields and save.
+
+        $product->productRetailSizes()->create($request->all());
+
+        return back();
+    }
+
+    public function addImage(Request $request, $id)
+    {
+        $product = $this->product->findOrFail($id);
+
+        // If authorize fill the fields and save.
+        $product->images()->create($request->all());
+
+        return back();
     }
 }

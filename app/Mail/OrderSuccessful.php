@@ -30,7 +30,7 @@ class OrderSuccessful extends Mailable
      */
     public function build()
     {
-        return $this->from('ryanpgarde@gmail.com','Ryan')
+        return $this->from('shop@anp-philippines.com','Association of Negros Producers')
                     ->view('users.emails.orderSuccessful');
     }
 }

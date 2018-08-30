@@ -120,4 +120,6 @@ return [
         ],
     ],
 
+    'from' => ['address' => null, 'name' => null],
+
 ];

@@ -13,13 +13,7 @@ a {
     color: #912513;
 }
 
-a:hover {
-    color: #ff8b5c;
-    text-decoration: none;
-    text-shadow: 0 0 10px rgba(253, 119, 83, 0.61);
-    -webkit-transition: all 0.7s ease;
-    transition: all 0.7s ease;
-}
+
 
 .navbar-light .navbar-nav .nav-link{
     color: #942E08;
@@ -157,9 +151,15 @@ a:hover {
 }
 
 .anp-btn {
-    background: #912513;
-    border-radius: 5px;
+    cursor: pointer;
+    background: #990000;
     color: #fff;
+}
+
+.anp-btn:hover {
+    color: white;
+    background-color: #800000;
+    text-shadow: 0 0 10px rgba(253, 119, 83, 0.61);
 }
 
 .btn-cart {

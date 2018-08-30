@@ -97,4 +97,11 @@ class ShopsController extends Controller
         // Return v2 view of shop.
         return view('users.v2.shop', compact('categories', 'producers', 'products', 'searchUrl'));
     }
+
+    public function show($id)
+    {
+        $product = $this->product->findOrFailWithProducerAndCategory($id);
+
+        return view('users.shop.show',compact('product'));
+    }
 }

@@ -19,6 +19,8 @@
     <li class="nav-item">
         <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Overview</a>
     </li>
+
+
     <li class="nav-item">
         <a class="nav-link" href="#producers" data-toggle="collapse" href="#producers" aria-expanded="false" aria-controls="producers">
             Producers <i class="float-right fa fa-caret-down"></i>
@@ -34,22 +36,9 @@
             </li>
         </ul>
     </div>
-    <li class="nav-item">
-        <a class="nav-link" href="#products" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
-            Products <i class="float-right fa fa-caret-down"></i>
-        </a>
-    </li>
-    <div class="collapse {{ request()->is('products') ? 'show' : '' }} {{ request()->is('products/create') ? 'show' : '' }}" id="products">
-        <ul class="nav flex-column nav-sub-menu">
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('products/create') ? 'active' : '' }}" href="{{ route('products.create') }}">Create New Product</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is('products') ? 'active' : '' }}" href="{{ route('products.index') }}">View Products</a>
-            </li>
-        </ul>
-    </div>
-    <li class="nav-item">
+
+
+     <li class="nav-item">
         <a class="nav-link" href="#categories" data-toggle="collapse" href="#categories" aria-expanded="false" aria-controls="categories">
             Categories <i class="float-right fa fa-caret-down"></i>
         </a>
@@ -64,13 +53,53 @@
             </li>
         </ul>
     </div>
+
+
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('admins.orders.index') }}">Orders</a>
+        <a class="nav-link" href="#products" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
+            Products <i class="float-right fa fa-caret-down"></i>
+        </a>
     </li>
+    <div class="collapse {{ request()->is('products') ? 'show' : '' }} {{ request()->is('products/create') ? 'show' : '' }} {{ request()->is('retail/create') ? 'show' : '' }} {{ request()->is('retail') ? 'show' : '' }}" id="products">
+        <ul class="nav flex-column nav-sub-menu">
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('products/create') ? 'active' : '' }}" href="{{ route('products.create') }}">Create New Product</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('products') ? 'active' : '' }}" href="{{ route('products.index') }}">View Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('retail/create') ? 'active' : '' }}" href="{{ route('admins.retailSizes.create') }}">Create New Retail Size</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('retail') ? 'active' : '' }}" href="{{ route('admins.retailSizes.index') }}">View Retail Size</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <li class="nav-item">
+        <a class="nav-link" href="#orders" data-toggle="collapse" aria-expanded="false" aria-controls="orders">
+            Orders <i class="float-right fa fa-caret-down"></i>
+        </a>
+    </li>
+    <div class="collapse {{ request()->is('orders/pending') ? 'show' : '' }} {{ request()->is('orders/confirmed') ? 'show' : '' }}" id="orders">
+        <ul class="nav flex-column nav-sub-menu">
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('orders/pending') ? 'active' : '' }}" href="{{ route('admins.orders.pending') }}">Pending Orders</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('orders/confirmed') ? 'active' : '' }}" href="{{ route('admins.orders.confirmed') }}">Confirmed Orders</a>
+            </li>
+        </ul>
+    </div>
+
+
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admins.messages.index') }}">Messages</a>
     </li>
 </ul>
+
 
 <ul class="nav flex-column background py-1 mt-3 sidebar-nav">
     <li class="nav-item">

@@ -9,7 +9,7 @@ interface OrderInterface
      *
      * @return int
      */
-    public function order();
+    public function order($request);
 
     /**
      * Retrieve user orders.

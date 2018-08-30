@@ -132,12 +132,39 @@ class AppServiceProvider extends ServiceProvider
         );
 
         /**
-         * Bind user repository with messages interface.
+         * Bind message repository with messages interface.
          *
          */
         $this->app->bind(
             'App\Contracts\MessagesInterface',
             'App\Repositories\MessagesRepository'
+        );
+
+        /**
+         * Bind retail size repository with retail sizes interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\RetailSizeInterface',
+            'App\Repositories\RetailSizeRepository'
+        );
+
+        /**
+         * Bind product retail size repository with product retail sizes interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\ProductRetailSizeInterface',
+            'App\Repositories\ProductRetailSizeRepository'
+        );
+
+        /**
+         * Bind product image repository with image interface.
+         *
+         */
+        $this->app->bind(
+            'App\Contracts\ImageInterface',
+            'App\Repositories\ImageRepository'
         );
     }
 }

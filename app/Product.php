@@ -25,7 +25,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'producer_id', 'category_id', 'image', 'name', 'description', 'price','retail_size'
+        'producer_id', 'category_id', 'name', 'description'
     ];
 
     /**
@@ -35,26 +35,7 @@ class Product extends Model
      */
     protected $dates = ['deleted_at'];
 
-    /**
-     * Run functions on boot.
-     *
-     */
-    public static function boot()
-    {
-        parent::boot();
 
-        static::creating(function ($model) {
-            static::storeImage($model);
-        });
-
-        static::updating(function ($model) {
-            static::updateImage($model);
-        });
-
-        static::deleting(function ($model) {
-            static::deleteImage($model);
-        });
-    }
 
     /**
      * The product belongs to a category.
@@ -84,5 +65,20 @@ class Product extends Model
     public function shoppingCart()
     {
         return $this->hasMany(ShoppingCart::class);
+    }
+
+    public function retailSizes()
+    {
+        return $this->belongsToMany(RetailSize::class);
+    }
+
+    public function productRetailSizes()
+    {
+        return $this->hasMany(ProductRetailSize::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 }

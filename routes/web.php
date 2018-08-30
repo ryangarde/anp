@@ -1,7 +1,7 @@
 <?php
 
 
-Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], function () {
+Route::group(['domain' => 'admin.anp.test', 'namespace' => 'Admins'], function () {
 
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.show-login-form');
@@ -46,13 +46,27 @@ Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], func
         Route::resource('producers', 'ProducersController');
 
         // Products Routes
+        Route::post('products/{product}/image', 'ProductsController@addImage');
+        Route::post('products/{product}/retail', 'ProductsController@addRetail');
         Route::resource('products', 'ProductsController');
 
+
+        // Retail Sizes Rotes
+        Route::get('retail/create', 'RetailSizesController@create')->name('admins.retailSizes.create');
+        Route::post('retail', 'RetailSizesController@store')->name('admins.retailSizes.store');
+        Route::get('retail', 'RetailSizesController@index')->name('admins.retailSizes.index');
+
+
         // Orders Routes
-        Route::get('orders', 'OrdersController@index')->name('admins.orders.index');
-        Route::get('orders/{orders}', 'OrdersController@show');
-        Route::post('orders/confirm/{order}', 'OrdersController@confirm')->name('admins.orders.confirm');
-        Route::post('orders/cancel/{order}', 'OrdersController@cancel')->name('admins.orders.cancel');
+        Route::get('orders/pending', 'OrdersController@index')->name('admins.orders.pending');
+        Route::get('orders/confirmed', 'OrdersController@indexConfirmed')->name('admins.orders.confirmed');
+        Route::get('orders/{order}', 'OrdersController@show')->name('admins.orders.show');
+        Route::get('orders/{order}/edit', 'OrdersController@edit')->name('admins.orders.edit');
+        Route::patch('orders/{order}/update', 'OrdersController@update')->name('admins.orders.update');
+        Route::get('orders/confirm/{order}', 'OrdersController@confirm')->name('admins.orders.confirm');
+        Route::get('orders/cancel/{order}', 'OrdersController@cancel')->name('admins.orders.cancel');
+        Route::get('orders/paid/{order}', 'OrdersController@paid')->name('admins.orders.paid');
+        Route::get('orders/delivered/{order}', 'OrdersController@delivered')->name('admins.orders.delivered');
 
         // Messages Routes
         Route::get('messages', 'MessagesController@index')->name('admins.messages.index');
@@ -60,7 +74,7 @@ Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], func
     });
 });
 
-Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function () {
+Route::group(['domain' => 'anp.test', 'namespace' => 'Users'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -85,6 +99,7 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
 
     // Shop
     Route::get('shop', 'ShopsController@index')->name('shop');
+    Route::get('shop/{shop}', 'ShopsController@show')->name('shop.show');
 
     // Dashboards
     Route::group(['middleware' => 'auth'], function () {
@@ -93,11 +108,13 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
         // Shopping cart
         Route::group(['prefix' => 'shopping-cart'], function () {
             Route::get('/', 'ShoppingCartsController@index')->name('shopping-cart');
+            Route::get('/cart-items', 'ShoppingCartsController@showCartItems')->name('carts.items');
             /*Route::get('checkout', 'ShoppingCartsController@checkout')->name('checkout');*/
             Route::post('add-to-cart', 'ShoppingCartsController@addToCart')->name('carts.add-to-cart');
+            Route::get('add-to-cart', 'ShopsController@index')->name('shop');
             Route::post('remove-from-cart', 'ShoppingCartsController@removeFromCart')->name('carts.remove-from-cart');
-            Route::post('add-quantity', 'ShoppingCartsController@addQuantity')->name('carts.add-quantity');
-            Route::post('subtract-quantity', 'ShoppingCartsController@subtractQuantity')->name('carts.subtract-quantity');
+            // Route::post('add-quantity', 'ShoppingCartsController@addQuantity')->name('carts.add-quantity');
+            // Route::post('subtract-quantity', 'ShoppingCartsController@subtractQuantity')->name('carts.subtract-quantity');
         });
 
         // Orders

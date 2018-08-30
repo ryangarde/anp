@@ -17,11 +17,11 @@
                 <img class="mr-1" src="{{ asset('images/dti.jpg') }}" alt="" height="60">
                 <img src="{{ asset('images/otop.png') }}" alt="" height="60">
             </div>
-            
+
             <div class="col-md-5">
                 <h1 class="title-color">SHOP</h1>
             </div>
-            
+
             <div class="col-md-3">
                 <a href="{{ route('shopping-cart') }}" class="btn btn-cart"><img src="{{ asset('images/cart.png') }}" alt=""></a>
             </div>

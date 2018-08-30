@@ -10,7 +10,6 @@
 
     <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap-reboot.min.css') }}" rel="stylesheet">
@@ -18,12 +17,19 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css" rel="stylesheet">
 
 </head>
 <body>
     <div id="app">
-        @include('users.layouts.navbar')
+        <div class="d-flex align-content-center justify-content-center text-center">
+            @if (Request::is('v2') || Request::is('v2/shop'))
+                @include('users.layouts.navbar-v2')
+            @else
+                @include('users.layouts.navbar')
+            @endif
+        </div>
 
         @auth
         <div class="container mb-5 content">

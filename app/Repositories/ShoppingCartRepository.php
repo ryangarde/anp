@@ -4,9 +4,11 @@ namespace App\Repositories;
 
 use App\ShoppingCart;
 use App\Contracts\ShoppingCartInterface;
+use App\RetailSize;
 
 class ShoppingCartRepository extends Repository implements ShoppingCartInterface
 {
+
     /**
      * Create new instance of project repository.
      *
@@ -16,6 +18,27 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
     {
         parent::__construct($shoppingCart);
         $this->shoppingCart = $shoppingCart;
+    }
+
+    /**
+     * Add quantity if item exists.
+     *
+     * @return boolean
+     */
+    public function storeIfItemExists($request)
+    {
+        if(ShoppingCart::where('product_id',$request->product_id)->where('retail_size_id',$request->retail_size_id)->exists()){
+            $shoppingCart = ShoppingCart::where('product_id',$request->product_id)
+                                        ->where('retail_size_id',$request->retail_size_id)
+                                        ->first();
+            $quantity = $request->quantity;
+            $shoppingCart->quantity = $quantity + $shoppingCart->quantity;
+            $shoppingCart->save();
+        }
+        else {
+            $this->shoppingCart->create($request->all())->where('product_id',$request->product_id);
+        }
+
     }
 
     /**
@@ -95,33 +118,37 @@ class ShoppingCartRepository extends Repository implements ShoppingCartInterface
      */
     public function getItems()
     {
+
         $products = $this->shoppingCart->with([
-                'product' => function ($query) {
-                    $query->with('producer', 'category');
+                'product' => function ($query1) {
+                    $query1->with('producer', 'category','productRetailSizes','images');
                 }
             ])
             ->where('user_id', auth()->user()->id)
             ->get()
             ->map(function ($item) {
                 return [
-                    'id'          => $item->product->id,
-                    'producer'    => $item->product->producer->name,
-                    'category'    => $item->product->category->name,
-                    'image'       => $item->product->image,
-                    'name'        => $item->product->name,
-                    'description' => $item->product->description,
-                    'quantity'    => $item->quantity,
-                    'price'       => $item->product->price,
-                    'sub_total'   => ($item->quantity * $item->product->price)
+
+                    'id'             => $item->product->id,
+                    'producer'       => $item->product->producer->name,
+                    // 'category'       => $item->product->category->name,
+                    'image'          => $item->product->images->first()->image,
+                    'name'           => $item->product->name,
+                    'description'    => $item->product->description,
+                    'quantity'       => $item->quantity,
+                    'price'          => $item->product->productRetailSizes->where('retail_size_id',$item->retail_size_id)->first()->price,
+                    'retail_size'    => $item->retailSize->name,
+                    'retail_size_id'    => $item->retail_size_id,
+                    'sub_total'      => ($item->quantity * $item->product->productRetailSizes->where('retail_size_id',$item->retail_size_id)->first()->price)
                 ];
             });
+
 
         $shoppingCart = [
             'total_items' => $products->sum('quantity'),
             'grand_total' => $products->sum('sub_total'),
             'products'    => $products->all()
         ];
-
         return collect($shoppingCart);
     }
 

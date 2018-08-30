@@ -25,47 +25,55 @@
         </div>
         <div class="col-md-9">
             <div class="card-columns">
-                @foreach ($products as $product)
-                    <div class="card title-color text-center" style="border: 0">
+                @foreach ($products as $index => $product)
+                <form action="{{ route('shop.show',$product->id) }}" method="GET" accept-charset="utf-8">
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="product_id" value="{{ $product->name }}">
+                    <div class="card title-color text-center shop-cart-item" style="border: 0">
                         <div>
                             {{ strtoupper($product->name) }}
                         </div>
-
-                        <div style="background: url('storage/images/{{ $product->image }}') no-repeat center/cover; width: 100%; height: 230px"></div>
+                        @foreach ($product->images as $index => $image)
+                            @if ($index == 0)
+                            <div onclick="location.href='/shop/{{ $product->id }}';" style="background: url('storage/images/{{ $image->image }}') no-repeat center/cover; width: 100%; height: 230px; cursor: pointer;"></div>
+                            @endif
+                        @endforeach
                         <div class="d-flex justify-content-between mb-2">
-                            <div class="d-inline-block" style="font-size: 120%">
-                                ₱ {{ $product->price }}
-                            </div>
-
-
-                            <div class="d-inline-block">
-                                <a href="#" class="btn btn-sm add-to-cart-button anp-btn" product-id="{{ $product->id }}">add to cart</a>
-                            </div>
+                            @foreach ($product->productRetailSizes as $index => $price)
+                                @if($index == 0)
+                                <div class="d-inline-block" style="font-size: 120%">
+                                    ₱ {{ $price->price }}
+                                </div>
+                                @endif
+                            @endforeach
+                            <button type="submit" class="btn btn-sm add-to-cart-button anp-btn">
+                              View item
+                            </button>
                         </div>
 
                         @if (strlen($product->description) >= 120)
                             <div class="c--anim-btn">
                                     <span class="c-anim-btn">
+                                        {{ $product->retail_size }}
+                                        <br><br>
                                         {{ $product->description }}
                                     </span>
                             </div>
                         @else
                             <div style="font-size: 85%; color: #707070">
+                                {{ $product->retail_size }}
+                                <br><br>
                                 {{ $product->description }}
                             </div>
                         @endif
 
                         <hr>
                     </div>
+                </form>
                 @endforeach
+
             </div>
-
-            <form id="add-to-cart-form" action="{{ route('carts.add-to-cart') }}" method="POST" accept-charset="utf-8">
-                {{ csrf_field() }}
-
-                <input type="hidden" name="product_id" value="">
-            </form>
-
             <div class="mx-auto mt-4" style="width: 50px;">
                 {{ $products->links('vendor.pagination.bootstrap-4') }}
                 {{-- <button class="btn btn-sm btn-secondary-color" href="#">Load More</button> --}}
@@ -73,6 +81,7 @@
         </div>
     </div>
 </div>
+
 
 @endsection
 
@@ -82,7 +91,7 @@
     $(document).ready(function() {
         $("#price-slider").slider({})
 
-        $('.add-to-cart-button').on('click', function(event) {
+        /*$('.add-to-cart-button').on('click', function(event) {
             event.preventDefault()
 
             let productId = $(this).attr('product-id')
@@ -90,7 +99,7 @@
 
             form.find('input[name="product_id"]').val(productId)
             form.submit()
-        })
+        })*/
     })
 </script>
 @endsection

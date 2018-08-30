@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
-    {{--<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">--}}
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
     <!-- Styles -->
 

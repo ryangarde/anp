@@ -103,7 +103,7 @@
                 <div class="row">
                     <div class="col-sm-3"></div>
                     <div class="col-sm-9">
-                        <button type="submit" class="btn btn-sm btn-theme-color">
+                        <button type="submit" class="btn btn-sm anp-btn">
                             <i class="fa fa-paper-plane"></i> &nbsp;Send Message
                         </button>
                     </div>

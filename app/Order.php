@@ -22,7 +22,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'status'
+        'user_id', 'status','total','total_returned','shipment','discount','admin_id'
     ];
 
     /**
@@ -50,5 +50,15 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * The order belongs to an admin.
+     *
+     * @return object
+     */
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
     }
 }

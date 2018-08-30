@@ -18,7 +18,7 @@ class CreateProducersTable extends Migration
             $table->string('name');
             $table->string('website')->nullable();
             $table->text('description');
-
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

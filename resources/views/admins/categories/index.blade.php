@@ -26,7 +26,6 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Description</th>
                             <th>Options</th>
                         </tr>
                     </thead>
@@ -35,7 +34,6 @@
                         @foreach ($categories as $category)
                         <tr>
                             <td>{{ $category->name }}</td>
-                            <td>{{ $category->description }}</td>
                             <td><a href="{{ route('categories.show', $category->id) }}" class="btn btn-info btn-sm">View</a></td>
                         </tr>
                         @endforeach

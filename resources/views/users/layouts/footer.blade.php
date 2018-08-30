@@ -62,11 +62,11 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <img class="img-fluid float-right" src="{{ asset('images/HYBrain Logo.png') }}" style="width: 150px;">
+                    <img class="img-fluid float-right" src="{{ asset('images/HYBrain Logo.png') }}" style="width: 150px; background-color: white;">
                     <br><br><br>
                     <img class="img-fluid float-right" src="{{ asset('images/dti.jpg') }}" style="width: 150px;">
                     <br><br><br>
-                    <img class="img-fluid float-right" src="{{ asset('images/otop-logo.png') }}" style="width: 150px;">
+                    <img class="img-fluid float-right" src="{{ asset('images/otop-logo.png') }}" style="width: 150px; background-color: white;">
                 </div>
             </div>
         </div>
@@ -92,7 +92,7 @@
                 Association of Negros Producers &copy; 2017. All Rights Reserved.
             </div>
             <div class="float-right">
-                <a class="" href="#">Privary &amp; Terms</a>
+                <a class="" href="#">Privacy &amp; Terms</a>
             </div>
         </div>
     </div>

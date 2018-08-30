@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar" style="background-color: rgba(161, 30, 0, 1) !important;">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -7,28 +7,29 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav custom-navbar-nav">
                 <li>
-                    <a class="navbar-brand text-white" href="#">
+                    <a class="navbar-brand text-white" href="/">
                         <img src="{{ asset('/images/anp-logo-white-2.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
                         Association of Negros Producers
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Home</a>
+                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('instructions') }}">Shop</a>
+                    <span id="shop_link"></span>
+                    <a id="shop_link" class="nav-link {{ request()->is('shop') ? 'active' : '' }}" href="{{ route('instructions') }}">Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">News</a>
+                    <a class="nav-link {{ request()->is('news') ? 'active' : '' }}" href="#">News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Partners</a>
+                    <a class="nav-link {{ request()->is('partners') ? 'active' : '' }}" href="#">Partners</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact-us') }}">Contact Us</a>
+                    <a class="nav-link {{ request()->is('contact-us') ? 'active' : '' }}" href="{{ route('contact-us') }}">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('about-us') }}">About Us</a>
+                    <a class="nav-link {{ request()->is('about-us') ? 'active' : '' }}" href="{{ route('about-us') }}">About Us</a>
                 </li>
             </ul>
 
@@ -74,4 +75,5 @@
         </div>
     </div>
 </nav>
+
 

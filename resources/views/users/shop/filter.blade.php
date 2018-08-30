@@ -93,7 +93,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-sm btn-theme-color">Filter</button>
+                <button type="submit" class="btn btn-theme-color btn-sm anp-btn">Filter</button>
             </div>
         </form>
     </div>

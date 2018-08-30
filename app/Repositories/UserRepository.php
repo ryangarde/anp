@@ -49,6 +49,7 @@ class UserRepository extends Repository implements UserInterface
      */
     public function addToCart($request)
     {
+
         if (! $this->shoppingCart->checkIfItemExists($request->product_id)) {
             if ($this->shoppingCart->store($request)) {
                 return true;
@@ -56,8 +57,16 @@ class UserRepository extends Repository implements UserInterface
 
             return false;
         }
+        else {
+            if ($this->shoppingCart->storeIfItemExists($request)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+            return false;
+        }
 
-        return false;
     }
 
     /**

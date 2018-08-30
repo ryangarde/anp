@@ -32,7 +32,12 @@ class PagesController extends Controller
 
     public function instructions()
     {
-        return view('users.instructions');
+        if (empty(session('agreed'))) {
+
+            session()->put('agreed','yes');
+            return view('users.instructions');
+        }
+        return redirect()->route('shop');
     }
 
     public function send(Request $request)

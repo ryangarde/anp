@@ -29,10 +29,10 @@
         @auth('admin')
         <div class="container mb-5">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     @include('admins.layouts.sidebar')
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-10">
                     @yield('content')
                 </div>
             </div>

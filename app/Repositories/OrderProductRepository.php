@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Contracts\OrderProductInterface;
 use App\Contracts\ShoppingCartInterface;
+use App\ProductRetailSize;
 use App\OrderProduct;
 use App\Order;
 
@@ -37,10 +38,12 @@ class OrderProductRepository extends Repository implements OrderProductInterface
     public function orderItems($id)
     {
         foreach ($this->shoppingCart->getItems()['products'] as $item) {
+
             $this->orderProduct->create([
                 'order_id' => $id,
                 'product_id' => $item['id'],
-                'quantity' => $item['quantity']
+                'quantity' => $item['quantity'],
+                'retail_size_id' => $item['retail_size_id']
             ]);
         }
 
@@ -48,17 +51,40 @@ class OrderProductRepository extends Repository implements OrderProductInterface
     }
 
     /**
-     * Retrieve a current order.
+     * Retrieve all products in an order.
      *
      * @return array object
      */
-    public function showOrder($id)
+    public function getProducts($id)
     {
         $order = Order::find($id);
-        $orderProduct = $this->orderProduct->all();
-        $orderProduct = $orderProduct->where('order_id',$order->id);
 
-        return $orderProduct;
+        $orderProducts = $this->orderProduct
+                            ->where('order_id',$order->id)
+                            ->get()
+                            ->map(function ($item) {
+                                return [
+                           //         'id' => $item->id,
+                                    'product' => $item->product->name,
+                                    'retail_size' => $item->retailSize->name,
+                                    'in_stock' => $item->in_stock,
+                                    'price' => $item->retailSize->productRetailSizes
+                                                ->where('product_id',$item->product->id)
+                                                ->where('retail_size_id',$item->retail_size_id)
+                                                ->first()
+                                                ->price,
+                                    'shipment' => $item->shipment,
+                                    'quantity' => $item->quantity,
+                                    'amount' => $item->retailSize->productRetailSizes
+                                                ->where('product_id',$item->product->id)
+                                                ->where('retail_size_id',$item->retail_size_id)
+                                                ->first()
+                                                ->price * $item->quantity
+                                ];
+                            });
+
+
+        return collect($orderProducts);
     }
 
     /**

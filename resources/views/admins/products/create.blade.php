@@ -42,7 +42,7 @@
 
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" id="name" autocomplete="off" required>
+                <input type="text" class="form-control" name="name" id="name" autocomplete="off" value="{{ old('name') }}" required>
                 @if ($errors->has('name'))
                 <span class="help-block">
                     <strong>{{ $errors->first('name') }}</strong>
@@ -73,22 +73,27 @@
                 </span>
                 @endif
             </div>
+
             <div class="form-row">
                 <div class="form-group col-md-5">
                     <label for="price">Price</label>
-                    <input type="text" class="form-control" name="price" id="price" autocomplete="off" required>
+                    <input type="text" class="form-control" name="price" id="price" autocomplete="off" value="{{ old('price') }}" required>
                     @if ($errors->has('price'))
                     <span class="help-block">
                         <strong>{{ $errors->first('price') }}</strong>
                     </span>
                     @endif
                 </div>
-                <div class="form-group col-md-7">
-                    <label for="retail size">Retail Size:</label>
-                    <input type="text" class="form-control" name="retail_size" id="retail_size" autocomplete="off">
-                    @if ($errors->has('retail_size'))
+                <div class="form-group">
+                    <label for="retail_size_id">Retail Size</label>
+                    <select class="form-control" id="retail_size_id" name="retail_size_id">
+                        @foreach ($retailSizes as $retailSize)
+                        <option value="{{ $retailSize->id }}">{{ $retailSize->name }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('retail_size_id'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('retail_size') }}</strong>
+                        <strong>{{ $errors->first('retail_size_id') }}</strong>
                     </span>
                     @endif
                 </div>

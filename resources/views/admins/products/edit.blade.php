@@ -93,6 +93,20 @@
                 @endif
             </div>
 
+            <div class="form-group">
+                <label for="retail_size_id">Retail Size</label>
+                <select class="form-control" id="retail_size_id" name="retail_size_id">
+                    @foreach ($retailSizes as $retailSize)
+                    <option value="{{ $retailSize->id }}">{{ $retailSize->name }}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('retail_size_id'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('retail_size_id') }}</strong>
+                </span>
+                @endif
+            </div>
+
             <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
             <button type="submit" class="btn btn-primary btn-sm">Update Product</button>
         </form>

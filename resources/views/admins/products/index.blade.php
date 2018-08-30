@@ -6,7 +6,7 @@
 <div class="card">
     <div class="card-header">
         Product List
-        <a href="{{ route('products.create') }}" class="float-right text-success">Create New Product</a>
+        <a href="{{ route('products.create') }}" class="float-right btn btn-success btn-sm">Create New Product</a>
     </div>
 </div>
 
@@ -23,13 +23,16 @@
             <p class="card-text">{{ $product->description }}</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">₱ {{ $product->price }}</li>
+            @foreach($product->productRetailSizes as $p)
+            <li class="list-group-item">₱ {{ $p->price }}</li>
+            @endforeach
         </ul>
         <div class="card-body clearfix">
             <span>{{ $product->producer->name }}</span>
             <br><br>
             <a href="{{ route('products.show', $product->id) }}" class="btn btn-info btn-sm">View</a>
         </div>
+        <br><br>
     </div>
     @endforeach
 </div>

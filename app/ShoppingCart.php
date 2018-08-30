@@ -22,7 +22,7 @@ class ShoppingCart extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'product_id', 'quantity'
+        'user_id', 'product_id', 'quantity','retail_size_id'
     ];
 
     /**
@@ -78,5 +78,16 @@ class ShoppingCart extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * The shopping cart has many retail sizes.
+     *
+     * @return json object array
+     */
+
+    public function retailSize()
+    {
+        return $this->belongsTo(RetailSize::class);
     }
 }

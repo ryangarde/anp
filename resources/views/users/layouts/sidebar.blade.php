@@ -19,10 +19,13 @@
         <a class="nav-link" href="#">Account Information</a>
     </li>
     <li class="nav-item">
+        <a class="nav-link {{ request()->is('shopping-cart/cart-items') ? 'active' : '' }}" href="{{ route('carts.items') }}">Cart Items</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link {{ request()->is('shopping-cart') ? 'active' : '' }}" href="{{ route('shopping-cart') }}">Shopping Cart</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link  {{ request()->is('orders') ? 'active' : '' }}" href="{{ route('orders.index') }}">Orders</a>
+        <a class="nav-link {{ request()->is('orders') ? 'active' : '' }}" href="{{ route('orders.index') }}">Orders</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">Settings</a>

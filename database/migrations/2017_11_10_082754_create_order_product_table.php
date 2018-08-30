@@ -25,7 +25,14 @@ class CreateOrderProductTable extends Migration
                 ->references('id')
                 ->on('products')
                 ->onDelete('cascade');
+            $table->integer('retail_size_id')->unsigned();
+            $table->foreign('retail_size_id')
+                ->references('id')->on('retail_sizes')
+                ->onDelete('cascade');
+            $table->decimal('shipment', 10, 2)->nullable()->unsigned();
             $table->integer('quantity')->unsigned();
+            $table->integer('quantity_returned')->nullable();
+            $table->tinyInteger('in_stock')->unsigned()->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
