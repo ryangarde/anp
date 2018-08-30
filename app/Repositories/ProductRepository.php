@@ -35,7 +35,6 @@ class ProductRepository extends Repository implements ProductInterface
      */
     public function store($request)
     {
-
         $model = $this->model->create($request->all());
 
         $model->productRetailSizes()->create($request->all());

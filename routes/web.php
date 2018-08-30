@@ -1,7 +1,7 @@
 <?php
 
 
-Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], function () {
+Route::group(['domain' => 'admin.anp.test', 'namespace' => 'Admins'], function () {
 
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.show-login-form');
@@ -55,6 +55,10 @@ Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], func
         Route::get('retail/create', 'RetailSizesController@create')->name('admins.retailSizes.create');
         Route::post('retail', 'RetailSizesController@store')->name('admins.retailSizes.store');
         Route::get('retail', 'RetailSizesController@index')->name('admins.retailSizes.index');
+        Route::get('retail/{retail}', 'RetailSizesController@show')->name('admins.retailSizes.show');
+        Route::get('retail/{retail}/edit', 'RetailSizesController@edit')->name('admins.retailSizes.edit');
+        Route::patch('retail/{retail}/update', 'RetailSizesController@update')->name('admins.retailSizes.update');
+        Route::delete('retail/{retail}', 'RetailSizesController@destroy')->name('admins.retailSizes.destroy');
 
 
         // Orders Routes
@@ -74,7 +78,7 @@ Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], func
     });
 });
 
-Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function () {
+Route::group(['domain' => 'anp.test', 'namespace' => 'Users'], function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('show-login-form');
     Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -93,6 +97,7 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
     // Pages
     Route::get('/', 'PagesController@index')->name('home');
     Route::get('instructions','PagesController@instructions')->name('instructions');
+    Route::get('producers','PagesController@producers')->name('producers');
     Route::get('contact-us', 'PagesController@contactUs')->name('contact-us');
     Route::post('contact-us', 'PagesController@send');
     Route::get('about-us', 'PagesController@aboutUs')->name('about-us');

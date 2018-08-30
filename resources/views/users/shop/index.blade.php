@@ -36,9 +36,10 @@
                         </div>
                         @foreach ($product->images as $index => $image)
                             @if ($index == 0)
-                            <div onclick="location.href='/shop/{{ $product->id }}';" style="background: url('storage/images/{{ $image->image }}') no-repeat center/cover; width: 100%; height: 230px; cursor: pointer;"></div>
+                            <div onclick="location.href='/shop/{{ $product->id }}';" style="background: url('storage/images/{{ $image->image }}') no-repeat center/cover; width: 100%; height: 230px; cursor: pointer; border-radius: 4px"></div>
                             @endif
                         @endforeach
+                        <br>
                         <div class="d-flex justify-content-between mb-2">
                             @foreach ($product->productRetailSizes as $index => $price)
                                 @if($index == 0)

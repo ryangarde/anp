@@ -26,6 +26,9 @@
                     <a class="nav-link {{ request()->is('partners') ? 'active' : '' }}" href="#">Partners</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ request()->is('partners') ? 'active' : '' }}" href="{{ route('producers') }}">Producers</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ request()->is('contact-us') ? 'active' : '' }}" href="{{ route('contact-us') }}">Contact Us</a>
                 </li>
                 <li class="nav-item">

@@ -1,4 +1,4 @@
-<ul class="nav flex-column background py-1 mt-3 sidebar-nav">
+p<ul class="nav flex-column background py-1 mt-3 sidebar-nav">
     <li class="nav-item">
         <span class="nav-link">Filtering</span>
     </li>
@@ -89,8 +89,12 @@
             </div>
 
             <div class="form-group">
-                <label for="searchColumnPrice">Price ₱1 - ₱10000</label>
-                <input id="ex2" type="text" class="span2" value="" data-slider-min="1" data-slider-max="10000" data-slider-step="1" data-slider-value="[1,10000]">
+                {{-- <label for="searchColumnPrice">Price ₱1 - ₱10000</label>
+                <input id="ex2" type="text" class="span2" value="" data-slider-min="1" data-slider-max="10000" data-slider-step="1" data-slider-value="[1,10000]"> --}}
+                <label for="price-min">Price</label><br>
+                <div class="row">
+                    <input id="ex2" type="text" class="span2" value="" data-slider-min="1" data-slider-max="10000" data-slider-step="1" data-slider-value="[1,10000]">
+                </div>
             </div>
 
             <div class="form-group">

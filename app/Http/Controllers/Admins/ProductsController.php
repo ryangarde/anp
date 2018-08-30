@@ -10,6 +10,7 @@ use App\Contracts\ImageInterface;
 use App\Contracts\ProductRetailSizeInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\ProductRetailSize;
 
 class ProductsController extends Controller
 {
@@ -138,7 +139,7 @@ class ProductsController extends Controller
             'name'        => 'required|min:2|max:255',
             'description' => 'required|min:2|max:500',
             'price'       => 'required|numeric',
-            'image'       => 'required'
+            'image'       => 'required',
         ]);
         // If validation passed add the product.
         $this->product->store(request());
@@ -236,9 +237,14 @@ class ProductsController extends Controller
         $product = $this->product->findOrFail($id);
         // If authorize fill the fields and save.
 
-        $product->productRetailSizes()->create($request->all());
+        $productRetailSizes = ProductRetailSize::where('product_id',$id)->where('retail_size_id',$request->retail_size_id)->first();
+        if (empty($productRetailSizes)) {
+            $product->productRetailSizes()->create($request->all());
+        } else {
+            return back()->with('message','Retail size already exists');
+        }
 
-        return back();
+        return back()->with('message','Retail size successfully added');
     }
 
     public function addImage(Request $request, $id)

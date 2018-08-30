@@ -1,6 +1,6 @@
 @extends('users.layouts.app')
 
-@section('title', 'Shop')
+@section('title', 'About Us')
 
 @section('content')
 <div style="position: relative; width: 100%; height: 100%;">

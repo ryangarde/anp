@@ -5,19 +5,28 @@ namespace App\Http\Controllers\Users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\MessagesInterface;
-//use App\Mail\SendMessage;
+use App\Contracts\ProducerInterface;
 
 class PagesController extends Controller
 {
     protected $messages;
+    protected $producers;
 
-    public function __construct(MessagesInterface $messages)
+    public function __construct(MessagesInterface $messages, ProducerInterface $producers)
     {
         $this->messages = $messages;
+        $this->producers = $producers;
     }
     public function index()
     {
         return view('users.index');
+    }
+
+    public function producers()
+    {
+        $producers = $this->producers->all();
+
+        return view('users.producers',compact('producers'));
     }
 
     public function contactUs()

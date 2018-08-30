@@ -1,6 +1,6 @@
 @extends('admins.layouts.app')
 
-@section('title', 'Category List')
+@section('title', 'Retail Size List')
 
 @section('content')
 <nav class="breadcrumb">
@@ -34,7 +34,7 @@
                         @foreach ($retailSizes as $retailSize)
                         <tr>
                             <td>{{ $retailSize->name }}</td>
-                            <td><a href="{{ route('categories.show', $retailSize->id) }}" class="btn btn-info btn-sm">View</a></td>
+                            <td><a href="{{ route('admins.retailSizes.show', $retailSize->id) }}" class="btn btn-info btn-sm">View</a></td>
                         </tr>
                         @endforeach
                     </tbody>

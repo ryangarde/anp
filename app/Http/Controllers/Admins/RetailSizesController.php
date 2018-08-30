@@ -52,4 +52,33 @@ class RetailSizesController extends Controller
 
         return redirect()->route('admins.retailSizes.index')->with('message', 'Category successfully added');
     }
+
+    public function show($id)
+    {
+        $retailSize = $this->retailSize->findOrFail($id);
+
+        return view('admins.retailSizes.show', compact('retailSize'));
+    }
+
+    public function edit($id)
+    {
+        $retailSize = $this->retailSize->findOrFail($id);
+
+        return view('admins.retailSizes.edit', compact('retailSize'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $retailSize = $this->retailSize->findOrFail($id);
+        $retailSize->fill($request->all())->save();
+
+        return redirect()->route('admins.retailSizes.show', $retailSize->id)->with('message', 'Retail Size successfully updated');
+    }
+
+    public function destroy($id)
+    {
+        $this->retailSize->findOrFail($id)->delete();
+
+        return redirect()->route('admins.retailSizes.index')->with('message', 'Retail Size successfully deleted');
+    }
 }

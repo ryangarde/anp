@@ -20,7 +20,7 @@
 
 <div class="container mb-5 mt-4">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             @foreach($product->images as $index => $image)
                 @if (! empty($image->image))
                     <img class="card-img-top" src="{{ asset('storage/images/'. $image->image)  }}" alt="Card image cap">
