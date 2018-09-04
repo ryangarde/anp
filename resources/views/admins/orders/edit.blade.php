@@ -49,6 +49,38 @@
                 </a>
             </div>
         </div>
+        @if($order->status > 0)
+            <br>
+            <div class="row">
+                <div class="col-md-2">Receipt created at:</div>
+                <div class="col-md-4"><input type="date" name="receipt_date" class="form-control" value="{{ $order->receipt_date }}" disabled></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">Receipt #:</div>
+                <div class="col-md-4"><input type="text" name="receipt" class="form-control" value="{{ $order->receipt }}" disabled></div>
+            </div>
+        @else
+            <br>
+            <div class="row">
+                <div class="col-md-2">Receipt created at:</div>
+                <div class="col-md-4"><input type="date" name="receipt_date" class="form-control" value="{{ $order->receipt_date }}"></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">Receipt #:</div>
+                <div class="col-md-4">
+                    <input type="text" name="receipt" class="form-control" value="{{ $order->receipt }}">
+                    @if ($errors->has('receipt'))
+                    <span class="help-block error">
+                        <strong>{{ $errors->first('receipt') }}</strong>
+                    </span>
+                    @endif
+                </div>
+            </div>
+        @endif
+
+
     </div>
 </div>
 
@@ -171,5 +203,5 @@
     </div>
 </div>
 </form>
-@include('admins.layouts.modal')
+@include('admins.modals.users')
 @endsection

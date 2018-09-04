@@ -24,7 +24,7 @@
                     <a class="card-title" data-toggle="modal" data-target="#customerModal" style="color: blue; cursor: pointer;">
                         {{ $order->user->name }}
                     </a>
-                    @include('admins.layouts.modal')
+                    @include('admins.modals.users')
                 </td>
                 <td>
                     @if ($order->status == 0)

@@ -41,8 +41,9 @@
                 </table>
 
                 <br>
-
-                {{ $retailSizes->links() }}
+                <div class="mx-auto mt-4" style="width: 50px;">
+                    {{ $retailSizes->links('vendor.pagination.bootstrap-4') }}
+                </div>
             </div>
 
             <div class="col-md-3" style="border-left: 1px solid #eee;">

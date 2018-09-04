@@ -78,13 +78,14 @@
                         <td></td>
                     </tr>
                     @endif
-                    <tr>
-                        <td colspan="3"></td>
-                        <th>Total</th>
-                        <td style="text-align: left; border-top: 1px solid black">₱ {{ $total }}</td>
-                        <td></td>
-                    </tr>
+
                 @endif
+                <tr>
+                    <td colspan="3"></td>
+                    <th>Total</th>
+                    <td style="text-align: left; border-top: 1px solid black">₱ {{ $total }}</td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
         <a href="/orders" class="float-left btn btn-secondary btn-sm">Back</a>

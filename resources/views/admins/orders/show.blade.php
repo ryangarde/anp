@@ -46,12 +46,12 @@
         <br>
         <div class="row">
             <div class="col-md-2">Receipt created at:</div>
-            <div class="col-md-4"><input type="date" name="receipt_date" class="form-control"></div>
+            <div class="col-md-4"><input type="date" name="receipt_date" class="form-control" value="{{ $order->receipt_date }}" disabled></div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-2">Receipt #:</div>
-            <div class="col-md-4"><input type="text" name="receipt" class="form-control"></div>
+            <div class="col-md-4"><input type="text" name="receipt" class="form-control" value="{{ $order->receipt }}" disabled></div>
         </div>
     </div>
 </div>
@@ -162,35 +162,36 @@
         </table>
     </div>
     <div class="card-footer">
-
-            <div class="row">
-                <div class="col-md-8"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            @if ($order->status == 0)
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-sm-6">
+                        @if ($order->status == 0)
+                            @if(! empty($order->receipt_date) && empty($order->eceipt))
                             <a href="/orders/confirm/{{ $order->id }}" class="btn btn-success">Confirm Order</a>
-                            @elseif ($order->status == 1)
-                            <a href="/orders/cancel/{{ $order->id }}" class="btn btn-danger">Cancel Order</a>
-                            @elseif ($order->status == 3)
-                            <a href="/orders/paid/{{ $order->id }}" class="btn btn-success">Paid</a>
-                            @elseif ($order->status == 4)
-                            <a href="/orders/delivered/{{ $order->id }}" class="btn btn-success">Delivered</a>
                             @endif
-                        </div>
-                        <div class="col-xs-3">
-                            @if($order->status != 4)
-                            <a href="{{ route('admins.orders.edit',$order->id) }}" class="btn btn-primary">Edit</a>
-                            @endif
-                        </div>
-                        <div class="col-md-2">
-                            <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
-                        </div>
+                        @elseif ($order->status == 1)
+                        <a href="/orders/cancel/{{ $order->id }}" class="btn btn-danger">Cancel Order</a>
+                        @elseif ($order->status == 3)
+                        <a href="/orders/paid/{{ $order->id }}" class="btn btn-success">Paid</a>
+                        @elseif ($order->status == 4)
+                        <a href="/orders/delivered/{{ $order->id }}" class="btn btn-success">Delivered</a>
+                        @endif
+                    </div>
+                    <div class="col-xs-3">
+                        @if($order->status != 4)
+                        <a href="{{ route('admins.orders.edit',$order->id) }}" class="btn btn-primary">Edit</a>
+                        @endif
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
                     </div>
                 </div>
             </div>
+        </div>
 
     </div>
 </div>
-@include('admins.layouts.modal')
+@include('admins.modals.users')
 @endsection

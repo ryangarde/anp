@@ -4,7 +4,8 @@
 
 @section('content')
 <nav class="breadcrumb">
-    <a class="breadcrumb-item" href="#">Producers</a>
+    <a class="breadcrumb-item" href="{{ route('producers.index') }}">Producers</a>
+    <a class="breadcrumb-item" href="{{ route('producers.show',$producer->id) }}">View Producer</a>
     <span class="breadcrumb-item">Edit Producer</span>
 </nav>
 

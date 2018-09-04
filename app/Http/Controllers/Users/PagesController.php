@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\MessagesInterface;
 use App\Contracts\ProducerInterface;
+use Illuminate\Support\Facades\Cache;
 
 class PagesController extends Controller
 {
@@ -42,11 +43,10 @@ class PagesController extends Controller
     public function instructions()
     {
         if (empty(session('agreed'))) {
-
             session()->put('agreed','yes');
             return view('users.instructions');
         }
-        return redirect()->route('shop');
+        return redirect('/shop');
     }
 
     public function send(Request $request)

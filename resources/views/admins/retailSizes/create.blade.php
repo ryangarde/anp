@@ -27,6 +27,7 @@
             <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
             <button type="submit" class="btn btn-primary btn-sm">Create New Retail Size</button>
         </form>
+
     </div>
 </div>
 @endsection

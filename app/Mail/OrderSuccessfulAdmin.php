@@ -30,7 +30,7 @@ class OrderSuccessfulAdmin extends Mailable
      */
     public function build()
     {
-        return $this->from(auth()->user()->email,auth()->user()->name)
+        return $this->from('shop@anp-philippines.com')
                     ->view('users.emails.orderSuccessfulAdmin');
     }
 }

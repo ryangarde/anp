@@ -19,7 +19,9 @@
 
             <div class="form-group">
                 <label for="image">Image <small class="text-info"><strong>*Optional, leave blank if you don't want to update the image</strong></small></label>
-                <input type="file" class="form-control-file" name="image" id="image" autocomplete="off">
+                @foreach($product->images  as $index => $image)
+                    <input type="file" class="form-control-file" name="image[]" id="image[]" autocomplete="off">
+                @endforeach
                 @if ($errors->has('image'))
                 <span class="help-block">
                     <strong>{{ $errors->first('image') }}</strong>
@@ -83,29 +85,41 @@
                 @endif
             </div>
 
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input type="text" class="form-control" name="price" id="price" autocomplete="off" value="{{ $product->price }}" required>
-                @if ($errors->has('price'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('price') }}</strong>
-                </span>
-                @endif
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="price">Price</label>
+                    @foreach($product->ProductRetailSizes as $retail)
+                        <input type="text" class="form-control" name="price[]" id="price[]" autocomplete="off" value="{{ $retail->price }}" required>
+                    @endforeach
+                    @if ($errors->has('price'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('price') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="retail_size_id">Retail Size</label>
+                    @foreach($product->ProductRetailSizes as $retail)
+                    <select class="form-control" id="retail_size_id[]" name="retail_size_id[]">
+                        @foreach($retailSizes as $retailSize)
+                        @if ($retailSize->id == $retail->retailSize->id)
+                            {{ $selected = 'selected' }}
+                        @else
+                            {{ $selected = '' }}
+                        @endif
+                        <option value="{{ $retailSize->id }}" {{ $selected }}>{{ $retailSize->name }}</option>
+                        @endforeach
+                    </select>
+                    @endforeach
+                    @if ($errors->has('retail_size_id'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('retail_size_id') }}</strong>
+                    </span>
+                    @endif
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="retail_size_id">Retail Size</label>
-                <select class="form-control" id="retail_size_id" name="retail_size_id">
-                    @foreach ($retailSizes as $retailSize)
-                    <option value="{{ $retailSize->id }}">{{ $retailSize->name }}</option>
-                    @endforeach
-                </select>
-                @if ($errors->has('retail_size_id'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('retail_size_id') }}</strong>
-                </span>
-                @endif
-            </div>
 
             <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
             <button type="submit" class="btn btn-primary btn-sm">Update Product</button>

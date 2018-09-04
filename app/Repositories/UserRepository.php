@@ -6,6 +6,7 @@ use App\Contracts\OrderInterface;
 use App\Contracts\ShoppingCartInterface;
 use App\Contracts\UserInterface;
 use App\User;
+use App\Order;
 
 class UserRepository extends Repository implements UserInterface
 {
@@ -152,5 +153,15 @@ class UserRepository extends Repository implements UserInterface
     public function getUserOrders()
     {
         return $this->order->getUserOrders();
+    }
+
+    public function getUserThatHasOrders()
+    {
+        $orders = collect(Order::all());
+        $orders = $orders->unique('user_id');
+        foreach ($orders as $index => $order) {
+            $users[$index] = $order->user;
+        }
+        return $users;
     }
 }

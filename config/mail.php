@@ -120,6 +120,6 @@ return [
         ],
     ],
 
-    'from' => ['address' => 'shop@anp-philippines.com', 'name' => 'Association of Negros Producers'],
+    'from' => ['address' => null, 'name' => null],
 
 ];

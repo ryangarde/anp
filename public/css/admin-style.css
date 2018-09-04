@@ -90,3 +90,12 @@ body {
 .error {
     color: red;
 }
+
+.user-link {
+    color: blue;
+    cursor: pointer;
+}
+
+.user-link:hover {
+    text-decoration: none;
+}

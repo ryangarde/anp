@@ -4,7 +4,8 @@
 
 @section('content')
 <nav class="breadcrumb">
-    <a class="breadcrumb-item" href="#">Categories</a>
+    <a class="breadcrumb-item" href="{{ route('categories.index') }}">Categories</a>
+    <a class="breadcrumb-item" href="{{ route('categories.show',$category->id) }}">View Category</a>
     <span class="breadcrumb-item">Edit Category</span>
 </nav>
 

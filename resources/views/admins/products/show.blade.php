@@ -68,17 +68,17 @@
                 </fieldset>
 
                 <form action="{{ route('products.destroy', $product->id) }}" method="POST" accept-charset="utf-8">
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}
-
-                    <a href="{{ route('products.index') }}" class="btn btn-secondary btn-sm">Back</a>
-                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <a href="{{ route('products.index') }}" class="btn btn-secondary btn-sm">Back</a>
+                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">Edit</a>
                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#retail">
                       Add a Retail Size
                     </button>
                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#imageModal">
                       Add an Image
                     </button>
+
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                 </form>
                     @include('admins.layouts.retail-modal')

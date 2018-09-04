@@ -10,7 +10,7 @@
         We have received your order of:<br>
         <ul>
             @foreach($products as $product)
-            <li>{{ $product->product->name }}</li>
+            <li>{{ $product->quantity }} {{ $product->product->name }} {{ $product->retailsize->name }}</li>
             @endforeach
         </ul>
         We are currently checking the availability of your chosen item.  ANP will inform the via phone call

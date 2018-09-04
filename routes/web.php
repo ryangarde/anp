@@ -75,6 +75,11 @@ Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], func
         // Messages Routes
         Route::get('messages', 'MessagesController@index')->name('admins.messages.index');
         Route::get('messages/{message}', 'MessagesController@show');
+
+        //Customer Routes
+        Route::get('customers', 'UsersController@index')->name('admins.users.index');
+        Route::get('customers/{customer}', 'UsersController@show')->name('admins.users.show');
+        Route::get('customers/{customer}/orders', 'UsersController@showOrders')->name('admins.users.showOrders');
     });
 });
 

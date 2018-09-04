@@ -8,7 +8,6 @@ use App\Contracts\ImageInterface;
 use App\Product;
 use App\ProductRetailSize;
 
-
 class ProductRepository extends Repository implements ProductInterface
 {
     protected $productRetailSize;
@@ -39,6 +38,23 @@ class ProductRepository extends Repository implements ProductInterface
 
         $model->productRetailSizes()->create($request->all());
         return $model->images()->create($request->all());
+    }
+
+    public function update($request, $id)
+    {
+        $model = $this->model->findOrFail($id);
+        $model->fill($request->all());
+        $products = Product::findOrFail($id)->productRetailSizes;
+        foreach ($products as $index => $product) {
+            $product->update(['retail_size_id' => $request->retail_size_id[$index], 'price' => $request->price[$index]]);
+        }
+
+        $images = Product::findOrFail($id)->images;
+        foreach ($images as $index => $image) {
+            $image->update(['image' => $request->image[$index]]);
+        }
+
+        return $model->save();
     }
 
     /**
@@ -86,5 +102,7 @@ class ProductRepository extends Repository implements ProductInterface
     {
         return $this->model->with('category', 'producer','images','productRetailSizes.retailSize')->findOrFail($id);
     }
+
+
 
 }

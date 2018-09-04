@@ -133,6 +133,9 @@ class OrdersController extends Controller
 
     public function update(Request $request, Order $order)
     {
+        $this->validate($request,[
+            'receipt' => 'integer'
+        ]);
         if($request->quantity_returned || $request->shipment){
             $orderProducts = OrderProduct::where('order_id',$order->id)->get();
             foreach ($orderProducts as $index => $orderProduct) {
@@ -154,11 +157,17 @@ class OrdersController extends Controller
                 $orderProduct->update(array('quantity_returned' => $request->quantity_returned[$index]));
             }
         }
+        if ($request->receipt_date && $request->receipt) {
+            $order->update(array('receipt' => $request->receipt, 'receipt_date' => $request->receipt_date));
+        }
+
+
         return redirect()->route('admins.orders.show',$order->id);
     }
 
     public function confirm(Order $order)
     {
+
         $order->fill([
             'status' => 3,
             'admin_id' => auth('admin')->user()->id
@@ -169,6 +178,7 @@ class OrdersController extends Controller
 
     public function cancel(Order $order)
     {
+
         $order->fill([
             'status' => 2
         ]);

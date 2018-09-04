@@ -105,6 +105,11 @@
     <li class="nav-item">
         <span class="nav-link" href="{{ route('admin.dashboard') }}">Access Control List</span>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admins.users.index') }}">List of Customers</a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="#admins" data-toggle="collapse" href="#admins" aria-expanded="false" aria-controls="admins">
             Admins <i class="float-right fa fa-caret-down"></i>
@@ -120,6 +125,8 @@
             </li>
         </ul>
     </div>
+
+
     <li class="nav-item">
         <a class="nav-link" href="#roles" data-toggle="collapse" href="#roles" aria-expanded="false" aria-controls="roles">
             Roles <i class="float-right fa fa-caret-down"></i>
@@ -135,6 +142,8 @@
             </li>
         </ul>
     </div>
+
+
     <li class="nav-item">
         <a class="nav-link" href="#permissions" data-toggle="collapse" href="#permissions" aria-expanded="false" aria-controls="permissions">
             Permissions <i class="float-right fa fa-caret-down"></i>
@@ -150,6 +159,8 @@
             </li>
         </ul>
     </div>
+
+
     <li class="nav-item">
         <a class="nav-link" href="#">Settings</a>
     </li>

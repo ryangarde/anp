@@ -168,10 +168,10 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         // If authorize find resource.
-        $product = $this->product->findOrFail($id);
+        $product = $this->product->findOrFailWithProducerAndCategory($id);
 
         // Get all categories
         $categories = $this->category->all();
@@ -182,6 +182,11 @@ class ProductsController extends Controller
         // Get all retail sizes
         $retailSizes = $this->retailSize->all();
 
+        /*foreach ($retailSize as $retail) {
+            foreach ($product->ProductRetailSizes as $index => $retails) {
+                dd($retails->retailSize->name);
+            }
+        }*/
         // If authorize pass the news object to the view.
         return view('admins.products.edit', compact('product', 'categories', 'producers', 'retailSizes'));
     }
@@ -199,21 +204,20 @@ class ProductsController extends Controller
         $this->validate($request, [
             'producer_id' => 'required|integer',
             'category_id' => 'required|integer',
-            'image'       => 'image',
+            'image'       => 'required',
             'name'        => 'required|min:2|max:255',
             'description' => 'required|min:2|max:500',
-            'price'       => 'required|numeric'
+            'price'       => 'required'
         ]);
 
         // If authorize find the news resource using id.
-        $product = $this->product->findOrFail($id);
-
         // If authorize fill the fields and save.
-        $product->retailSizes()->attach($request->retail_size_id);
-        $product->fill($request->all())->save();
+      //  $product->retailSizes()->attach($request->retail_size_id);
+       // $product->fill($request->all())->save();
+        $this->product->update(request(),$id);
 
         // After updating the product redirect to edit page with a success message.
-        return redirect()->route('products.show', $product->id)->with('message', 'Product successfully updated');
+        return redirect()->route('products.show', $id)->with('message', 'Product successfully updated');
     }
 
     /**
@@ -237,7 +241,9 @@ class ProductsController extends Controller
         $product = $this->product->findOrFail($id);
         // If authorize fill the fields and save.
 
-        $productRetailSizes = ProductRetailSize::where('product_id',$id)->where('retail_size_id',$request->retail_size_id)->first();
+        $productRetailSizes = ProductRetailSize::where('product_id',$id)
+                                               ->where('retail_size_id',$request->retail_size_id)
+                                               ->first();
         if (empty($productRetailSizes)) {
             $product->productRetailSizes()->create($request->all());
         } else {

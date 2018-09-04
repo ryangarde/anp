@@ -105,9 +105,10 @@ class OrdersController extends Controller
                     'phone_number' => auth()->user()->phone_number,
                     'message'      => auth()->user()->name . ' has ordered'
                 ]);*/
+                $user = $this->order;
                 $products = $this->orderProduct->getProductList();
                 \Mail::to(auth()->user())->send(new OrderSuccessful($products));
-               // \Mail::to('shop@anp-philippines.com')->send(new OrderSuccessfulAdmin($products));
+              //  \Mail::to('showroom@anp-philippines.com')->send(new OrderSuccessfulAdmin($products));
 
                 if ($this->user->clearShoppingCart()) {
                     return redirect()->route('orders.index')->with('message', 'Order successful please wait for confirmation on your email');

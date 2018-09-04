@@ -19,19 +19,25 @@
 </div>
 
 <div class="container mb-5 mt-4">
+    <br><br>
     <div class="row">
-        <div class="col-md-4">
-            @foreach($product->images as $index => $image)
-                @if (! empty($image->image))
-                    <img class="card-img-top" src="{{ asset('storage/images/'. $image->image)  }}" alt="Card image cap">
-                @endif
-            @endforeach
+        <div class="col-md-5">
+            @if(count($product->images) > 1)
+                @include('users.layouts.image-carousel')
+            @else
+                @foreach($product->images as $index => $image)
+                    @if (! empty($image->image))
+                        <img class="shop-img-show" src="{{ asset('storage/images/'. $image->image)  }}" alt="Card image cap">
+                    @endif
+                @endforeach
+            @endif
         </div>
+        <div class="col-md-1"></div>
         <div class="col-md-6">
             <h3>{{ $product->name }}</h3><br>
             <span style="font-size: 15px;">{{ $product->description }}</span>
             <br><br><br>
-            <span style="color: grey;">Produced by: </span>
+            <span style="color: #990000;"><b>Produced by: </b></span><br><br>
             <h6>{{ $product->producer->name }}</h6><br>
             {{ $product->producer->description }}
             <br><br><br>
