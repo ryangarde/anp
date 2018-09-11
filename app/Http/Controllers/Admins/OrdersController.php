@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admins;
 
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Order;
 use App\OrderProduct;
 use App\ProductRetailSize;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\OrdersExport;
 
 class OrdersController extends Controller
 {
@@ -29,10 +32,12 @@ class OrdersController extends Controller
      *
      * @param OrderInterface $order Order interface
      */
+
     public function __contruct(Order $order, OrderProduct $orderProduct)
     {
         $this->order = $order;
         $this->orderProduct = $orderProduct;
+        $this->excel = $excel;
     }
 
     public function index()
@@ -157,10 +162,9 @@ class OrdersController extends Controller
                 $orderProduct->update(array('quantity_returned' => $request->quantity_returned[$index]));
             }
         }
-        if ($request->receipt_date && $request->receipt) {
+        if ($request->receipt) {
             $order->update(array('receipt' => $request->receipt, 'receipt_date' => $request->receipt_date));
         }
-
 
         return redirect()->route('admins.orders.show',$order->id);
     }
@@ -170,7 +174,8 @@ class OrdersController extends Controller
 
         $order->fill([
             'status' => 3,
-            'admin_id' => auth('admin')->user()->id
+            'admin_id' => auth('admin')->user()->id,
+            'receipt_date' => Carbon::now()->toDateTimeString()
         ]);
         $order->save();
         return back();
@@ -203,4 +208,6 @@ class OrdersController extends Controller
         $order->save();
         return back();
     }
+
+
 }

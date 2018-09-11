@@ -26,11 +26,9 @@ Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], func
         Route::get('admins/profile', 'AdminsController@profile')->name('admins.profile');
         Route::get('admins/assign-role/{user}', 'AdminsController@showAssignRoleForm')->name('admins.show-assign-roles-form');
         Route::post('admins/toggle-role', 'AdminsController@toggleRole')->name('admins.toggle-role');
-        Route::delete('admins/{admin}', 'AdminsController@destroy')->name('admins.destroy');
+      //  Route::delete('admins/{admin}', 'AdminsController@destroy')->name('admins.destroy');
         Route::resource('admins', 'AdminsController', [
-            'only' => [
-                'index', 'show', 'update'
-            ]
+            'except' => ['create','store']
         ]);
 
         // ACL Routes
@@ -71,6 +69,7 @@ Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], func
         Route::get('orders/cancel/{order}', 'OrdersController@cancel')->name('admins.orders.cancel');
         Route::get('orders/paid/{order}', 'OrdersController@paid')->name('admins.orders.paid');
         Route::get('orders/delivered/{order}', 'OrdersController@delivered')->name('admins.orders.delivered');
+   //     Route::get('orders/export', 'OrdersController@export')->name('admins.orders.export');
 
         // Messages Routes
         Route::get('messages', 'MessagesController@index')->name('admins.messages.index');
@@ -80,6 +79,10 @@ Route::group(['domain' => 'admin.anp.hybrain.co', 'namespace' => 'Admins'], func
         Route::get('customers', 'UsersController@index')->name('admins.users.index');
         Route::get('customers/{customer}', 'UsersController@show')->name('admins.users.show');
         Route::get('customers/{customer}/orders', 'UsersController@showOrders')->name('admins.users.showOrders');
+
+        // Reports Routes
+        Route::get('reports/create', 'ReportsController@create')->name('admins.reports.create');
+        Route::post('reports', 'ReportsController@export')->name('admins.reports.export');
     });
 });
 
@@ -113,7 +116,14 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
 
     // Dashboards
     Route::group(['middleware' => 'auth'], function () {
-        Route::get('dashboard', 'DashboardsController@index')->name('dashboard');
+        Route::group(['prefix' => 'dashboard'], function () {
+            Route::get('/', 'DashboardsController@index')->name('dashboard');
+            Route::get('user/{user}', 'DashboardsController@show')->name('dashboard.user');
+            Route::get('user/{user}/edit', 'DashboardsController@edit')->name('dashboard.user.edit');
+            Route::patch('user/{user}/upload', 'DashboardsController@upload')->name('dashboard.user.upload');
+            Route::patch('user/{user}/update', 'DashboardsController@update')->name('dashboard.user.update');
+        });
+
 
         // Shopping cart
         Route::group(['prefix' => 'shopping-cart'], function () {
@@ -121,7 +131,7 @@ Route::group(['domain' => 'anp.hybrain.co', 'namespace' => 'Users'], function ()
             Route::get('/cart-items', 'ShoppingCartsController@showCartItems')->name('carts.items');
             /*Route::get('checkout', 'ShoppingCartsController@checkout')->name('checkout');*/
             Route::post('add-to-cart', 'ShoppingCartsController@addToCart')->name('carts.add-to-cart');
-            Route::get('add-to-cart', 'ShopsController@index')->name('shop');
+            Route::get('add-to-cart', 'PagesController@index');
             Route::post('remove-from-cart', 'ShoppingCartsController@removeFromCart')->name('carts.remove-from-cart');
             // Route::post('add-quantity', 'ShoppingCartsController@addQuantity')->name('carts.add-quantity');
             // Route::post('subtract-quantity', 'ShoppingCartsController@subtractQuantity')->name('carts.subtract-quantity');

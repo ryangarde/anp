@@ -98,6 +98,10 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admins.messages.index') }}">Messages</a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admins.reports.create') }}">Create Report</a>
+    </li>
 </ul>
 
 

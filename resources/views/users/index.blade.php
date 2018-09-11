@@ -1,6 +1,6 @@
 @extends('users.layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Home')
 
 @section('styles')
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">

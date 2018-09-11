@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="retailModalLabel">
-          @yield('modal-title')
+
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -34,14 +34,13 @@
             </span>
             @endif
           </div>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor: pointer;">Close</button>
+
+      </div>
+      <div class="modal-footer">
           <button type="submit" class="btn btn-primary" style="cursor: pointer;">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor: pointer;">Close</button>
         </form>
       </div>
-
-
-
-
     </div>
   </div>
 </div>

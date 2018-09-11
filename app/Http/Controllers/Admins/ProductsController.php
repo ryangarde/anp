@@ -209,10 +209,8 @@ class ProductsController extends Controller
             'description' => 'required|min:2|max:500',
             'price'       => 'required'
         ]);
-
         // If authorize find the news resource using id.
         // If authorize fill the fields and save.
-      //  $product->retailSizes()->attach($request->retail_size_id);
        // $product->fill($request->all())->save();
         $this->product->update(request(),$id);
 

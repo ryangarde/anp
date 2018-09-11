@@ -4,8 +4,9 @@
 
 @section('content')
 <nav class="breadcrumb">
-    <a class="breadcrumb-item" href="#">Dashboards</a>
+    <a class="breadcrumb-item" href="{{ route('dashboard') }}">Dashboard</a>
     <span class="breadcrumb-item">Shopping Cart</span>
+    <a href="{{ route('carts.items') }}" class="btn anp-btn btn-sm float-right">Go to Cart</a>
 </nav>
 @if($shoppingCart['total_items'] == 0)
 <br><br><br>
@@ -79,7 +80,7 @@
                 <form id="order-form" method="POST" action="{{ route('orders.order') }}" accept-charset="utf-8">
                     {{ csrf_field() }}
                     <input type="hidden" name="total" value="{{ $shoppingCart['grand_total'] }}">
-                    <button class="btn btn-sm btn-info">Order</button>
+                    <button class="btn btn-sm btn-info" style="cursor: pointer;">Checkout</button>
                 </form>
             </td>
         </tr>

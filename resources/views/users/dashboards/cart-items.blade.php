@@ -4,7 +4,8 @@
 
 @section('content')
 <nav class="breadcrumb">
-    <a class="breadcrumb-item" href="#">Dashboards</a>
+    <a class="breadcrumb-item" href="{{ route('dashboard') }}">Dashboards</a>
+    <a class="breadcrumb-item" href="{{ route('shopping-cart') }}">Shopping Cart</a>
     <span class="breadcrumb-item">Cart Items</span>
 </nav>
 
@@ -35,7 +36,7 @@
                 <form method="POST" action="{{ route('carts.remove-from-cart') }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="product_id" value="{{ $product['id'] }}">
-                    <button type="submit" class="btn anp-btn btn-sm" style="cursor: pointer;">
+                    <button type="submit" class="btn anp-btn btn-sm ">
                         Remove
                     </button>
                 </form>

@@ -5,10 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Traits\Imaging;
+use App\Traits\FilterOtherModels;
+use App\Traits\Filtering;
+
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable, SoftDeletes, Imaging, Filtering, FilterOtherModels;
 
     /**
      * Users table
@@ -23,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone_number', 'lot_block', 'street', 'subdivision_barangay', 'city_municipality', 'province', 'zip_code'
+        'name', 'email', 'password', 'phone_number', 'lot_block', 'street', 'subdivision_barangay', 'city_municipality', 'province', 'zip_code','image'
     ];
 
     /**

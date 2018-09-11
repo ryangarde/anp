@@ -1,4 +1,4 @@
-p<ul class="nav flex-column background py-1 mt-3 sidebar-nav">
+<ul class="nav flex-column background py-1 mt-3 sidebar-nav">
     <li class="nav-item">
         <span class="nav-link">Filtering</span>
     </li>

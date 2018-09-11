@@ -28,7 +28,6 @@
                 @foreach ($products as $index => $product)
                 <form action="{{ route('shop.show',$product->id) }}" method="GET" accept-charset="utf-8">
                     {{ csrf_field() }}
-
                     <input type="hidden" name="product_id" value="{{ $product->name }}">
                     <div class="card title-color text-center shop-cart-item" style="border: 0">
                         <div>
@@ -49,17 +48,17 @@
                                 @endif
                             @endforeach
                             <button type="submit" class="btn btn-sm add-to-cart-button anp-btn">
-                              View item
+                              View Product
                             </button>
                         </div>
 
                         @if (strlen($product->description) >= 120)
                             <div class="c--anim-btn">
-                                    <span class="c-anim-btn">
-                                        {{ $product->retail_size }}
-                                        <br><br>
-                                        {{ $product->description }}
-                                    </span>
+                                <span class="c-anim-btn">
+                                    {{ $product->retail_size }}
+                                    <br><br>
+                                    {{ $product->description }}
+                                </span>
                             </div>
                         @else
                             <div style="font-size: 85%; color: #707070">
@@ -73,7 +72,6 @@
                     </div>
                 </form>
                 @endforeach
-
             </div>
             <div class="mx-auto mt-4" style="width: 50px;">
                 {{ $products->links('vendor.pagination.bootstrap-4') }}

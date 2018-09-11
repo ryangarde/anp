@@ -5,8 +5,7 @@
 @section('content')
 <div>
     <nav class="breadcrumb">
-        <a class="breadcrumb-item" href="#">Admins</a>
-        <span class="breadcrumb-item">Admin List</span>
+        <span class="breadcrumb-item">Admins</span>
     </nav>
 
     <div class="card">

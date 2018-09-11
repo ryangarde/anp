@@ -20,14 +20,12 @@
             </span>
             @endif
           </div>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor: pointer;">Close</button>
+      </div>
+      <div class="modal-footer">
           <button type="submit" class="btn btn-primary" style="cursor: pointer;">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor: pointer;">Close</button>
         </form>
       </div>
-
-
-
-
     </div>
   </div>
 </div>

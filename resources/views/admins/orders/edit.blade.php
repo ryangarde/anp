@@ -122,7 +122,7 @@
                     <td>{{ str_limit($orderProduct->product->producer->name, 10) }}</td>
                     <td>{{ $orderProduct->product->name }}</td>
                     <td>{{ $orderProduct->product->category->name }}</td>
-                    <td>{{ $price[$index]->price }}</td>
+                    <td>{{ number_format($price[$index]->price,2) }}</td>
                     <td>{{ $orderProduct->retailSize->name }}</td>
 
                     @if($order->status == 5)
@@ -137,9 +137,9 @@
                         @endif
                     </td>
                     @if($order->status == 5)
-                        <td>₱ {{ $amount_returned[$index] }}</td>
+                        <td>₱ {{ number_format($amount_returned[$index],2) }}</td>
                     @else
-                        <td>₱ {{ $amount[$index] }}</td>
+                        <td>₱ {{ number_format($amount[$index],2) }}</td>
                     @endif
 
                     <td>
@@ -158,9 +158,9 @@
                     <td colspan="6"></td>
                     <th>Sub Total</th>
                     @if($order->status == 5)
-                        <td style="border-top: 1px solid black">₱ {{ $subtotal_returned }}</td>
+                        <td style="border-top: 1px solid black">₱ {{ number_format($subtotal_returned,2) }}</td>
                     @else
-                        <td style="border-top: 1px solid black">₱ {{ $subtotal }}</td>
+                        <td style="border-top: 1px solid black">₱ {{ number_format($subtotal,2) }}</td>
                     @endif
 
                 </tr>
@@ -181,9 +181,9 @@
                     <td colspan="6"></td>
                     <th>Total</th>
                     @if($order->status == 5)
-                        <td style="border-top: 1px solid black">₱ {{ $total_returned }}</td>
+                        <td style="border-top: 1px solid black">₱ {{ number_format($total_returned,2) }}</td>
                     @else
-                        <td style="border-top: 1px solid black">₱ {{ $total }}</td>
+                        <td style="border-top: 1px solid black">₱ {{ number_format($total,2) }}</td>
                     @endif
                 </tr>
             </tbody>

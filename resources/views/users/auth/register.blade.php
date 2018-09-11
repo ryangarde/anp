@@ -56,7 +56,8 @@
                         </div>
 
                         <div class="form-group row {{ $errors->has('subdivision_barangay') ? 'has-error' : '' }}">
-                            <label for="subdivision_barangay" class="col-sm-3 col-form-label">Subdivision / Barangay</label>
+                            <label for="subdivision_barangay" class="col-sm-3 col-form-label">Subdivision / Barangay<br><small class="text-info"><strong>*Seperate with a comma</strong></small></label>
+
                             <div class="col-sm-9">
                                 <input id="subdivision_barangay" type="text" class="form-control" name="subdivision_barangay" value="{{ old('subdivision_barangay') }}" autofocus>
                                 @if ($errors->has('subdivision_barangay'))

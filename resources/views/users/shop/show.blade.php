@@ -27,20 +27,25 @@
             @else
                 @foreach($product->images as $index => $image)
                     @if (! empty($image->image))
-                        <img class="shop-img-show" src="{{ asset('storage/images/'. $image->image)  }}" alt="Card image cap">
+                    <a href="{{ asset('storage/images/'. $image->image)  }}" style="cursor: zoom-in;">
+                        <img class="shop-img-show" src="{{ asset('storage/images/'. $image->image)  }}" alt="Card image cap" data-large-img-url="{{ asset('storage/images/'. $image->image)  }}">
+                    </a>
                     @endif
                 @endforeach
             @endif
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <div class="magnifier-preview" id="preview" style="width: 650px; height: 500px; position: absolute;"></div>
+        </div>
         <div class="col-md-6">
+
             <h3>{{ $product->name }}</h3><br>
             <span style="font-size: 15px;">{{ $product->description }}</span>
-            <br><br><br>
+            <br><br><hr><br>
             <span style="color: #990000;"><b>Produced by: </b></span><br><br>
             <h6>{{ $product->producer->name }}</h6><br>
             {{ $product->producer->description }}
-            <br><br><br>
+            <br><br><hr><br>
             @foreach($product->productRetailSizes as $index => $retail)
                 @if($index == 0)
                 <h3 style="color: red;">₱ {{ $retail->price }} <span style="font-size: 17px; color: black;">{{ $retail->retailSize->name }}</span></h3>
@@ -70,7 +75,10 @@
     </div>
 
 </div>
+
+
 @endsection
+
 {{--
     <div class="d-inline-block">
         <input class="btn anp-btn" type="submit" value="ADD TO CART">

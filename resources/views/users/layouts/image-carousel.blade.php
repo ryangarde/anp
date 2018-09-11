@@ -1,4 +1,4 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-keyboard="true" data-ride="true">
   <ol class="carousel-indicators">
     @foreach($product->images as $index => $image)
         @if (! empty($image->image))
@@ -10,7 +10,9 @@
     @foreach($product->images as $index => $image)
         @if (! empty($image->image))
           <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-            <img class="d-block w-100 shop-img-show" src="{{ asset('storage/images/'. $image->image)  }}" alt="Card image cap">
+            <a href="{{ asset('storage/images/'. $image->image)  }}" style="cursor: zoom-in;">
+              <img class="d-block w-100 shop-img-show" src="{{ asset('storage/images/'. $image->image)  }}" alt="Card image cap">
+            </a>
           </div>
         @endif
     @endforeach

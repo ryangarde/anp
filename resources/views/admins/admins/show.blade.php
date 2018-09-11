@@ -4,7 +4,7 @@
 
 @section('content')
 <nav class="breadcrumb">
-    <a class="breadcrumb-item" href="#">Admins</a>
+    <a class="breadcrumb-item" href="{{ route('admins.index') }}">Admins</a>
     <span class="breadcrumb-item">View Admin</span>
 </nav>
 
@@ -29,6 +29,10 @@
                 <textarea class="form-control" id="email">{{ $admin->email }}</textarea>
             </div>
         </fieldset>
+    </div>
+    <div class="card-footer">
+        <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
+        <a href="{{ route('admins.edit',$admin->id) }}" class="btn btn-primary btn-sm">Edit</a>
     </div>
 </div>
 @endsection

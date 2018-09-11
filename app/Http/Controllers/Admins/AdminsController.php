@@ -72,15 +72,25 @@ class AdminsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+
+    public function edit($id)
+    {
+        $admin = $this->admin->findOrFail($id);
+        $roles = $this->admin->getAssignedRoles($id);
+
+        return view('admins.admins.edit', compact('admin', 'roles'));
+    }
+
+    public function update(Request $request,$id)
     {
         $this->validate($request, [
             'name' => 'required|min:10|max:150',
+            'email' => 'required|email'
         ]);
 
         auth()->guard('admin')->user()->fill($request->all())->save();
 
-        return back()->with('message', 'Profile successfully updated');
+        return redirect()->route('admins.show',$id)->with('message', 'Profile successfully updated');
     }
 
     /**

@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div onclick="location.href='/shop'" style="cursor: pointer;">
                                     <i class="fa fa-angle-double-left" style="color: #990000;">
                                         <span style="font-family: 'Century Gothic'"> Back to Shop</span>

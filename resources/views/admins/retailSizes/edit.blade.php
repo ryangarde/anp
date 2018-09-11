@@ -4,9 +4,8 @@
 
 @section('content')
 <nav class="breadcrumb">
-    <a class="breadcrumb-item" href="#">Retail Sizes</a>
-    <a class="breadcrumb-item" href="/retail">Retail Sizes List</a>
-    <a class="breadcrumb-item" href="/retail/{{ $retailSize->id }}">View Retail Size</a>
+    <a class="breadcrumb-item" href="{{ route('admins.retailSizes.index') }}">Retail Sizes</a>
+    <a class="breadcrumb-item" href="{{ route('admins.retailSizes.show',$retailSize->id) }}">View Retail Size</a>
     <span class="breadcrumb-item">Edit Retail Sizes</span>
 </nav>
 
@@ -27,8 +26,9 @@
                 </span>
                 @endif
             </div>
+            <br>
             <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
-            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+            <button type="submit" class="btn btn-primary btn-sm" style="cursor: pointer;">Update</button>
         </form>
     </div>
 

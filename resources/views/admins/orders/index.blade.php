@@ -20,12 +20,7 @@
             <tr>
                 <td>{{ $order->created_at->diffForHumans() }}</td>
                 <td>{{ sprintf('%010d', $order->id) }}</td>
-                <td>
-                    <a class="card-title" data-toggle="modal" data-target="#customerModal" style="color: blue; cursor: pointer;">
-                        {{ $order->user->name }}
-                    </a>
-                    @include('admins.modals.users')
-                </td>
+                <td>{{ $order->user->name }}</td>
                 <td>
                     @if ($order->status == 0)
                     <span class="float-left text-info">Pending</span>
@@ -44,7 +39,9 @@
                 <td><a href="/orders/{{ $order->id }}" class="btn btn-primary btn-sm">View Order</a></td>
                 <td>
                     @if ($order->status == 0)
-                    <a href="/orders/confirm/{{ $order->id }}" class="btn btn-success btn-sm">Confirm</a>
+                        @if(!empty($order->receipt))
+                            <a href="/orders/confirm/{{ $order->id }}" class="btn btn-success btn-sm">Confirm Order</a>
+                        @endif
                     @elseif ($order->status == 1)
                     <a href="/orders/cancel/{{ $order->id }}" class="btn btn-danger btn-sm">Cancel</a>
                     @elseif ($order->status == 3)

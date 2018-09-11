@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'city_municipality' => 'required|string|max:255',
             'province' => 'required|string|max:255',
             'zip_code' => 'required|min:4|max:255',
-            'phone_number' => 'required|min:11|unique:users',
+            'phone_number' => 'required|min:7|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }

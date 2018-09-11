@@ -4,7 +4,7 @@
 
 @section('content')
 <nav class="breadcrumb">
-    <a class="breadcrumb-item" href="#">Products</a>
+    <a class="breadcrumb-item" href="{{ route('products.index') }}">Products</a>
     <span class="breadcrumb-item">View Product</span>
 </nav>
 

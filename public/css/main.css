@@ -99,21 +99,26 @@ a {
     text-decoration: none;
     text-align: center;
     display: block;
+
 }
 
 .c--anim-btn, .c-anim-btn {
     transition: 0.65s;
+    -webkit-transition-timing-function: vertical;
+    -moz-transition-timing-function: vertical;
+    transition-timing-function: vertical;
 }
 
 .c--anim-btn {
     height: 80px;
     color: #707070;
     overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 85%;
 }
 
 .c-anim-btn {
-    margin-top: 0em;
+    margin-top: -.5em;
 }
 
 .c--anim-btn:hover .c-anim-btn {

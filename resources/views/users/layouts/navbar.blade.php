@@ -41,13 +41,13 @@
             <ul class="nav navbar-nav custom-navbar-nav">
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link text-info" href="#" onclick="event.preventDefault();">
-                        @if (session('message'))
-                        <div id="order-successful" class="order-successful">
-                            {{ session('message') }}
-                        </div>
-                        @endif
-                    </a>
+
+                    @if (session('message'))
+                    <div id="order-successful" class="alert alert-success" role="alert">
+                        {{ session('message') }}
+                    </div>
+                    @endif
+
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('shopping-cart') }}">{{ $shoppingCart['total_items'] }} <i class="fa fa-shopping-cart"></i></a>

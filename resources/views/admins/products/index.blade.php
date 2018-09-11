@@ -3,14 +3,11 @@
 @section('title', 'Product List')
 
 @section('content')
-<div class="card">
-    <div class="card-header">
-        Product List
-        <a href="{{ route('products.create') }}" class="float-right btn btn-success btn-sm">Create New Product</a>
-    </div>
-</div>
 
-<br>
+<nav class="breadcrumb">
+    <span class="breadcrumb-item">Products</span>
+    <a href="{{ route('products.create') }}" class="float-right btn btn-success btn-sm">Create New Product</a>
+</nav>
 
 <div class="card-columns">
     @foreach ($products as $product)
@@ -24,7 +21,13 @@
         </div>
         <ul class="list-group list-group-flush">
             @foreach($product->productRetailSizes as $p)
-            <li class="list-group-item">₱ {{ $p->price }}</li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-5">₱ {{ $p->price }}</div>
+                    <div class="col-md-6">{{ $p->retailSize->name }}</div>
+                </div>
+
+            </li>
             @endforeach
         </ul>
         <div class="card-body clearfix">

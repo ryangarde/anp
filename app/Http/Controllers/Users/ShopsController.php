@@ -73,7 +73,6 @@ class ShopsController extends Controller
         // Get search url for filtering
         $searchUrl = $this->product->getSearchUrl(request());
 
-        // Return v2 view of shop.
 
 
         // Return view and pass variables.

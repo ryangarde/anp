@@ -4,8 +4,7 @@
 
 @section('content')
 <nav class="breadcrumb">
-    <a class="breadcrumb-item" href="#">Retail Sizes</a>
-    <a class="breadcrumb-item" href="/retail">Retail Sizes List</a>
+    <a class="breadcrumb-item" href="{{ route('admins.retailSizes.index') }}">Retail Sizes</a>
     <span class="breadcrumb-item">View Retail Size</span>
 </nav>
 
@@ -18,6 +17,7 @@
             <label for="retailSize">Retail Size</label>
             <input type="text" name="retailSize" class="form-control" value="{{ $retailSize->name }}" disabled>
         </div>
+        <br>
         <form method="POST" action="{{ route('admins.retailSizes.destroy',$retailSize->id) }}">
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
